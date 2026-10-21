@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "odotorii",
+  "sequence": 1,
+  "title": "대도리이",
+  "title_ja": "大鳥居",
+  "summary": "JR 이나리역에서 나와 신사로 들어가는 첫 관문입니다. 커다란 붉은 도리이가 앞으로 이어질 공간의 성격을 알려줍니다.",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "route-illustration",
+    "remote_url": "https://commons.wikimedia.org/wiki/Special:FilePath/O-torii%20at%20the%20entrance%20to%20the%20shrine%20%284160811594%29.jpg?width=1200",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:O-torii_at_the_entrance_to_the_shrine_%284160811594%29.jpg"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "locale": "ko-KR",
+    "bytes": 452396,
+    "sha256": "a0b319794b900345e733695aa2a37ae6837075c9f478973a2204153528b2f172",
+    "original_name": "audio_01_odotorii.mp3"
+  },
+  "cues": null
+}

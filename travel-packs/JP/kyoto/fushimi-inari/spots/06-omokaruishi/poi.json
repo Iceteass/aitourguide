@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "omokaruishi",
+  "sequence": 6,
+  "title": "오모카루이시",
+  "title_ja": "おもかる石",
+  "summary": "오쿠샤 뒤쪽의 돌등 두 개와 그 위에 놓인 돌을 찾아보세요.",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "route-illustration",
+    "remote_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fushimi%20Inari-taisha%20Omokaruishi.jpg?width=1200",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Fushimi_Inari-taisha_Omokaruishi.jpg"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "locale": "ko-KR",
+    "bytes": 577580,
+    "sha256": "0f42f65d4d83db690c1a81078c79f3397ac34f9deb3bd399be222bbac308a3f7",
+    "original_name": "audio_06_omokaruishi.mp3"
+  },
+  "cues": null
+}

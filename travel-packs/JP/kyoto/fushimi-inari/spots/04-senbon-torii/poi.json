@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "senbon-torii",
+  "sequence": 4,
+  "title": "센본도리이",
+  "title_ja": "千本鳥居",
+  "summary": "센본도리이 입구에서 전체 풍경을 본 뒤, 통행을 방해하지 않는 곳에서 기둥 뒷면 글씨를 확인하세요.",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "route-illustration",
+    "remote_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fushimi%20Inari%20Taisha%20tunnel.jpg?width=960",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Fushimi_Inari_Taisha_tunnel.jpg"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "locale": "ko-KR",
+    "bytes": 4855724,
+    "sha256": "a4cac280de6bfd87823eb541614b9218e1dafc11e8f79effac118ce41e331bea",
+    "original_name": "audio_04_senbon_torii.mp3"
+  },
+  "cues": null
+}

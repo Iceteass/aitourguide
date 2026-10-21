@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "return-path",
+  "sequence": 7,
+  "title": "하산길",
+  "title_ja": "帰路",
+  "summary": "올라올 때와 다른 방향의 내려가는 길 표지판을 확인하세요.",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "route-illustration",
+    "remote_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Red%20toriis%20in%20Fushimi%20Inari%20Grand%20Shrine.jpg?width=1200",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Red_toriis_in_Fushimi_Inari_Grand_Shrine.jpg"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "locale": "ko-KR",
+    "bytes": 319916,
+    "sha256": "825e937e29e55cb9263b41f4e2ca61bfe84cf1d52932c1db933b7e40d4f73ad",
+    "original_name": "audio_07_return_path.mp3"
+  },
+  "cues": null
+}

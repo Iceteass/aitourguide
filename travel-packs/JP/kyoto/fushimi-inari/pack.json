@@ -1,0 +1,235 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "jp-kyoto-fushimi-inari",
+  "pack_version": "1.2.0",
+  "status": "published",
+  "locale": "ko-KR",
+  "country_code": "JP",
+  "country_name": "일본",
+  "city_id": "kyoto",
+  "city_name": "교토",
+  "title": "후시미 이나리 신사",
+  "description": "후시미 이나리 7개 장소의 관람 지도와 역사 해설",
+  "cover": "cover.jpg",
+  "route": {
+    "image": "route/route-map.jpg",
+    "points": "route/points.json"
+  },
+  "poi_ids": [
+    "odotorii",
+    "romon",
+    "honden",
+    "senbon-torii",
+    "okusha",
+    "omokaruishi",
+    "return-path"
+  ],
+  "spots": [
+    {
+      "poi_id": "odotorii",
+      "sequence": 1,
+      "dir": "spots/01-odotorii",
+      "meta": "spots/01-odotorii/poi.json"
+    },
+    {
+      "poi_id": "romon",
+      "sequence": 2,
+      "dir": "spots/02-romon",
+      "meta": "spots/02-romon/poi.json"
+    },
+    {
+      "poi_id": "honden",
+      "sequence": 3,
+      "dir": "spots/03-honden",
+      "meta": "spots/03-honden/poi.json"
+    },
+    {
+      "poi_id": "senbon-torii",
+      "sequence": 4,
+      "dir": "spots/04-senbon-torii",
+      "meta": "spots/04-senbon-torii/poi.json"
+    },
+    {
+      "poi_id": "okusha",
+      "sequence": 5,
+      "dir": "spots/05-okusha",
+      "meta": "spots/05-okusha/poi.json"
+    },
+    {
+      "poi_id": "omokaruishi",
+      "sequence": 6,
+      "dir": "spots/06-omokaruishi",
+      "meta": "spots/06-omokaruishi/poi.json"
+    },
+    {
+      "poi_id": "return-path",
+      "sequence": 7,
+      "dir": "spots/07-return-path",
+      "meta": "spots/07-return-path/poi.json"
+    }
+  ],
+  "files": [
+    {
+      "path": "route/points.json",
+      "bytes": 1105,
+      "role": "route-points"
+    },
+    {
+      "path": "spots/01-odotorii/poi.json",
+      "bytes": 929,
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/01-odotorii/narration.md",
+      "bytes": 365,
+      "role": "narration"
+    },
+    {
+      "path": "spots/01-odotorii/audio/ko-N1.mp3",
+      "bytes": 452396,
+      "sha256": "a0b319794b900345e733695aa2a37ae6837075c9f478973a2204153528b2f172",
+      "role": "audio"
+    },
+    {
+      "path": "spots/01-odotorii/images/main.jpg",
+      "bytes": 321290,
+      "role": "route-illustration"
+    },
+    {
+      "path": "spots/02-romon/poi.json",
+      "bytes": 800,
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/02-romon/narration.md",
+      "bytes": 3201,
+      "role": "narration"
+    },
+    {
+      "path": "spots/02-romon/audio/ko-N1.mp3",
+      "bytes": 3776684,
+      "sha256": "8aaeb690cf952008f4ffe34cb28bdb37b4bbfe0a679e2c28337df927decdafcf",
+      "role": "audio"
+    },
+    {
+      "path": "spots/02-romon/images/main.jpg",
+      "bytes": 132159,
+      "role": "spot-photo"
+    },
+    {
+      "path": "spots/03-honden/poi.json",
+      "bytes": 872,
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/03-honden/narration.md",
+      "bytes": 3411,
+      "role": "narration"
+    },
+    {
+      "path": "spots/03-honden/audio/ko-N1.mp3",
+      "bytes": 4001324,
+      "sha256": "6463af626c0eb12cf867ea44cdb82f7d2629d5a93a33f69c23285491ccf2b7d7",
+      "role": "audio"
+    },
+    {
+      "path": "spots/03-honden/images/main.jpg",
+      "bytes": 321290,
+      "role": "route-illustration"
+    },
+    {
+      "path": "spots/04-senbon-torii/poi.json",
+      "bytes": 857,
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/04-senbon-torii/narration.md",
+      "bytes": 3844,
+      "role": "narration"
+    },
+    {
+      "path": "spots/04-senbon-torii/audio/ko-N1.mp3",
+      "bytes": 4855724,
+      "sha256": "a4cac280de6bfd87823eb541614b9218e1dafc11e8f79effac118ce41e331bea",
+      "role": "audio"
+    },
+    {
+      "path": "spots/04-senbon-torii/images/main.jpg",
+      "bytes": 321290,
+      "role": "route-illustration"
+    },
+    {
+      "path": "spots/05-okusha/poi.json",
+      "bytes": 833,
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/05-okusha/narration.md",
+      "bytes": 3775,
+      "role": "narration"
+    },
+    {
+      "path": "spots/05-okusha/audio/ko-N1.mp3",
+      "bytes": 4479020,
+      "sha256": "60b582814c51c391c68d325243299d534e6725fb7f3bdeae90f16ac827269c8f",
+      "role": "audio"
+    },
+    {
+      "path": "spots/05-okusha/images/main.jpg",
+      "bytes": 321290,
+      "role": "route-illustration"
+    },
+    {
+      "path": "spots/06-omokaruishi/poi.json",
+      "bytes": 813,
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/06-omokaruishi/narration.md",
+      "bytes": 450,
+      "role": "narration"
+    },
+    {
+      "path": "spots/06-omokaruishi/audio/ko-N1.mp3",
+      "bytes": 577580,
+      "sha256": "0f42f65d4d83db690c1a81078c79f3397ac34f9deb3bd399be222bbac308a3f7",
+      "role": "audio"
+    },
+    {
+      "path": "spots/06-omokaruishi/images/main.jpg",
+      "bytes": 321290,
+      "role": "route-illustration"
+    },
+    {
+      "path": "spots/07-return-path/poi.json",
+      "bytes": 819,
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/07-return-path/narration.md",
+      "bytes": 284,
+      "role": "narration"
+    },
+    {
+      "path": "spots/07-return-path/audio/ko-N1.mp3",
+      "bytes": 319916,
+      "sha256": "825e937e29e55cb9263b41f4e2ca61bfe84cf1d52932c1db933b7e40d4f73ad",
+      "role": "audio"
+    },
+    {
+      "path": "spots/07-return-path/images/main.jpg",
+      "bytes": 321290,
+      "role": "route-illustration"
+    },
+    {
+      "path": "route/route-map.jpg",
+      "bytes": 321290,
+      "role": "route-map"
+    },
+    {
+      "path": "cover.jpg",
+      "bytes": 132159,
+      "role": "cover"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "generated_for": "1.2.0",
+  "published": [
+    {
+      "pack_id": "jp-kyoto-fushimi-inari",
+      "pack_version": "1.2.0",
+      "path": "travel-packs/JP/kyoto/fushimi-inari/pack.json",
+      "country_code": "JP",
+      "country_name": "일본",
+      "city_id": "kyoto",
+      "city_name": "교토",
+      "title": "후시미 이나리 신사",
+      "cover": "travel-packs/JP/kyoto/fushimi-inari/cover.jpg",
+      "poi_count": 7
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "okusha",
+  "sequence": 5,
+  "title": "오쿠샤호하이쇼",
+  "title_ja": "奥社奉拝所",
+  "summary": "오쿠샤 참배소 부근의 안전한 공간에서 산쪽 숲과 이어지는 길을 바라보세요.",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "route-illustration",
+    "remote_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Oku-no-in%2C%20Fushimi%20Inari-taisha.jpg?width=1200",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Oku-no-in%2C_Fushimi_Inari-taisha.jpg"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "locale": "ko-KR",
+    "bytes": 4479020,
+    "sha256": "60b582814c51c391c68d325243299d534e6725fb7f3bdeae90f16ac827269c8f",
+    "original_name": "audio_05_okusha.mp3"
+  },
+  "cues": null
+}

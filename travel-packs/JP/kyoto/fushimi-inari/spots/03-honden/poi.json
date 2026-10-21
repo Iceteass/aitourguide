@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "honden",
+  "sequence": 3,
+  "title": "본전",
+  "title_ja": "本殿",
+  "summary": "본전이 보이는 위치에서 지붕 곡선, 처마, 목재 장식과 여우상을 살펴보세요.",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "route-illustration",
+    "remote_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fushimi%20Inari%20Shrine%2C%20Kyoto%20City%3B%20November%202013%20%2807%29.jpg?width=1200",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Fushimi_Inari_Shrine%2C_Kyoto_City%3B_November_2013_%2807%29.jpg"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "locale": "ko-KR",
+    "bytes": 4001324,
+    "sha256": "6463af626c0eb12cf867ea44cdb82f7d2629d5a93a33f69c23285491ccf2b7d7",
+    "original_name": "audio_03_honden.mp3"
+  },
+  "cues": null
+}

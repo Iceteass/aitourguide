@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "romon",
+  "sequence": 2,
+  "title": "누문",
+  "title_ja": "楼門",
+  "summary": "누문 정면에서 지붕, 기둥, 양옆 여우상을 차례로 바라보세요.",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "photograph",
+    "remote_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Romon%20gate%20of%20Fushimi%20Inari%20Grand%20Shrine.jpg?width=1200",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Romon_gate_of_Fushimi_Inari_Grand_Shrine.jpg"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "locale": "ko-KR",
+    "bytes": 3776684,
+    "sha256": "8aaeb690cf952008f4ffe34cb28bdb37b4bbfe0a679e2c28337df927decdafcf",
+    "original_name": "audio_02_romon.mp3"
+  },
+  "cues": null
+}

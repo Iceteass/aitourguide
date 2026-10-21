@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "coordinate_system": "relative",
+  "points": [
+    {
+      "poi_id": "odotorii",
+      "sequence": 1,
+      "number": 1,
+      "label": "대도리이",
+      "x": 0.16,
+      "y": 0.75
+    },
+    {
+      "poi_id": "romon",
+      "sequence": 2,
+      "number": 2,
+      "label": "누문",
+      "x": 0.25,
+      "y": 0.6
+    },
+    {
+      "poi_id": "honden",
+      "sequence": 3,
+      "number": 3,
+      "label": "본전",
+      "x": 0.31,
+      "y": 0.44
+    },
+    {
+      "poi_id": "senbon-torii",
+      "sequence": 4,
+      "number": 4,
+      "label": "센본도리이",
+      "x": 0.66,
+      "y": 0.34
+    },
+    {
+      "poi_id": "okusha",
+      "sequence": 5,
+      "number": 5,
+      "label": "오쿠샤호하이쇼",
+      "x": 0.67,
+      "y": 0.18
+    },
+    {
+      "poi_id": "omokaruishi",
+      "sequence": 6,
+      "number": 6,
+      "label": "오모카루이시",
+      "x": 0.77,
+      "y": 0.61
+    },
+    {
+      "poi_id": "return-path",
+      "sequence": 7,
+      "number": 7,
+      "label": "하산길",
+      "x": 0.77,
+      "y": 0.79
+    }
+  ]
+}
