@@ -100,5 +100,5 @@
   btn.addEventListener('click',()=>prepare().catch(err=>{btn.disabled=false;report.textContent='MP3 저장 실패 · 인터넷 및 저장 공간을 확인하세요.';console.error(err)}));
   reportCount().catch(()=>{report.textContent='MP3 오프라인 저장 상태를 확인할 수 없습니다.'});
   window.addEventListener('online',()=>reportCount().catch(()=>{}));
-}  window.kyotoAudio={player,stop:stopAudio,tracks:TRACKS};
+  window.kyotoAudio={player,stop:stopAudio,tracks:TRACKS};
 })();
