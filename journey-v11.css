@@ -41,10 +41,9 @@ body.journey-select{overflow:hidden}
 .j-progress{width:100%;height:9px;background:#e1e9ee;border-radius:9px;overflow:hidden}.j-progress>div{height:100%;background:#059890;transition:width .25s}
 .j-message{font-size:12px;margin-top:16px;padding:10px;border-radius:10px;background:#102a3ebd;color:#f7fbff}
 body.journey-map #map-screen{height:100dvh;min-height:0;overflow:hidden}
-body.journey-map .map-screen{height:100dvh;min-height:0;display:flex;flex-direction:column;position:relative}
-body.journey-map .map-wrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
-body.journey-map .map-wrap>img{width:auto;height:100%;max-width:100%;object-fit:contain}
-body.journey-map .map-wrap{width:fit-content;max-width:100%;margin:0 auto}
+body.journey-map .map-screen{height:100dvh;min-height:0;display:flex;align-items:center;justify-content:center;position:relative}
+body.journey-map .map-wrap{position:relative;flex:none;width:min(100%,calc(100dvh * 509 / 1024));aspect-ratio:509 / 1024;max-height:100dvh;margin:auto}
+body.journey-map .map-wrap>img{display:block;width:100%;height:100%;object-fit:fill}
 body.journey-map .map-help{display:none}
 .j-map-head{position:absolute;z-index:8;top:calc(9px + env(safe-area-inset-top));left:12px;right:12px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
 .j-map-head button{pointer-events:auto;background:#082a40e6;border:1px solid #fff7;color:white;border-radius:13px;padding:11px 14px}
