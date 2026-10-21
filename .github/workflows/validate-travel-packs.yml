@@ -1,0 +1,21 @@
+name: Travel pack structural validation
+on:
+  push:
+    paths:
+      - 'travel-packs/**'
+      - 'data/catalog.json'
+      - 'authoring/validators/**'
+  pull_request:
+    paths:
+      - 'travel-packs/**'
+      - 'data/catalog.json'
+      - 'authoring/validators/**'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node authoring/validators/validate_pack.mjs travel-packs/JP/kyoto/fushimi-inari
