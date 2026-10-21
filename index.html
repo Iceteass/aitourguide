@@ -82,76 +82,10 @@ $('back-top').onclick=goMap;$('map-bottom').onclick=goMap;$('previous').onclick=
 $('done-map').onclick=goMap;$('done-next').onclick=()=>selected===6?goMap():openPlace(selected+1);$('done-prev').onclick=()=>selected===0?goMap():openPlace(selected-1);$('done-replay').onclick=startSpeech;
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('done').classList.contains('open'))$('done').classList.remove('open');else if(e.key==='Escape'&&$('detail-screen').classList.contains('active'))goMap()});makePins();
 </script><script src="./audio-player.js"></script><script>
-// Static app shell is precached by the Service Worker; optional Wikimedia photographs are cached on user request.
-(function(){
-  const CORE_CACHE = 'kyoto-guide-v173-mp3-shell-20261021';
-  const PHOTO_CACHE = 'kyoto-guide-photos-v172';
-  const core = ['./index.html','./route-map.jpg','./romon-preview.jpg','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
-  const status = document.getElementById('pwa-status');
-  const photoStatus = document.getElementById('offline-photo-status');
-  const photoBtn = document.getElementById('offline-photos');
-  const verifyBtn = document.getElementById('offline-verify');
-  const eligible = 'serviceWorker' in navigator && 'caches' in window && window.isSecureContext;
-  let registration = null;
-  async function countPhotos(){
-    const cache=await caches.open(PHOTO_CACHE);
-    let hits=0;
-    for(const index of [0,2,3,4,5,6])if(await cache.match(photos[index].src))hits++;
-    return hits;
-  }
-  async function checkOffline(){
-    if(!eligible){status.textContent='⚠ 오프라인 저장은 HTTPS 웹주소에서만 지원됩니다.';return false;}
-    const cache=await caches.open(CORE_CACHE);
-    const found=await Promise.all(core.map(x=>cache.match(x)));
-    const ok=found.every(Boolean);
-    status.textContent=ok?'✓ 지도·7개 해설 원고 오프라인 준비 완료'+(!navigator.onLine?' · 현재 비행기 모드/오프라인':''):'⚠ 오프라인 준비 중 · Wi-Fi 연결 후 새로고침하세요';
-    const photoCount=await countPhotos();
-    photoStatus.textContent=`기본 누문 사진 포함 · 온라인 사진 ${photoCount}/6장 오프라인 저장됨`;
-    return ok;
-  }
-  async function loadImage(url){
-    return new Promise((resolve,reject)=>{
-      const img=new Image();
-      const tm=setTimeout(()=>{img.onload=img.onerror=null;reject(new Error('time out'))},18000);
-      img.onload=()=>{clearTimeout(tm);resolve()};
-      img.onerror=()=>{clearTimeout(tm);reject(new Error('image unavailable'))};
-      img.src=url;
-    });
-  }
-  async function preloadPhotos(){
-    if(!eligible){photoStatus.textContent='HTTPS로 접속해야 합니다.';return;}
-    if(!navigator.onLine){photoStatus.textContent='사진 다운로드에는 인터넷 연결이 필요합니다.';return;}
-    if(!navigator.serviceWorker.controller){photoStatus.textContent='오프라인 기능 활성화 중입니다. 앱을 새로고침한 뒤 다시 눌러 주세요.';return;}
-    photoBtn.disabled=true;
-    let success=0;
-    try {
-      for(const i of [0,2,3,4,5,6]){
-        photoStatus.textContent=`사진 오프라인 저장 중 ${success}/6장 · ${photos[i].label}`;
-        try {
-          await loadImage(photos[i].src);
-          let cached=false;
-          for(let attempt=0;attempt<20;attempt++){
-            if(await (await caches.open(PHOTO_CACHE)).match(photos[i].src)){cached=true;break;}
-            await new Promise(resolve=>setTimeout(resolve,100));
-          }
-          if(cached)success++;
-        } catch(e){ /* do not treat missing external images as successful */ }
-      }
-      await checkOffline();
-      photoStatus.textContent=`사진 ${success}/6장 오프라인 저장 완료${success<6?' · 실패한 사진은 지도 이미지로 표시됩니다':''}`;
-    } finally {photoBtn.disabled=false;}
-  }
-  verifyBtn.addEventListener('click',()=>checkOffline().catch(()=>{status.textContent='⚠ 캐시 확인 실패. 인터넷 연결 후 다시 시도하세요.'}));
-  photoBtn.addEventListener('click',()=>preloadPhotos().catch(()=>{photoStatus.textContent='일부 사진 저장 실패 · Wi-Fi 연결 후 재시도하세요';photoBtn.disabled=false}));
-  window.addEventListener('online',()=>checkOffline().catch(()=>{}));
-  window.addEventListener('offline',()=>checkOffline().catch(()=>{}));
-  if(!eligible){status.textContent='⚠ 오프라인 저장은 HTTPS 주소에서만 지원됩니다.';photoBtn.disabled=true;return;}
-  navigator.serviceWorker.addEventListener('controllerchange',()=>checkOffline().catch(()=>{}));
-  navigator.serviceWorker.register('./sw.js').then(async reg=>{
-    registration=reg;
-    await navigator.serviceWorker.ready;
-    await checkOffline();
+// UX/FD v1.1: common app shell offline install; per-destination data is managed in journey-v11.js.
+if ('serviceWorker' in navigator && window.isSecureContext) {
+  navigator.serviceWorker.register('./sw.js').then(reg => {
     if(navigator.onLine)reg.update().catch(()=>{});
-  }).catch(()=>{status.textContent='⚠ 설치 실패: 인터넷 연결 및 HTTPS 주소를 확인하세요.'});
-})();
+  }).catch(err => console.warn('오프라인 앱 준비 실패:',err));
+}
 </script><script src="./journey-v11.js"></script></body></html>
