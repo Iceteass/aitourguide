@@ -158,7 +158,13 @@
     if(act==='abort'){app.cancel=true;app.task='취소 중';render()}
     if(act==='delete')removeSaved();
     if(act==='open'){
-      if(!navigator.onLine && !app.offline)return report('인터넷 연결이 필요합니다. 연결 후 이용하거나 미리 다운로드해주세요.');
+      if(!app.offline){
+        if(!navigator.onLine)return report('인터넷 연결이 필요합니다. 연결 후 이용하거나 미리 다운로드해주세요.');
+        try {
+          const check=await fetch(url('./route-map.jpg'),{cache:'no-store'});
+          if(!check.ok)throw new Error('route-map not reachable');
+        } catch(_) {return report('관람 지도에 연결할 수 없습니다. 인터넷 연결을 확인하거나 여행지를 다운로드해주세요.')}
+      }
       gotoMap();
     }
   });
