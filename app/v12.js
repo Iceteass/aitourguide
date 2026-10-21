@@ -136,7 +136,11 @@ async function removeSaved(){
  if(state.busy||!state.pack)return;state.busy=true;render();
  try{
  window.stopSpeech?.();
- const names=await caches.keys();for(const name of names)if(name.startsWith(APP_PREFIX+state.pack.pack_id+"@")||name.startsWith(APP_PREFIX+"pending-"+state.pack.pack_id+"@"))await caches.delete(name);
+ const names=await caches.keys();for(const name of names){
+ const current=name.startsWith(APP_PREFIX+state.pack.pack_id+"@")||name.startsWith(APP_PREFIX+"pending-"+state.pack.pack_id+"@");
+ const previous=state.pack.pack_id==="jp-kyoto-fushimi-inari"&&["kyoto-guide-audio-v173","kyoto-guide-photos-v172","kyoto-trip-jp-kyoto-fushimi-inari-v11"].includes(name);
+ if(current||previous)await caches.delete(name);
+ }
  state.offline=await checkOffline();if(state.offline)throw Error("삭제 확인 실패");
  state.modal="";state.message="";
  }catch(e){state.modal="";state.message="삭제하지 못했습니다. 다시 시도해주세요."}
