@@ -1,8 +1,8 @@
 {
-  "name": "교토 역사 해설 가이드 · 오프라인 | iPhone·Android",
-  "short_name": "교토 해설",
+  "name": "여행이 역사가 되는 순간 | 역사 여행 가이드",
+  "short_name": "역사 여행",
   "lang": "ko",
-  "description": "제작 MP3 7개와 역사 해설을 오프라인 재생하는 iPhone·Android 공용 가이드",
+  "description": "국가·도시·여행지 선택, 관람 지도, 음성 해설 및 사진·MP3 오프라인 저장",
   "id": "./index.html",
   "start_url": "./index.html",
   "scope": "./",
