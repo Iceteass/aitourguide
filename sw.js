@@ -1,5 +1,5 @@
 // Kyoto guide v1.7.3: cache-first shell and offline MP3 HTTP Range support.
-const CACHE_NAME='kyoto-ux-v11-app-shell-20261021';
+const CACHE_NAME='kyoto-ux-v11-app-shell-20261021-r2';
 const AUDIO_CACHE='kyoto-guide-audio-v173';
 const PHOTO_CACHE='kyoto-guide-photos-v172';
 const TOUR_CACHE='kyoto-trip-jp-kyoto-fushimi-inari-v11';
@@ -7,7 +7,7 @@ const OFFLINE_FILES=['./','./index.html','./journey-v11.js','./journey-v11.css',
 const offlineUrl=new URL('./index.html',self.location.href).href;
 const mp3Names=/^audio_0[1-7]_[a-z_]+\.mp3$/;
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(OFFLINE_FILES)).then(()=>self.skipWaiting()))});
-self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(names=>Promise.all(names.filter(name=>name.startsWith('kyoto-guide-')&&![CACHE_NAME,AUDIO_CACHE,PHOTO_CACHE,TOUR_CACHE].includes(name)).map(name=>caches.delete(name)))).then(()=>self.clients.claim()))});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(names=>Promise.all(names.filter(name=>(name.startsWith('kyoto-guide-')||name.startsWith('kyoto-ux-'))&&![CACHE_NAME,AUDIO_CACHE,PHOTO_CACHE,TOUR_CACHE].includes(name)).map(name=>caches.delete(name)))).then(()=>self.clients.claim()))});
 async function rangedAudio(req,cached){
   const range=req.headers.get('range');if(!range)return cached;
   const blob=await cached.blob();
