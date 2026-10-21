@@ -84,12 +84,13 @@ async function loadPack(entry){
  syncLegacy();
 }
 function syncLegacy(){
+ window.historyJourneyPackTitle=state.pack.title;
  const p=state.pois;
  data.splice(0,data.length,...p.map(x=>[x.title,x.title_ja||"",x.summary||"",x.script]));
  photos.splice(0,photos.length,...p.map(x=>({src:x.image.type==="photograph"?baseUrl(x.base+x.image.path):(x.image.remote_url||baseUrl(x.base+x.image.path)),local:baseUrl(x.base+x.image.path),credit:x.image.credit_url||"",label:x.title,remote:x.image.remote_url||"",kind:x.image.type})));
  coords.splice(0,coords.length,...state.points.map(pt=>[100*pt.x,100*pt.y]));
  $("hotspots").replaceChildren();$("mini").replaceChildren();makePins();
- const map=$("map-screen").querySelector(".map-wrap img");map.src=baseUrl(packPath(state.pack.route.image));$("v-map-top-label").textContent="관람 가이드 지도 · "+p.length+"개 장소";
+ const map=$("map-screen").querySelector(".map-wrap img");map.alt=state.pack.title+" 관람 가이드 지도";map.src=baseUrl(packPath(state.pack.route.image));$("v-map-top-label").textContent="관람 가이드 지도 · "+p.length+"개 장소";
  map.onload=()=>{if(map.naturalWidth&&map.naturalHeight)document.documentElement.style.setProperty("--v-map-ratio",map.naturalWidth+"/"+map.naturalHeight)};
  const tracks=p.map(x=>({name:x.base+x.audio.path,bytes:x.audio.bytes,sha256:x.audio.sha256}));
  window.kyotoAudio?.setTracks?.(tracks);

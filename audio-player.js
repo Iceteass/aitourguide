@@ -3,7 +3,7 @@
 (() => {
   'use strict';
   const AUDIO_CACHE = 'kyoto-guide-audio-v173';
-  let TRACKS = [{"name":"audio_01_odotorii.mp3","bytes":452396,"sha256":"a0b319794b900345e733695aa2a37ae6837075c9f478973a2204153528b2f172"},{"name":"audio_02_romon.mp3","bytes":3776684,"sha256":"8aaeb690cf952008f4ffe34cb28bdb37b4bbfe0a679e2c28337df927decdafcf"},{"name":"audio_03_honden.mp3","bytes":4001324,"sha256":"6463af626c0eb12cf867ea44cdb82f7d2629d5a93a33f69c23285491ccf2b7d7"},{"name":"audio_04_senbon_torii.mp3","bytes":4855724,"sha256":"a4cac280de6bfd87823eb541614b9218e1dafc11e8f79effac118ce41e331bea"},{"name":"audio_05_okusha.mp3","bytes":4479020,"sha256":"60b582814c51c391c68d325243299d534e6725fb7f3bdeae90f16ac827269c8f"},{"name":"audio_06_omokaruishi.mp3","bytes":577580,"sha256":"0f42f65d4d83db690c1a81078c79f3397ac34f9deb3bd399be222bbac308a3f7"},{"name":"audio_07_return_path.mp3","bytes":319916,"sha256":"825e937e29e55cb9263b41f4e2ca61bfe84cf1d52932c1db933b7e40d4f73adff"}];
+  let TRACKS = [];
   const $ = id => document.getElementById(id);
   const fullURL = track => new URL(track.name, document.baseURI).href;
   const player = document.createElement('audio');
