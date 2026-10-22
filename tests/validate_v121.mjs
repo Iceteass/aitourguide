@@ -23,6 +23,6 @@ assert(css.includes('.photo-note{display:none'),'Floating image credit not hidde
 assert(!js.includes('$("back-top")'),'Stale button reference');
 assert(js.includes('installMapBack()'),'Guide map navigation removed');
 assert(css.includes('splash_bg_road_coast_v121.webp'),'High-resolution splash name missing');
-assert(sw.includes('history-journey-v121-shell'),'Service worker cache not invalidated');
+assert(sw.includes('history-journey-v121-mp3fix-'),'Service worker cache not refreshed for MP3 hotfix');
 assert(sw.includes("OPTIONAL_FILES"),'Optional image cache fallback unavailable');
 console.log('PASS: v1.2.1 syntax, map, compact card, icon-only 5s controls, and no completion dialog');
