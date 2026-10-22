@@ -12,6 +12,42 @@
   player.style.display = 'none';
   document.body.appendChild(player);
   let active = false, duration = 0;
+  let cacheName = null, completeMarker = null, hasCachedMp3 = false, selectionVersion = 0;
+  // The v1.2 travel pack cache is the authoritative offline source of every POI audio.
+  async function isLocallyStored(i) {
+    const track = TRACKS[i];
+    if (!track || !cacheName || !completeMarker || !('caches' in window)) return false;
+    const names = await caches.keys();
+    if (!names.includes(cacheName)) return false;
+    const cache = await caches.open(cacheName);
+    if (!(await cache.match(completeMarker))) return false;
+    const response = await cache.match(fullURL(track));
+    return !!response && response.ok && Number(response.headers.get('x-byte-size')) === Number(track.bytes);
+  }
+  async function selectDefault(i) {
+    const version = ++selectionVersion;
+    // While local-storage verification is pending, default to TTS (never guess MP3 is saved).
+    hasCachedMp3 = false;
+    mode.value = 'tts'; updateModeUI();
+    let exists = false;
+    try { exists = await isLocallyStored(i); } catch (e) { exists = false }
+    if (version !== selectionVersion || i !== selected) return;
+    hasCachedMp3 = exists;
+    mode.value = exists ? 'mp3' : 'tts';
+    updateModeUI();
+    $('status').textContent = exists
+      ? '저장된 제작 MP3로 해설합니다. ▶를 누르세요.'
+      : '제작 MP3 미저장 · 기기 TTS로 해설합니다. ▶를 누르세요.';
+  }
+  function fallbackToTTS(reason, autoplay = true) {
+    if (!active && mode.value === 'tts') return;
+    window.stopSpeech(); mode.value = 'tts'; hasCachedMp3 = false; updateModeUI();
+    $('status').textContent = reason;
+    if (autoplay) {
+      originalStartSpeech();
+      $('status').textContent = reason + ' · TTS로 전환했습니다.';
+    }
+  }
   const originalStartSpeech = window.startSpeech;
   const originalStopSpeech = window.stopSpeech;
   const originalToggle = $('toggle').onclick;
@@ -21,20 +57,21 @@
   const voiceBox = document.querySelector('.voice-control');
   voiceBox.parentNode.insertBefore(controls, voiceBox);
   const mode = $('narration-mode');
-  mode.value='mp3'; try {localStorage.setItem('kyoto-narration-mode','mp3')} catch(_) {}
+  mode.value='tts'; try {localStorage.setItem('kyoto-narration-mode','tts')} catch(_) {}
   function updateModeUI() { voiceBox.style.display = mode.value === 'mp3' ? 'none' : ''; $('seek').disabled = mode.value !== 'mp3' || !Number.isFinite(player.duration) }
   function fmt(sec) { sec=Math.max(0,Math.floor(Number(sec)||0)); return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0') }
   function stopAudio() { active=false;player.pause();player.removeAttribute('src');player.load();duration=0;$('seek').max=100;$('seek').value=0;$('seek').disabled=true; }
   window.stopSpeech = function() { stopAudio(); return originalStopSpeech() };
   async function playCurrent() {
     try { await player.play(); if (active) { $('toggle').textContent='Ⅱ'; $('status').textContent='제작 MP3 해설 재생 중 · 오프라인 지원' } }
-    catch(err) { if(active) { $('toggle').textContent='▶'; $('status').textContent='재생이 시작되지 않았습니다. ▶를 다시 누르거나 음원 저장 상태를 확인하세요.' } }
+    catch(err) { if(active) fallbackToTTS('MP3 재생 실패', true) }
   }
   function startMP3() {
     window.stopSpeech();
+    if(!hasCachedMp3){fallbackToTTS('제작 MP3가 저장되지 않았습니다.',true);return}
     active=true;duration=0;
     const track=TRACKS[selected];
-    if(!track) { active=false; $('status').textContent='해당 장소 MP3가 없습니다.'; return }
+    if(!track) { fallbackToTTS('이 장소의 제작 MP3가 없습니다.',true); return }
     player.src=fullURL(track); player.playbackRate=Number($('speed').value)||1;
     $('status').textContent='제작 MP3를 불러오는 중입니다…';
     $('toggle').textContent='Ⅱ';
@@ -43,8 +80,9 @@
   window.startSpeech = function() { if(mode.value==='mp3')return startMP3(); return originalStartSpeech() };
   mode.addEventListener('change', () => {
     try { localStorage.setItem('kyoto-narration-mode',mode.value) } catch (_) {}
+    if(mode.value==='mp3'&&!hasCachedMp3)mode.value='tts';
     window.stopSpeech();updateModeUI();
-    $('status').textContent=mode.value==='mp3'?'제작 MP3 선택됨 · ▶를 누르세요.':'기기 TTS 선택됨 · ▶를 누르세요.';
+    $('status').textContent=mode.value==='mp3'?'저장된 제작 MP3 선택됨 · ▶를 누르세요.':'기기 TTS 선택됨 · ▶를 누르세요.';
   });
   updateModeUI();
   player.addEventListener('loadedmetadata',()=>{if(!active)return;duration=Number.isFinite(player.duration)?player.duration:0;if(duration>0){$('seek').disabled=false;$('seek').max=duration;$('seek').step='0.1'}});
@@ -52,7 +90,7 @@
   player.addEventListener('play',()=>{if(active)$('toggle').textContent='Ⅱ'});
   player.addEventListener('pause',()=>{if(active)$('toggle').textContent='▶'});
   player.addEventListener('ended',()=>{if(!active)return;active=false;$('toggle').textContent='▶';$('status').textContent='해설 재생 완료'});
-  player.addEventListener('error',()=>{if(!active)return;active=false;$('toggle').textContent='▶';$('status').textContent='MP3 로드 실패 · GitHub에 음성파일 7개가 있는지, 오프라인 저장이 완료됐는지 확인하세요.'});
+  player.addEventListener('error',()=>{if(!active)return;fallbackToTTS('MP3 파일을 열 수 없습니다.',true)});
   $('seek').addEventListener('change',()=>{if(mode.value!=='mp3'||!active||!duration)return;player.currentTime=Math.max(0,Math.min(duration,Number($('seek').value)||0))});
   $('speed').addEventListener('change',()=>{if(mode.value==='mp3'&&active){player.playbackRate=Number($('speed').value)||1;$('status').textContent='MP3 재생 속도 '+$('speed').value+'× 적용됨'}});
   $('toggle').onclick=()=>{if(mode.value!=='mp3')return originalToggle();if(!active)return startMP3();if(player.paused)playCurrent();else player.pause()};
@@ -99,5 +137,5 @@
   btn.addEventListener('click',()=>prepare().catch(err=>{btn.disabled=false;report.textContent='MP3 저장 실패 · 인터넷 및 저장 공간을 확인하세요.';console.error(err)}));
   reportCount().catch(()=>{report.textContent='MP3 오프라인 저장 상태를 확인할 수 없습니다.'});
   window.addEventListener('online',()=>reportCount().catch(()=>{}));
-  window.kyotoAudio={player,stop:stopAudio,get tracks(){return TRACKS},setTracks(next){if(!Array.isArray(next)||!next.length)return;stopAudio();TRACKS=next.map(t=>({name:t.name,bytes:t.bytes,sha256:t.sha256}));},start:startMP3};
+  window.kyotoAudio={player,stop:stopAudio,get tracks(){return TRACKS},get hasCachedMp3(){return hasCachedMp3},setTracks(next,config){if(!Array.isArray(next)||!next.length)return;stopAudio();selectionVersion++;hasCachedMp3=false;TRACKS=next.map(t=>({name:t.name,bytes:t.bytes,sha256:t.sha256}));cacheName=config?.cacheName||null;completeMarker=config?.completeMarker||null;},selectDefault,start:startMP3};
 })();
