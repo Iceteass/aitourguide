@@ -51,7 +51,7 @@
   player.addEventListener('timeupdate',()=>{if(!active)return;$('clock').textContent=fmt(player.currentTime);if(duration>0&&$('seek')!==document.activeElement)$('seek').value=player.currentTime});
   player.addEventListener('play',()=>{if(active)$('toggle').textContent='Ⅱ'});
   player.addEventListener('pause',()=>{if(active)$('toggle').textContent='▶'});
-  player.addEventListener('ended',()=>{if(!active)return;active=false;$('toggle').textContent='▶';$('status').textContent='해설 재생 완료';window.showDone()});
+  player.addEventListener('ended',()=>{if(!active)return;active=false;$('toggle').textContent='▶';$('status').textContent='해설 재생 완료'});
   player.addEventListener('error',()=>{if(!active)return;active=false;$('toggle').textContent='▶';$('status').textContent='MP3 로드 실패 · GitHub에 음성파일 7개가 있는지, 오프라인 저장이 완료됐는지 확인하세요.'});
   $('seek').addEventListener('change',()=>{if(mode.value!=='mp3'||!active||!duration)return;player.currentTime=Math.max(0,Math.min(duration,Number($('seek').value)||0))});
   $('speed').addEventListener('change',()=>{if(mode.value==='mp3'&&active){player.playbackRate=Number($('speed').value)||1;$('status').textContent='MP3 재생 속도 '+$('speed').value+'× 적용됨'}});
