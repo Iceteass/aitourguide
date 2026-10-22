@@ -30,7 +30,8 @@
     hasCachedMp3 = false;
     mode.value = 'tts'; updateModeUI();
     let exists = false;
-    try { exists = await isLocallyStored(i); } catch (e) { exists = false }
+    try { exists = await isLocallyStored(i); } catch (e) { console.warn('DEBUG cache availability exception',e); exists = false }
+    console.log('DEBUG isLocallyStored',exists,'cfg',cacheName,completeMarker,'spot',i,'version',version,selectionVersion);
     if (version !== selectionVersion || i !== selected) return;
     hasCachedMp3 = exists;
     mode.value = exists ? 'mp3' : 'tts';
