@@ -1,7 +1,7 @@
 name: v1.2.1 UX regression checks
 on:
   push:
-    branches: [main, ux-v1.2.1-compact-player, fix-v121-mp3-player-init]
+    branches: [main, ux-v1.2.1-compact-player, fix-v121-mp3-player-init, fix-v122-narration-audio-fallback]
     paths:
       - 'app/**'
       - 'index.html'
@@ -9,6 +9,7 @@ on:
       - 'sw.js'
       - 'tests/validate_v121.mjs'
       - 'tests/validate_mp3_runtime.mjs'
+      - 'tests/validate_narration_sync.mjs'
       - '.github/workflows/v121-ux.yml'
   pull_request:
 jobs:
@@ -21,4 +22,5 @@ jobs:
           node-version: '22'
       - run: node tests/validate_v121.mjs
       - run: node tests/validate_mp3_runtime.mjs
+      - run: node tests/validate_narration_sync.mjs
       - run: node authoring/validators/validate_pack.mjs travel-packs/JP/kyoto/fushimi-inari
