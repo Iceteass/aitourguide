@@ -47,6 +47,7 @@ assert.equal(window.ttsCalls,1,'Missing MP3 must automatically use TTS');
 assert.equal(audio.playCalls,0,'Must not attempt undownloaded audio');
 isAvailable=true;
 await manager.selectDefault(0);
+console.log('DEBUG cached',manager.hasCachedMp3, 'mode',el('narration-mode').value,'keys',await caches.keys(),'markerMatch',await cache.match(marker),'trackMatch',await cache.match(new URL(name,document.baseURI).href));
 assert.equal(el('narration-mode').value,'mp3','Downloaded MP3 must become default');
 manager.start();
 assert.equal(audio.playCalls,1,'MP3 should play when verified in travel pack cache');
