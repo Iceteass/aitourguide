@@ -1,0 +1,22 @@
+name: v1.2.1 UX regression checks
+on:
+  push:
+    branches: [main, ux-v1.2.1-compact-player]
+    paths:
+      - 'app/**'
+      - 'index.html'
+      - 'audio-player.js'
+      - 'sw.js'
+      - 'tests/validate_v121.mjs'
+      - '.github/workflows/v121-ux.yml'
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/validate_v121.mjs
+      - run: node authoring/validators/validate_pack.mjs travel-packs/JP/kyoto/fushimi-inari
