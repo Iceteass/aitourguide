@@ -135,3 +135,16 @@ body.v-detail #detail-screen .hero{height:46%;flex-basis:46%}
  .v-audio-controls{width:100%;justify-content:space-evenly;margin-left:0}
  body.v-detail #detail-screen .hero{height:36%;flex-basis:36%}
 }
+
+/* v1.2.2: TTS sentence-by-sentence karaoke-like highlighting.
+   MP3 without cues keeps its text scroll strictly under user control. */
+body.v-detail #story .narration-segment.tts-current{
+  background:rgba(10,142,132,.18);
+  color:#0b635e;
+  font-weight:750;
+  box-shadow:0 0 0 3px rgba(10,142,132,.08);
+  border-radius:5px;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+body.v-detail #story{overflow-y:auto;scroll-behavior:auto}
