@@ -1,5 +1,5 @@
 /* History Journey v1.2 — versioned PWA shell and atomic per-destination caches */
-const SHELL='history-journey-v121-shell-20261022';
+const SHELL='history-journey-v121-mp3fix-20261022';
 const FILES=['./','./index.html','./app/v12.css','./app/v12.js','./audio-player.js','./assets/road_green_drive.jpg','./assets/japan_kyoto_sunset.webp','./assets/road-fallback.svg','./assets/japan-fallback.svg','./data/catalog.json','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 const OPTIONAL_FILES=['./assets/splash_bg_road_coast_v121.webp'];
 const ROOT=new URL('./',self.location.href);
