@@ -156,8 +156,8 @@ function goMapScreen(){
  state.screen="map";render();window.scrollTo(0,0);
 }
 const baseOpen=openPlace,baseMap=goMap;
-openPlace=function(i){baseOpen(i);state.screen="detail";render();window.kyotoAudio?.selectDefault?.(i);};
-goMap=function(){baseMap();state.screen="map";render();};
+openPlace=function(i){window.stopSpeech?.();baseOpen(i);state.screen="detail";render();window.kyotoAudio?.selectDefault?.(i);};
+goMap=function(){window.stopSpeech?.();baseMap();state.screen="map";render();};
 async function chooseDestination(id){
  const entry=published().find(p=>p.pack_id===id&&p.country_code===state.country&&p.city_id===state.city);
  if(!entry){state.message="등록된 여행지가 없습니다.";render();return}
