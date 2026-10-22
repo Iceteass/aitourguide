@@ -1,13 +1,14 @@
 /* History Journey v1.2 — versioned PWA shell and atomic per-destination caches */
-const SHELL='history-journey-v12-shell-20261022';
+const SHELL='history-journey-v121-shell-20261022';
 const FILES=['./','./index.html','./app/v12.css','./app/v12.js','./audio-player.js','./assets/road_green_drive.jpg','./assets/japan_kyoto_sunset.webp','./assets/road-fallback.svg','./assets/japan-fallback.svg','./data/catalog.json','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
+const OPTIONAL_FILES=['./assets/splash_bg_road_coast_v121.webp'];
 const ROOT=new URL('./',self.location.href);
 const MAIN=new URL('./index.html',ROOT).href;
 const INDEX=new URL('./data/catalog.json',ROOT).href;
 const TRIP_PREFIX='travel-v12-';
-self.addEventListener('install',event=>event.waitUntil(caches.open(SHELL).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));
+self.addEventListener('install',event=>event.waitUntil(caches.open(SHELL).then(async c=>{await c.addAll(FILES);await Promise.all(OPTIONAL_FILES.map(async name=>{try{const url=new URL(name,ROOT);const res=await fetch(url);if(res.ok)await c.put(url.href,res)}catch(_){} }));}).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{
- const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('history-journey-v12-shell-')&&k!==SHELL).map(k=>caches.delete(k)));
+ const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('history-journey-v12')&&k!==SHELL).map(k=>caches.delete(k)));
  await self.clients.claim();
 })()));
 function rangeResponse(req,response){
@@ -60,6 +61,7 @@ self.addEventListener('fetch',event=>{
   if(saved){if(target.pathname.endsWith('.mp3'))return rangeResponse(req,saved);return saved}
   const c=await caches.open(SHELL);
   const app=await c.match(req.url);if(app)return app;
+  if(target.pathname.endsWith('/assets/splash_bg_road_coast_v121.webp')){try{const res=await fetch(req);if(res.ok)await c.put(req.url,res.clone());return res}catch(_){return Response.error()}}
   try{return await fetch(req)}catch(_){return Response.error()}
  })());
 });
