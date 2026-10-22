@@ -253,7 +253,7 @@ function syncNarration(audio){if(state.screen!=="detail"||!Number.isFinite(audio
 $("story").addEventListener("touchstart",()=>{interactionUntil=Date.now()+6000},{passive:true});
 $("story").addEventListener("wheel",()=>{interactionUntil=Date.now()+6000},{passive:true});
 installMapBack();installAudio();
-$("back-top").onclick=()=>goMap();$("map-bottom").onclick=()=>goMap();
+$("map-bottom").onclick=()=>goMap();
 $("previous").onclick=()=>selected===0?goMap():openPlace(selected-1);
 $("next").onclick=()=>selected>=data.length-1?goMap():openPlace(selected+1);
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&state.modal){state.modal="";render()}});
