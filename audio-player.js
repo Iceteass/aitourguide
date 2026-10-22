@@ -31,7 +31,7 @@
     catch(err) { if(active) { $('toggle').textContent='▶'; $('status').textContent='재생이 시작되지 않았습니다. ▶를 다시 누르거나 음원 저장 상태를 확인하세요.' } }
   }
   function startMP3() {
-    window.stopSpeech(); $('done').classList.remove('open');
+    window.stopSpeech();
     active=true;duration=0;
     const track=TRACKS[selected];
     if(!track) { active=false; $('status').textContent='해당 장소 MP3가 없습니다.'; return }
@@ -57,7 +57,6 @@
   $('speed').addEventListener('change',()=>{if(mode.value==='mp3'&&active){player.playbackRate=Number($('speed').value)||1;$('status').textContent='MP3 재생 속도 '+$('speed').value+'× 적용됨'}});
   $('toggle').onclick=()=>{if(mode.value!=='mp3')return originalToggle();if(!active)return startMP3();if(player.paused)playCurrent();else player.pause()};
   $('restart').onclick=()=>window.startSpeech();
-  $('done-replay').onclick=()=>window.startSpeech();
   const actions=document.querySelector('.offline-actions');
   const btn=document.createElement('button');btn.id='offline-audio';btn.type='button';btn.textContent='음성 7개 오프라인 저장';actions.appendChild(btn);
   const report=document.createElement('p');report.id='offline-audio-status';report.className='pwa-install-status';report.setAttribute('aria-live','polite');
