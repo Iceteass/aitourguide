@@ -98,8 +98,8 @@ function syncLegacy(){
  const map=$("map-screen").querySelector(".map-wrap img");map.alt=state.pack.title+" 관람 가이드 지도";map.src=baseUrl(packPath(state.pack.route.image));$("v-map-top-label").textContent="관람 가이드 지도 · "+p.length+"개 장소";
  map.onload=()=>{if(map.naturalWidth&&map.naturalHeight)document.documentElement.style.setProperty("--v-map-ratio",map.naturalWidth+"/"+map.naturalHeight)};
  const tracks=p.map(x=>({name:x.base+x.audio.path,bytes:x.audio.bytes,sha256:x.audio.sha256}));
- window.kyotoAudio?.setTracks?.(tracks);
- const mode=$("narration-mode");if(mode){mode.value="mp3";mode.dispatchEvent(new Event("change"))}
+ window.kyotoAudio?.setTracks?.(tracks,{cacheName:baseName(),completeMarker:marker()});
+ window.kyotoAudio?.selectDefault?.(selected);
 }
 function marker(){return baseUrl(state.packBase+COMPLETE)}
 async function checkOffline(){
@@ -156,7 +156,7 @@ function goMapScreen(){
  state.screen="map";render();window.scrollTo(0,0);
 }
 const baseOpen=openPlace,baseMap=goMap;
-openPlace=function(i){baseOpen(i);state.screen="detail";render();};
+openPlace=function(i){baseOpen(i);state.screen="detail";render();window.kyotoAudio?.selectDefault?.(i);};
 goMap=function(){baseMap();state.screen="map";render();};
 async function chooseDestination(id){
  const entry=published().find(p=>p.pack_id===id&&p.country_code===state.country&&p.city_id===state.city);
@@ -239,19 +239,14 @@ function installAudio(){
  const a=window.kyotoAudio?.player;
  if(a){
    a.addEventListener("loadedmetadata",()=>{if(Number.isFinite(a.duration))total.textContent=toTime(a.duration)});
-   a.addEventListener("timeupdate",()=>syncNarration(a));
+   // MP3 has no sentence timestamps: manual script scrolling only.
  }
  document.querySelector("#detail-screen .hero-bottom .playline")?.remove();
 }
 function toTime(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
-let interactionUntil=0;
-function syncNarration(audio){if(state.screen!=="detail"||!Number.isFinite(audio.duration)||!audio.duration)return;
- if(Date.now()<interactionUntil)return;
- const el=$("story");if(!el)return;
- const max=el.scrollHeight-el.clientHeight;if(max>0){const fraction=audio.currentTime/audio.duration;el.scrollTop=Math.min(max,Math.max(0,fraction*max))}
-}
-$("story").addEventListener("touchstart",()=>{interactionUntil=Date.now()+6000},{passive:true});
-$("story").addEventListener("wheel",()=>{interactionUntil=Date.now()+6000},{passive:true});
+// Only user-controlled scrolling for MP3. TTS advances on actual utterance events.
+$("story").addEventListener("touchstart",()=>{window.historyJourneyManualScrollUntil=Date.now()+10000},{passive:true});
+$("story").addEventListener("wheel",()=>{window.historyJourneyManualScrollUntil=Date.now()+10000},{passive:true});
 installMapBack();installAudio();
 $("map-bottom").onclick=()=>goMap();
 $("previous").onclick=()=>selected===0?goMap():openPlace(selected-1);
