@@ -48,10 +48,15 @@ function render(){
  heading="여행지를 선택해주세요";note="관람 지도와 해설을 이용할 여행지를 선택하세요.";
  for(const e of published().filter(x=>x.country_code===state.country&&x.city_id===state.city)){
  const disabled=state.busy?" disabled":"";
- let status=state.entry?.pack_id===e.pack_id?offlineText():"온라인 이용 가능";
  const download=state.offline&&state.entry?.pack_id===e.pack_id;
- items+='<article class="v-destination">'+card("open",e.title,(e.poi_count||0)+"개 장소 · 관람 지도 · MP3","",baseUrl(e.cover||"romon-preview.jpg"),e.pack_id)+
- '<div class="v-destination-actions"><span class="v-download-state" role="status">'+esc(status)+'</span><button class="v-circle v-download" aria-label="'+(download?"다운로드 완료":"여행지 다운로드")+'" title="'+(download?"저장 완료":"다운로드")+'" data-action="manage" data-value="'+esc(e.pack_id)+'"'+disabled+'>'+(download?svgCheck:state.busy?"◌":svgDownload)+'</button><button class="v-circle v-delete" aria-label="저장 자료 삭제" title="저장 자료 삭제" data-action="delete" data-value="'+esc(e.pack_id)+'"'+(state.offline||state.message?"":" disabled")+disabled+'>'+svgTrash+'</button></div></article>';
+ const status=state.entry?.pack_id===e.pack_id?offlineText():"온라인 이용 가능";
+ items+='<article class="v-destination">'+
+ '<button class="v-destination-image" type="button" data-action="open" data-value="'+esc(e.pack_id)+'" aria-label="'+esc(e.title)+' 관람 지도 열기"><img src="'+esc(baseUrl(e.cover||"romon-preview.jpg"))+'" alt=""></button>'+
+ '<div class="v-destination-main"><button type="button" class="v-destination-title" data-action="open" data-value="'+esc(e.pack_id)+'"><strong>'+esc(e.title)+'</strong><small>'+(e.poi_count||0)+'개 장소 · 관람 지도 · MP3</small></button>'+
+ '<div class="v-destination-actions"><span class="v-sr-only" role="status">'+esc(status)+'</span>'+
+ '<button class="v-circle v-download" aria-label="'+(download?"다운로드 완료":"여행지 다운로드")+'" title="'+(download?"저장 완료":"다운로드")+'" data-action="manage" data-value="'+esc(e.pack_id)+'"'+disabled+(download?" disabled":"")+'>'+(download?svgCheck:state.busy?"◌":svgDownload)+'</button>'+
+ '<button class="v-circle v-delete" aria-label="저장 자료 삭제" title="저장 자료 삭제" data-action="delete" data-value="'+esc(e.pack_id)+'"'+(state.offline||state.message?"":" disabled")+disabled+'>'+svgTrash+'</button>'+
+ '</div></div></article>';
  }
  }
  if(!items)items='<div class="v-empty">현재 선택 가능한 여행지가 없습니다.</div>';
@@ -195,30 +200,47 @@ function installMapBack(){
 }
 function installAudio(){
  const detail=$("detail-screen").querySelector(".detail");
- const bar=document.createElement("aside");bar.className="v-player";bar.setAttribute("aria-label","해설 음성 재생 조작");
+ const bar=document.createElement("aside");
+ bar.className="v-player";bar.setAttribute("aria-label","장소 이동 및 음성 해설 조작");
  const seek=$("seek"),clock=$("clock"),speed=$("speed"),toggle=$("toggle");
  const seekRow=document.createElement("div");seekRow.className="v-seekrow";
  seekRow.append(clock,seek);
  const total=document.createElement("span");total.id="v-duration";total.textContent="0:00";seekRow.append(total);
  const speedWrap=document.createElement("span");speedWrap.className="v-speed";speedWrap.append(speed);seekRow.append(speedWrap);
+ const svg=(inside)=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+inside+'</svg>';
+ const icons={
+   prev:svg('<path d="M15.5 4.5 8 12l7.5 7.5"/>'),
+   map:svg('<path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2z"/><path d="M9 3v16M15 5v16"/>'),
+   next:svg('<path d="m8.5 4.5 7.5 7.5-7.5 7.5"/>'),
+   reset:svg('<path d="M4 4v16"/><path d="m19 5-12 7 12 7z"/>'),
+   minus:svg('<path d="M6 7a8 8 0 1 1-1.3 9.5"/><path d="M6 2v5H1"/><text x="12" y="16" text-anchor="middle" font-size="9" stroke="none" fill="currentColor" font-weight="800">5</text>'),
+   plus:svg('<path d="M18 7a8 8 0 1 0 1.3 9.5"/><path d="M18 2v5h5"/><text x="12" y="16" text-anchor="middle" font-size="9" stroke="none" fill="currentColor" font-weight="800">5</text>')
+ };
+ const button=(id,aria,icon)=>'<button type="button" id="'+id+'" aria-label="'+aria+'" title="'+aria+'">'+icons[icon]+'</button>';
  const controls=document.createElement("div");controls.className="v-controls";
- controls.innerHTML='<button id="v-reset" aria-label="처음부터 재생" title="처음부터">|◀</button><button id="v-minus" aria-label="5초 뒤로 이동" title="5초 뒤로">↶5</button><button id="v-plus" aria-label="5초 앞으로 이동" title="5초 앞으로">5↷</button>';
- controls.append(toggle);
+ controls.innerHTML='<div class="v-place-controls" role="group" aria-label="장소 이동">'+
+ button("v-prev-spot","이전 장소","prev")+button("v-all-spots","전체 관람 지도","map")+button("v-next-spot","다음 장소","next")+
+ '</div><div class="v-audio-controls" role="group" aria-label="음성 재생">'+
+ button("v-reset","처음부터","reset")+button("v-minus","5초 뒤로","minus")+button("v-plus","5초 앞으로","plus")+'</div>';
+ const playback=controls.querySelector(".v-audio-controls");playback.append(toggle);
+ toggle.setAttribute("aria-label","재생 또는 일시정지");toggle.setAttribute("title","재생 또는 일시정지");
  const settings=document.createElement("details");settings.className="v-settings";settings.innerHTML="<summary>음성 설정</summary>";
- const mode=$("narration-mode");if(mode){settings.append(mode.closest(".voice-control"))}
+ const mode=$("narration-mode");if(mode)settings.append(mode.closest(".voice-control"));
  const voice=$("voice-select");if(voice){const row=voice.closest(".voice-control");if(row)settings.append(row)}
  bar.append(seekRow,controls,settings);detail.append(bar);
- $("v-reset").onclick=()=>{const a=window.kyotoAudio?.player;if($("narration-mode")?.value==="mp3"&&a){a.currentTime=0;seek.value=0;clock.textContent="0:00"}};
- for(const [id,n] of [["v-minus",-5],["v-plus",5]])$(id).onclick=()=>{const a=window.kyotoAudio?.player;if($("narration-mode")?.value==="mp3"&&a&&Number.isFinite(a.duration)){a.currentTime=Math.min(a.duration,Math.max(0,a.currentTime+n))}};
- const a=window.kyotoAudio?.player;if(a){
- a.addEventListener("loadedmetadata",()=>{const n=a.duration;if(Number.isFinite(n))total.textContent=toTime(n)});
- a.addEventListener("timeupdate",()=>syncNarration(a));
- }
- const nav=document.createElement("div");nav.className="v-spotnav";nav.innerHTML='<button id="v-prev-spot">‹ 이전 장소</button><button id="v-all-spots">관람 지도</button><button id="v-next-spot">다음 장소 ›</button>';
- $("detail-screen").querySelector(".body").prepend(nav);
  $("v-prev-spot").onclick=()=>selected===0?goMap():openPlace(selected-1);
  $("v-next-spot").onclick=()=>selected>=data.length-1?goMap():openPlace(selected+1);
  $("v-all-spots").onclick=()=>goMap();
+ $("v-reset").onclick=()=>{const a=window.kyotoAudio?.player;if(mode?.value==="mp3"&&a){a.currentTime=0;seek.value=0;clock.textContent="0:00"}};
+ for(const [id,n] of [["v-minus",-5],["v-plus",5]])$(id).onclick=()=>{
+   const a=window.kyotoAudio?.player;
+   if(mode?.value==="mp3"&&a&&Number.isFinite(a.duration)&&a.duration>0)a.currentTime=Math.min(a.duration,Math.max(0,a.currentTime+n));
+ };
+ const a=window.kyotoAudio?.player;
+ if(a){
+   a.addEventListener("loadedmetadata",()=>{if(Number.isFinite(a.duration))total.textContent=toTime(a.duration)});
+   a.addEventListener("timeupdate",()=>syncNarration(a));
+ }
  document.querySelector("#detail-screen .hero-bottom .playline")?.remove();
 }
 function toTime(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
