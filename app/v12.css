@@ -93,3 +93,45 @@ body.v-detail #detail-screen .buttons,body.v-detail #detail-screen .route-mini,b
 body.v-detail #detail-screen .hero-bottom .speed-control,body.v-detail #detail-screen .hero-bottom .playline,body.v-detail #detail-screen .hero-bottom .voice-control{display:none!important}
 .v-circle svg{width:23px;height:23px;display:block}
 @media(max-height:680px){body.v-detail #detail-screen .hero{flex-basis:39%;height:39%}.v-brand{margin-top:6dvh}.v-list{top:calc(13% + env(safe-area-inset-top))}}
+
+/* v1.2.1 — explicit UX cleanup; icon-only, no captions under controls */
+.v-bg.road{background-image:url("../assets/splash_bg_road_coast_v121.webp"),url("../assets/road_green_drive.jpg"),url("../assets/road-fallback.svg");background-position:center center}
+.v-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.v-destination{display:grid;grid-template-columns:94px minmax(0,1fr);align-items:stretch;gap:11px;min-height:112px;padding:9px;border-radius:18px}
+.v-destination .v-destination-image{width:94px;min-height:94px;height:100%;padding:0;overflow:hidden;border:0;border-radius:12px;background:#254852;cursor:pointer}
+.v-destination .v-destination-image img{display:block;width:100%;height:100%;object-fit:cover}
+.v-destination-main{min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:5px;padding:1px 2px 0 0}
+.v-destination-title{display:flex;min-height:43px;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;width:100%;padding:0;border:0;background:none;color:#fff}
+.v-destination-title strong{display:block;font-size:clamp(14px,4.2vw,18px);font-weight:800;line-height:1.25}
+.v-destination-title small{display:block;font-size:11px;color:#e1eef1;line-height:1.3;margin-top:4px}
+.v-destination-actions{padding:0;display:flex;align-items:center;justify-content:flex-end;gap:3px;margin:0}
+.v-destination-actions .v-circle{width:44px;min-width:44px;height:44px;border:4px solid transparent;background-clip:padding-box;border-radius:50%;font-size:18px;display:grid;place-items:center}
+.v-destination-actions .v-circle svg{width:21px;height:21px}
+.v-destination .v-circle.v-download{background-color:#0a8a7b}
+.v-destination .v-circle.v-delete{background-color:#b92846;border-color:transparent}
+.v-destination-actions .v-circle:focus-visible,.v-destination-title:focus-visible,.v-destination-image:focus-visible{outline:3px solid #f6d77f;outline-offset:0px}
+body.v-detail #detail-screen .hero .back{display:none!important}
+body.v-detail #detail-screen .photo-note{display:none!important}
+body.v-detail #detail-screen .v-spotnav{display:none!important}
+body.v-detail #detail-screen .body{padding-top:9px}
+body.v-detail #detail-screen .hero{height:46%;flex-basis:46%}
+.v-player{min-height:0;height:clamp(132px,15.5dvh,159px);padding:8px 10px calc(7px + env(safe-area-inset-bottom));gap:7px;border-radius:12px 12px 0 0;justify-content:center;overflow:visible}
+.v-seekrow{height:30px;flex:0 0 30px}
+.v-controls{display:flex;align-items:center;justify-content:space-between;width:100%;gap:4px;min-height:48px}
+.v-place-controls,.v-audio-controls{display:flex;align-items:center;gap:0;min-width:0}
+.v-audio-controls{margin-left:auto}
+.v-place-controls{border-right:1px solid #487184;padding-right:4px}
+.v-controls button{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;padding:9px;margin:0;border:0;border-radius:50%;background:transparent;color:#e8f8fb;line-height:1}
+.v-controls button svg{display:block;width:24px;height:24px;overflow:visible}
+.v-controls #v-reset{padding-left:8px}
+.v-controls #toggle{order:0;margin:0 0 0 2px;display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;min-width:48px;min-height:48px;padding:0;border-radius:50%;background:#008c82;border:2px solid #9fe8e2;font-size:24px}
+.v-controls button:focus-visible{outline:2px solid #ffdf7e;outline-offset:0}
+.v-controls button:active{background:#2a5c6d}
+.v-settings{right:12px}
+@media(max-width:359px){
+ .v-player{height:clamp(180px,25dvh,220px)}
+ .v-controls{flex-wrap:wrap;justify-content:space-evenly;gap:2px}
+ .v-place-controls{width:100%;justify-content:center;border-right:0;border-bottom:1px solid #487184;padding:0 0 3px}
+ .v-audio-controls{width:100%;justify-content:space-evenly;margin-left:0}
+ body.v-detail #detail-screen .hero{height:36%;flex-basis:36%}
+}
