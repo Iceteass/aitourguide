@@ -40,7 +40,6 @@
       : '제작 MP3 미저장 · 기기 TTS로 해설합니다. ▶를 누르세요.';
   }
   function fallbackToTTS(reason, autoplay = true) {
-    if (!active && mode.value === 'tts') return;
     window.stopSpeech(); mode.value = 'tts'; hasCachedMp3 = false; updateModeUI();
     $('status').textContent = reason;
     if (autoplay) {
