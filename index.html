@@ -110,7 +110,7 @@ $('toggle').onclick=()=>{if(!('speechSynthesis' in window))return;if(speechSynth
 $('map-bottom').onclick=goMap;$('previous').onclick=()=>selected===0?goMap():openPlace(selected-1);$('next').onclick=()=>selected===6?goMap():openPlace(selected+1);
 
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('detail-screen').classList.contains('active'))goMap()});makePins();
-</script><script src="./app/version.js"></script><script src="./audio-player.js"></script><script>
+</script><script src="./app/version.js"></script><script src="./app/assets.js"></script><script src="./audio-player.js"></script><script>
 // UX/FD v1.1: common app shell offline install; per-destination data is managed by app/v12.js.
 if ('serviceWorker' in navigator && window.isSecureContext) {
   navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(reg => {

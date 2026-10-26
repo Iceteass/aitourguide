@@ -1,8 +1,9 @@
 """Real-browser upgrade/offline check. Requires Python Playwright and Chromium.
-Run from repository root: python3 tests/browser_app_version.py --baseline-ref <v1.2.2 commit>
+Run from repository root: python3 tests/browser_app_version.py --baseline-ref <baseline commit>
 The baseline must exist locally; fixtures and browser storage are temporary.
 """
 import argparse
+import re
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -60,6 +61,18 @@ def version_on_splash(page):
         assert float(label.evaluate('(e)=>getComputedStyle(e).fontSize').removesuffix('px')) < float(page.locator('.v-touch').evaluate('(e)=>getComputedStyle(e).fontSize').removesuffix('px'))
     return version
 
+def splash_pixels(page):
+    # Hide only the expected version-number difference for a design comparison.
+    page.set_viewport_size({'width': 375, 'height': 812})
+    page.locator('.v-app-version').evaluate("e=>e.style.visibility='hidden'")
+    page.evaluate('document.fonts.ready')
+    backgrounds=page.locator('.v-bg').evaluate('(e)=>getComputedStyle(e).backgroundImage')
+    for url in re.findall(r'url\("([^"\)]+)"\)', backgrounds):
+        page.evaluate("url=>new Promise((resolve,reject)=>{const i=new Image();i.onload=resolve;i.onerror=reject;i.src=url})",url)
+    pixels=page.locator('.v-bg').screenshot()
+    page.locator('.v-app-version').evaluate("e=>e.style.visibility=''")
+    return pixels
+
 with tempfile.TemporaryDirectory(prefix='aitourguide-version-') as temp:
     fixture = Path(temp)
     old = fixture / 'baseline'
@@ -68,6 +81,9 @@ with tempfile.TemporaryDirectory(prefix='aitourguide-version-') as temp:
     subprocess.run(['git', 'archive', '--format=tar', '-o', str(archive), args.baseline_ref], cwd=root, check=True)
     with tarfile.open(archive) as contents:
         contents.extractall(old, filter='data')
+    baseline_source=old / 'app/version.js'
+    baseline_version=re.search(r"APP_VERSION\s*=\s*'([^']+)'", baseline_source.read_text())[1] if baseline_source.exists() else '1.2.2'
+    baseline_shell='history-journey-v12-shell-'+baseline_version if baseline_source.exists() else 'history-journey-v122-shell-20261022'
     site = fixture / 'aitourguide'
     site.symlink_to(old, target_is_directory=True)
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(Handler, directory=str(fixture)))
@@ -82,8 +98,9 @@ with tempfile.TemporaryDirectory(prefix='aitourguide-version-') as temp:
             errors = []
             page.on('pageerror', lambda error: errors.append(str(error)))
             page.goto(base)
-            assert page.title().endswith('v1.2.2'), 'Use a real v1.2.2 baseline'
-            assert page.locator('.v-app-version').count() == 0
+            assert page.title().endswith('v'+baseline_version), 'Use the requested real baseline'
+            assert page.locator('.v-app-version').count() == int(baseline_source.exists())
+            old_pixels=splash_pixels(page) if baseline_source.exists() else None
             page.locator('[data-action="start"]').click()
             page.locator('[data-action="country"]').click()
             page.locator('[data-action="city"]').click()
@@ -93,7 +110,7 @@ with tempfile.TemporaryDirectory(prefix='aitourguide-version-') as temp:
             page.evaluate('async () => {await navigator.serviceWorker.ready;}')
             page.reload()
             page.wait_for_function('navigator.serviceWorker.controller !== null')
-            assert 'history-journey-v122-shell-20261022' in page.evaluate('caches.keys()')
+            assert baseline_shell in page.evaluate('caches.keys()')
             page.evaluate("""async () => {
               localStorage.setItem('kyoto-speed','1.5');localStorage.setItem('kyoto-voice','upgrade-test-voice');
               const blob=await (await fetch('romon-preview.jpg')).blob();
@@ -116,9 +133,11 @@ with tempfile.TemporaryDirectory(prefix='aitourguide-version-') as temp:
             }""")
             page.reload()
             version = version_on_splash(page)
+            if old_pixels is not None:
+                assert splash_pixels(page)==old_pixels,'Splash design changed beyond the version label'
             assert page.evaluate(SNAPSHOT) == before, 'Upgrade changed trip/legacy cache, personal photos or preferences'
             names = page.evaluate('caches.keys()')
-            assert 'history-journey-v122-shell-20261022' not in names
+            assert baseline_shell not in names
             assert 'history-journey-v12-shell-' + version in names
             assert page.evaluate('async () => (await navigator.serviceWorker.ready).scope') == base
             context.set_offline(True)
@@ -147,7 +166,7 @@ with tempfile.TemporaryDirectory(prefix='aitourguide-version-') as temp:
             }""")
             assert result == [206, 100], result
             assert not errors, errors
-            print('PASS: real v1.2.2 → v' + version + ' worker upgrade; cached pack bytes, legacy cache, old/new photo keys and preferences preserved')
+            print('PASS: real v'+baseline_version+' → v' + version + ' worker upgrade; cached pack bytes, legacy cache, old/new photo keys and preferences preserved')
             print('PASS: offline version/title, small-screen layout, version tap/Enter, navigation, 7 map pins, detail image/narration, MP3 default/range')
             # A new visitor must also get the same version offline without a trip download.
             fresh = browser.new_context()

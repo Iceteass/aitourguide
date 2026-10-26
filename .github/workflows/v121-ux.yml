@@ -4,6 +4,7 @@ on:
     branches: [main, ux-v1.2.1-compact-player, fix-v121-mp3-player-init, fix-v122-narration-audio-fallback]
     paths:
       - 'app/**'
+      - 'assets/**'
       - 'index.html'
       - 'audio-player.js'
       - 'sw.js'
@@ -11,6 +12,7 @@ on:
       - 'tests/validate_mp3_runtime.mjs'
       - 'tests/validate_narration_sync.mjs'
       - 'tests/validate_app_version.mjs'
+      - 'tests/validate_assets.mjs'
       - '.github/workflows/v121-ux.yml'
   pull_request:
 jobs:
@@ -25,4 +27,5 @@ jobs:
       - run: node tests/validate_mp3_runtime.mjs
       - run: node tests/validate_narration_sync.mjs
       - run: node tests/validate_app_version.mjs
+      - run: node tests/validate_assets.mjs
       - run: node authoring/validators/validate_pack.mjs travel-packs/JP/kyoto/fushimi-inari
