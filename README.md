@@ -6,7 +6,11 @@ iPhone Safari·Android Chrome에서 동일하게 사용할 수 있는 **설치�
 
 ## 실행 주소
 
-https://iceteass.github.io/kyoto-history-guide/
+https://iceteass.github.io/aitourguide/
+
+저장소: https://github.com/Iceteass/aitourguide
+
+위 주소는 현재 저장소명을 기준으로 한 GitHub Pages 경로입니다. 실제 Pages 설정과 배포 상태는 GitHub에서 별도로 확인해야 합니다. 이전 저장소 URL에서 저장한 오프라인 자료는 새 URL로 자동 이전되지 않을 수 있으므로, 새 주소에서 여행팩을 다시 다운로드하고 필요하면 홈 화면 앱을 다시 설치하세요.
 
 GitHub Pages 업데이트 후 Safari 또는 Chrome에서 열어 홈 화면에 추가합니다. 설치 후 **일본 → 교토 → 후시미 이나리 신사 → 기존 관람 가이드 지도(7곳) → 장소 선택 및 MP3 해설** 순서로 이용합니다.
 
