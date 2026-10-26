@@ -4,7 +4,7 @@
 
 1. 제공된 `history_journey_splash_road_v121.webp` 파일을 PC에 저장합니다.
 2. 해당 파일 이름을 반드시 **splash_bg_road_coast_v121.webp**로 변경합니다.
-3. GitHub 저장소의 [assets/](https://github.com/Iceteass/kyoto-history-guide/tree/main/assets) 폴더에서 Add file → Upload files 선택.
+3. GitHub 저장소의 [assets/](https://github.com/Iceteass/aitourguide/tree/main/assets) 폴더에서 Add file → Upload files 선택.
 4. 위 파일을 업로드한 뒤 Commit changes.
 5. iPhone Safari 또는 Android Chrome에서 Wi-Fi 연결 상태로 새로고침, 배경 표시 확인 후 비행기 모드 재실행 확인.
 

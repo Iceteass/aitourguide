@@ -17,7 +17,7 @@ function el(id){
  elements.set(id,n);return n;
 }
 const document={
- baseURI:'https://iceteass.github.io/kyoto-history-guide/',
+ baseURI:'https://iceteass.github.io/aitourguide/',
  activeElement:null,body:{appendChild(){}},
  createElement(tag){return tag==='audio'?audio:el('created-'+elements.size)},
  querySelector(){return el('voice-existing')},getElementById:el
