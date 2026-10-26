@@ -1,17 +1,17 @@
-# v1.2.1 첫 화면 배경 이미지 등록 안내
+# 공통 시작 배경 업로드·갱신 안내
 
-앱 코드의 시작·국가 선택 배경 참조는 **assets/splash_bg_road_coast_v121.webp**입니다.
+이전 파일명으로 연결된 안내 URL은 보존합니다. 현재 저장소에는 `history_journey_splash_road_v121.webp`와 `splash_bg_road_coast_v121.webp`가 이미 있으며 두 파일의 SHA-256은 같습니다. 미업로드 상태로 가정하지 않습니다.
 
-1. 제공된 `history_journey_splash_road_v121.webp` 파일을 PC에 저장합니다.
-2. 해당 파일 이름을 반드시 **splash_bg_road_coast_v121.webp**로 변경합니다.
-3. GitHub 저장소의 [assets/](https://github.com/Iceteass/aitourguide/tree/main/assets) 폴더에서 Add file → Upload files 선택.
-4. 위 파일을 업로드한 뒤 Commit changes.
-5. iPhone Safari 또는 Android Chrome에서 Wi-Fi 연결 상태로 새로고침, 배경 표시 확인 후 비행기 모드 재실행 확인.
+현재 정식 실행 경로는 `assets/app/splash/splash_bg_road_coast_v121.webp`입니다. 기존 `assets/` 바로 아래 파일은 구 설치·CSS·SW·외부 링크를 위해 유지합니다. 원본 파일을 단순히 옮기거나 삭제하지 마세요.
 
-현재 앱은 새 배경 파일을 우선 읽고, 아직 업로드되지 않았다면 기존 도로 배경으로 자동 전환합니다. 새로운 사진이 업로드된 후 실제 화면에서 로드되면 서비스 워커가 캐시하여 오프라인에서도 재사용할 수 있습니다.
+새 이미지 추가 시:
 
-- 원본 생성 이미지: 941×1672 px
-- 모바일 배포용 WebP: 1440×2560 px로 리샘플링한 출력본(원본의 고유 디테일이 증가한 것은 아님)
-- 제목/부제 등 글자는 배경 파일에 넣지 않고 HTML/CSS로 별도 표시
+1. 출처·라이선스·권리와 모바일 해상도를 검수합니다. 기존 manifest의 `unverified`는 사용 허가 확인을 뜻하지 않습니다.
+2. 새 파일은 [app/splash/](https://github.com/Iceteass/aitourguide/tree/main/assets/app/splash)에 고유 이름으로 추가합니다. 기존 호환 URL은 유지합니다.
+3. `assets/manifest.json`에 이미지 ID, 경로, target=app, role=splash, season=all, flags, 출처·라이선스, 실제 bytes/SHA-256, fallback 목록을 기록합니다. 기존 기본 항목의 default를 해제하고 새 항목을 default로 지정합니다. 여러 default가 있으면 ID 사전순이므로 의도한 선택인지 검사하세요.
+4. 앱 셸에 제공되는 자산이 바뀌므로 `app/version.js`의 버전 갱신을 검토하고 `node tests/validate_assets.mjs`, 전체 Node 검사와 Chromium 오프라인 검사를 실행합니다.
+5. 별도 PR에서 실제 화면·fallback·오프라인 결과를 검토합니다. main 직접 수정·Tag/Release 자동 발행은 하지 않습니다.
 
-본 안내는 오프라인/PWA 구성을 깨뜨리지 않기 위해 추가했습니다. 실제 파일은 아직 저장소에 업로드된 것으로 가정하지 않습니다.
+기본 배경 로딩은 주 이미지→기존 도로 사진→SVG 순서입니다. bitmap이 없어도 필수 SVG가 오프라인 셸에 저장되어 대체 배경을 제공합니다. 새 이미지의 권리 확인, 출처 기록, manifest와 배포 절차는 [공통 자산 계약](../docs/common-assets.md)을 참고하세요.
+
+기존 생성 이미지 안내 기록: 원본 941×1672 px, 모바일 배포 WebP 1440×2560 px 리샘플링(고유 디테일 증가를 의미하지 않음). 제목·부제는 배경에 합성하지 않고 DOM 텍스트로 표시합니다.

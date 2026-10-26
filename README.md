@@ -84,7 +84,7 @@ authoring/validators/validate_pack.mjs      # 등록 전 구조·용량·해시 
 
 - 기존 후시미 이나리 루트 지도·MP3는 보존합니다. 현재 여행팩은 루트 파일을 공유 참조하지 않고, 팩 내부의 지도·음성 사본과 장소별 `narration.md`를 로드합니다.
 - 기존 **누문 실사 사진**은 오프라인 제공됩니다. 다른 6개 장소는 온라인 Wikimedia 사진을 불러올 수 있으나 오프라인에서는 **기존 관람 지도 일러스트**로 대체됩니다. 실제 사진 교체에는 권리 확인과 폴더 업데이트가 필요합니다.
-- 배경 이미지 원본은 기존 사용자가 올린 `assets/road_green_drive.jpg`, `assets/japan_kyoto_sunset.webp`를 사용하며, 제목은 이미지에 합성하지 않습니다. 더 높은 원본 해상도가 필요하다면 추후 배경 파일만 교체합니다.
+- 배경은 `assets/manifest.json`의 기본 항목과 `assets/app/`·`assets/countries/`의 정식 경로를 사용합니다. 기존 파일은 구 설치 호환 사본으로 유지하며 제목은 DOM 텍스트입니다. 변경·업로드 절차는 [공통 자산 계약](docs/common-assets.md)을 따릅니다.
 - iPhone과 Android 실기기 재생·화면 잠금 중 재생은 별도 검증이 필요합니다. 본 저장소의 문법·데이터 검증 성공이 실기기 성공을 의미하지는 않습니다.
 
 
@@ -113,3 +113,10 @@ authoring/validators/validate_pack.mjs      # 등록 전 구조·용량·해시 
 첫 화면의 기존 터치 안내 아래에 작은 `App vX.Y.Z`를 표시합니다. 단일 버전 원본은 `app/version.js`이며 문서 제목과 오프라인 앱 셸도 같은 값을 사용합니다. 기존 여행팩 v1.2.0, 스키마 1.0.0 및 저장 데이터는 유지합니다.
 
 [앱·여행팩 버전 관리 및 Commit/PR/Tag/Release 절차](docs/versioning.md)와 [4단계 통합 개발 계획](docs/development-plan.md)을 참고하세요. 이번 단계는 버전 표시만 구현하며 Creator·Publisher 및 전체 팩 CI는 후속 PR 범위입니다. 다음 단계는 현재 PR 검토·병합 후 최신 main에서 시작합니다.
+
+
+## v1.2.4 — 공통 이미지 체계와 기존 앱 검증
+
+`assets/app/{splash,backgrounds,fallbacks}/`와 `assets/countries/JP/images/`에 기존 이미지와 같은 바이트의 정식 사본을 배치했습니다. 기존 URL·아이콘·루트 레거시·여행팩은 유지합니다. manifest가 현재 화면의 기본 배경과 fallback을 결정하며, 미등록 국가·도시는 일반/국가 기본 배경으로 표시됩니다. 계절 자동 전환·배경 선택 UI는 없습니다.
+
+[공통 이미지 규격·변경 전후·파일별 유지/보류 판단](docs/common-assets.md)과 [향후 Creator/Publisher 통합 계약 및 수동 등록](docs/travel-pack-integration.md)을 확인하세요. Creator·Publisher·전체 팩 CI는 별도 개발/통합 범위이며 이번에는 기존 앱 검증과 자산 Node 검사만 추가했습니다.
