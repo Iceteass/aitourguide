@@ -48,6 +48,29 @@ authoring/validators/validate_pack.mjs      # 등록 전 구조·용량·해시 
 
 다른 국가·도시·여행지 추가 시 **공통 HTML/JS를 복제하지 않습니다**. 위와 동일한 폴더로 콘텐츠를 만들고, 검증 후 `data/catalog.json`에 등록하기만 하면 자동으로 목록에 표시됩니다. 생성 절차는 [authoring/README.md](authoring/README.md)를 확인하세요.
 
+### 공통 앱과 여행팩의 경계
+
+표준 경로는 `travel-packs/{country_code}/{city_id}/{destination_slug}/`입니다. 현재 등록된 팩은 `JP/kyoto/fushimi-inari/` 하나이며, 확장 예시를 위한 빈 국가·도시·여행지 폴더는 만들지 않습니다.
+
+| 위치 | 역할과 관리 규칙 |
+|---|---|
+| `index.html`, `app/`, `audio-player.js` | 공통 화면·지도·해설·플레이어. 여행지마다 복제하지 않음 |
+| `manifest.webmanifest`, `sw.js`, `icon-*.png`, `assets/` | 공통 PWA·앱 셸·배경. 여행팩에 이동하지 않음 |
+| `data/catalog.json` | 검증된 팩의 공개 등록 목록. 국가·도시 목록은 `published` 항목을 필터링하여 생성 |
+| `travel-packs/JP/kyoto/fushimi-inari/` | 독립 배포 콘텐츠: 팩 메타데이터, 표지, 지도·좌표, 7개 장소의 원고·사진·음성, 라이선스 |
+| `authoring/` | 수동 제작 안내와 Node.js 검증기. 자동 여행팩 생성기는 현재 없음 |
+| `tests/`, `.github/workflows/` | 회귀 검사와 CI. 현재 CI의 여행팩 검증 대상은 후시미 이나리 경로로 고정 |
+| 루트 `audio_*.mp3`, `route-map.jpg`, `romon-preview.jpg`, `journey-v11.*` | 초기 지도·대체 이미지 또는 이전 버전 참조를 위해 보존. 중복이라는 이유로 삭제하지 않음 |
+
+신규 팩은 다음 규칙으로 추가합니다.
+
+1. 표준 경로 안에 기존 스키마(`schema_version: "1.0.0"`)와 같은 `pack.json`, `route/`, `spots/`, `LICENSES.md`를 작성합니다. 별도 국가·도시 JSON이나 공통 앱 사본은 만들지 않습니다.
+2. catalog의 `path`·`cover`는 **앱 기준**, pack의 `cover`·`route`·`spots[].dir`·`spots[].meta`·`files[].path`는 **팩 기준**, POI의 원고·사진·음성 경로는 **해당 spot 기준**입니다. 팩 밖 파일이나 다른 팩을 공유 참조하지 않습니다.
+3. catalog와 pack의 `pack_id`, `pack_version`, 국가·도시 값 및 `poi_count`를 일치시키고, `spots[].dir`와 `meta`의 폴더도 일치시킵니다. 기존 팩의 경로·ID·버전은 단순 정리를 위해 변경하지 않습니다. `audio.original_name`은 출처 기록이며 로딩 경로가 아닙니다.
+4. 오프라인에 필요한 지도·좌표·POI JSON·원고·이미지·MP3·표지를 `files`에 등록하고 실제 바이트 크기와 가능한 SHA-256을 기록합니다. 검증기를 실행한 뒤 catalog의 `published`에 등록합니다. 신규 팩 검증을 CI 대상으로 추가하는 것도 별도로 확인합니다.
+
+파일별 유지 근거, 중복 해시 확인, 캐시 의존성과 승인 후 수행할 후속 작업은 [여행팩 구조 조사](docs/travel-pack-audit.md)를 참고하세요. 이번 정리는 문서만 변경하며 앱 v1.2.2, 팩 v1.2.0 및 기존 저장 데이터는 변경하지 않습니다.
+
 ## 비행기 모드 테스트
 
 1. Wi-Fi 연결 후 사이트 최신 버전 새로고침. 기존 홈 화면 앱이면 완전히 종료했다가 다시 실행합니다.
@@ -59,7 +82,7 @@ authoring/validators/validate_pack.mjs      # 등록 전 구조·용량·해시 
 
 ## 주의
 
-- 기존 후시미 이나리 `route-map.jpg`, `audio_01...`부터 `audio_07...` 및 역사 해설 원고는 원본을 보존하며, 새 여행지 폴더에 같은 파일을 별도로 참조하도록 구성했습니다.
+- 기존 후시미 이나리 루트 지도·MP3는 보존합니다. 현재 여행팩은 루트 파일을 공유 참조하지 않고, 팩 내부의 지도·음성 사본과 장소별 `narration.md`를 로드합니다.
 - 기존 **누문 실사 사진**은 오프라인 제공됩니다. 다른 6개 장소는 온라인 Wikimedia 사진을 불러올 수 있으나 오프라인에서는 **기존 관람 지도 일러스트**로 대체됩니다. 실제 사진 교체에는 권리 확인과 폴더 업데이트가 필요합니다.
 - 배경 이미지 원본은 기존 사용자가 올린 `assets/road_green_drive.jpg`, `assets/japan_kyoto_sunset.webp`를 사용하며, 제목은 이미지에 합성하지 않습니다. 더 높은 원본 해상도가 필요하다면 추후 배경 파일만 교체합니다.
 - iPhone과 Android 실기기 재생·화면 잠금 중 재생은 별도 검증이 필요합니다. 본 저장소의 문법·데이터 검증 성공이 실기기 성공을 의미하지는 않습니다.
