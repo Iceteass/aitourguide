@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0.0",
+  "images": [
+    {
+      "id": "app-splash",
+      "path": "app/splash/splash_bg_road_coast_v121.webp",
+      "target": "app",
+      "role": "splash",
+      "country_code": null,
+      "city_id": null,
+      "season": "all",
+      "tags": [
+        "road",
+        "coast"
+      ],
+      "enabled": true,
+      "default": true,
+      "offline_required": false,
+      "fallbacks": [
+        "app/backgrounds/road_green_drive.jpg",
+        "app/fallbacks/road-fallback.svg"
+      ],
+      "bytes": 973152,
+      "sha256": "dfd98c2dd63519273c79a1fac837629d32baca0d69838f27389f5209d6d619e6",
+      "source": {
+        "description": "기존 저장소 자산을 바이트 변경 없이 복사. 출처와 권리 별도 검수 필요.",
+        "original_path": "assets/splash_bg_road_coast_v121.webp",
+        "url": null,
+        "license": "unverified",
+        "status": "unverified"
+      }
+    },
+    {
+      "id": "app-background",
+      "path": "app/backgrounds/road_green_drive.jpg",
+      "target": "app",
+      "role": "background",
+      "country_code": null,
+      "city_id": null,
+      "season": "all",
+      "tags": [
+        "road",
+        "green"
+      ],
+      "enabled": true,
+      "default": true,
+      "offline_required": false,
+      "fallbacks": [
+        "app/fallbacks/road-fallback.svg"
+      ],
+      "bytes": 340702,
+      "sha256": "9a78713f8b73b429d8815af75c68b7e696021981519b10d676e3458d39a12473",
+      "source": {
+        "description": "기존 저장소 자산을 바이트 변경 없이 복사. 출처와 권리 별도 검수 필요.",
+        "original_path": "assets/road_green_drive.jpg",
+        "url": null,
+        "license": "unverified",
+        "status": "unverified"
+      }
+    },
+    {
+      "id": "country-jp-background",
+      "path": "countries/JP/images/japan_kyoto_sunset.webp",
+      "target": "country",
+      "role": "background",
+      "country_code": "JP",
+      "city_id": null,
+      "season": "all",
+      "tags": [
+        "japan",
+        "sunset"
+      ],
+      "enabled": true,
+      "default": true,
+      "offline_required": false,
+      "fallbacks": [
+        "app/fallbacks/japan-fallback.svg"
+      ],
+      "bytes": 189158,
+      "sha256": "a9bb6502cf462b37381ab39704f104999b42fa392fb03b0443aea71a01635f8d",
+      "source": {
+        "description": "기존 저장소 자산을 바이트 변경 없이 복사. 출처와 권리 별도 검수 필요.",
+        "original_path": "assets/japan_kyoto_sunset.webp",
+        "url": null,
+        "license": "unverified",
+        "status": "unverified"
+      }
+    },
+    {
+      "id": "road-fallback",
+      "path": "app/fallbacks/road-fallback.svg",
+      "target": "app",
+      "role": "fallback",
+      "country_code": null,
+      "city_id": null,
+      "season": "all",
+      "tags": [
+        "road",
+        "illustration"
+      ],
+      "enabled": true,
+      "default": false,
+      "offline_required": true,
+      "fallbacks": [],
+      "bytes": 1586,
+      "sha256": "f0010f6fba6e65480ac2cef5e40f08021877d1b54a93f5e209c4c075b82acbf5",
+      "source": {
+        "description": "기존 저장소 자산을 바이트 변경 없이 복사. 출처와 권리 별도 검수 필요.",
+        "original_path": "assets/road-fallback.svg",
+        "url": null,
+        "license": "unverified",
+        "status": "unverified"
+      }
+    },
+    {
+      "id": "japan-fallback",
+      "path": "app/fallbacks/japan-fallback.svg",
+      "target": "app",
+      "role": "fallback",
+      "country_code": null,
+      "city_id": null,
+      "season": "all",
+      "tags": [
+        "japan",
+        "illustration"
+      ],
+      "enabled": true,
+      "default": false,
+      "offline_required": true,
+      "fallbacks": [],
+      "bytes": 1153,
+      "sha256": "3160bbb353461bcc10b6ec52cc34cad4ed96e46074b40488768df183735033ca",
+      "source": {
+        "description": "기존 저장소 자산을 바이트 변경 없이 복사. 출처와 권리 별도 검수 필요.",
+        "original_path": "assets/japan-fallback.svg",
+        "url": null,
+        "license": "unverified",
+        "status": "unverified"
+      }
+    }
+  ]
+}

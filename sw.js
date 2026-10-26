@@ -1,13 +1,24 @@
 /* History Journey v1.2 — versioned PWA shell and atomic per-destination caches */
-importScripts('./app/version.js');
+importScripts('./app/version.js','./app/assets.js');
 const SHELL='history-journey-v12-shell-'+self.APP_VERSION;
-const FILES=['./','./index.html','./app/version.js','./app/v12.css','./app/v12.js','./audio-player.js','./assets/road_green_drive.jpg','./assets/japan_kyoto_sunset.webp','./assets/road-fallback.svg','./assets/japan-fallback.svg','./data/catalog.json','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
-const OPTIONAL_FILES=['./assets/splash_bg_road_coast_v121.webp'];
+const FILES=['./','./index.html','./app/version.js','./app/assets.js','./app/v12.css','./app/v12.js','./audio-player.js','./assets/road-fallback.svg','./assets/japan-fallback.svg','./data/catalog.json','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
+const OPTIONAL_FILES=['./assets/splash_bg_road_coast_v121.webp','./assets/road_green_drive.jpg','./assets/japan_kyoto_sunset.webp'];
 const ROOT=new URL('./',self.location.href);
 const MAIN=new URL('./index.html',ROOT).href;
 const INDEX=new URL('./data/catalog.json',ROOT).href;
 const TRIP_PREFIX='travel-v12-';
-self.addEventListener('install',event=>event.waitUntil(caches.open(SHELL).then(async c=>{await c.addAll(FILES.map(name=>new Request(new URL(name,ROOT),{cache:"reload"})));await Promise.all(OPTIONAL_FILES.map(async name=>{try{const url=new URL(name,ROOT);const res=await fetch(url);if(res.ok)await c.put(url.href,res)}catch(_){} }));}).then(()=>self.skipWaiting())));
+// Validate and cache the exact manifest used to derive offline image requests.
+self.addEventListener('install',event=>event.waitUntil(caches.open(SHELL).then(async c=>{
+ const manifestURL=new URL('./assets/manifest.json',ROOT);
+ const response=await fetch(manifestURL,{cache:'reload'});
+ if(!response.ok)throw Error('Common image manifest unavailable');
+ const images=self.JourneyAssets.offlineAssets(self.JourneyAssets.validate(await response.clone().json()));
+ const required=[...FILES,...images.required.map(path=>new URL(path,manifestURL).href)];
+ await c.addAll(required.map(name=>new Request(new URL(name,ROOT),{cache:'reload'})));
+ await c.put(manifestURL.href,response);
+ const optional=[...OPTIONAL_FILES.map(name=>new URL(name,ROOT).href),...images.optional.map(path=>new URL(path,manifestURL).href)];
+ await Promise.all(optional.map(async url=>{try{const res=await fetch(url,{cache:'reload'});if(res.ok)await c.put(url,res)}catch(_){} }));
+}).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{
  const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('history-journey-v12')&&k!==SHELL).map(k=>caches.delete(k)));
  await self.clients.claim();

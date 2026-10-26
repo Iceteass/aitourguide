@@ -13,6 +13,20 @@ const baseUrl=path=>new URL(path,document.baseURI).href;
 const safePath=p=>typeof p==="string"&&!p.startsWith("/")&&!p.includes("..")&&!p.includes("\\")&&!p.includes("://")&&!p.includes("?")&&!p.includes("#");
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 async function readJSON(url){const r=await fetch(url);if(!r.ok)throw Error("데이터를 불러올 수 없습니다: "+url);return r.json()}
+// CSS supplies the same bootstrap backgrounds until the local manifest is ready.
+let assetManifest=null;
+const assetManifestURL=baseUrl('./assets/manifest.json');
+function applyBackground(){
+ const layer=root.querySelector('.v-bg');if(!layer||!assetManifest)return;
+ const image=window.JourneyAssets.select(assetManifest,{screen:state.screen,country_code:state.country,city_id:state.city});
+ if(!image)return;
+ layer.style.backgroundImage=window.JourneyAssets.urls(image,assetManifestURL).map(url=>'url('+JSON.stringify(url)+')').join(',');
+ layer.dataset.assetId=image.id;
+}
+async function loadAssets(){
+ try{assetManifest=window.JourneyAssets.validate(await readJSON(assetManifestURL));applyBackground()}
+ catch(error){console.warn('공통 이미지 목록을 불러오지 못해 기본 배경을 유지합니다.',error.message)}
+}
 const published=()=>Array.isArray(state.catalog?.published)?state.catalog.published.filter(p=>p&&p.pack_id&&p.path&&safePath(p.path)):[];
 const baseName=()=>APP_PREFIX+state.pack.pack_id+"@"+state.pack.pack_version;
 const pendingName=()=>APP_PREFIX+"pending-"+state.pack.pack_id+"@"+state.pack.pack_version;
@@ -36,7 +50,7 @@ function render(){
  const bg=s==="splash"||s==="country"?"road":imgForCountry(state.country);
  const shade='<div class="v-bg '+bg+'"></div><div class="v-shade"></div>';
  if(s==="splash"){
- root.innerHTML='<main class="v-screen v-splash" tabindex="0" role="button" aria-label="계속하려면 화면을 터치하세요" data-action="start">'+shade+'<div class="v-brand"><h1>여행이<br>역사가 되는 순간</h1><p>아름다운 여행지의 이야기,<br>당신의 특별한 하루가 됩니다.</p></div><p class="v-touch">계속하려면 화면을 터치하세요<span class="v-app-version">App v'+esc(window.APP_VERSION)+'</span></p></main>';return;
+ root.innerHTML='<main class="v-screen v-splash" tabindex="0" role="button" aria-label="계속하려면 화면을 터치하세요" data-action="start">'+shade+'<div class="v-brand"><h1>여행이<br>역사가 되는 순간</h1><p>아름다운 여행지의 이야기,<br>당신의 특별한 하루가 됩니다.</p></div><p class="v-touch">계속하려면 화면을 터치하세요<span class="v-app-version">App v'+esc(window.APP_VERSION)+'</span></p></main>';applyBackground();return;
  }
  let items="",heading="",note="";
  if(s==="country"){
@@ -62,6 +76,7 @@ function render(){
  }
  if(!items)items='<div class="v-empty">현재 선택 가능한 여행지가 없습니다.</div>';
  root.innerHTML='<main class="v-screen">'+shade+'<header class="v-top"><button class="v-back" data-action="back" aria-label="뒤로 가기">‹</button><div class="v-crumb">'+esc(s==="country"?"여행이 역사가 되는 순간":s==="city"?published().find(e=>e.country_code===state.country)?.country_name||"국가 선택":(published().find(e=>e.city_id===state.city)?.city_name||"도시 선택"))+'</div></header><section class="v-list"><h2>'+heading+'</h2><p class="v-hint">'+note+'</p><div class="v-cards">'+items+'</div>'+(state.message?'<p class="v-warning">'+esc(state.message)+'</p>':"")+'</section>'+modalHTML()+'</main>';
+ applyBackground();
 }
 async function loadCatalog(){
  try {const c=await readJSON(baseUrl("./data/catalog.json"));if(!c||!Array.isArray(c.published))throw Error("등록 목록 형식 오류");state.catalog=c}
@@ -255,5 +270,5 @@ $("next").onclick=()=>selected>=data.length-1?goMap():openPlace(selected+1);
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&state.modal){state.modal="";render()}});
 window.addEventListener("popstate",()=>{if(state.busy)return;const h=location.hash.replace("#","");if(["splash","country","city","destination"].includes(h)){window.stopSpeech?.();state.screen=h;render()}else if(h==="map")goMap()});
 history.replaceState({travelScreen:"splash"},"","#splash");
-render();loadCatalog();
+render();loadCatalog();loadAssets();
 })();

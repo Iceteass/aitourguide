@@ -5,9 +5,9 @@ html,body{margin:0;max-width:100%;overflow-x:hidden}
 #journey-root{position:fixed;inset:0;z-index:50;background:#082337;color:#fff;font-family:system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif}
 .v-screen{position:absolute;inset:0;width:100%;height:100vh;height:100dvh;overflow:hidden;isolation:isolate}
 .v-bg{position:absolute;inset:0;background-position:center center;background-size:cover;background-repeat:no-repeat;z-index:-2}
-.v-bg.road{background-image:url("../assets/road_green_drive.jpg"),url("../assets/road-fallback.svg")}
-.v-bg.country-jp{background-image:url("../assets/japan_kyoto_sunset.webp"),url("../assets/japan-fallback.svg")}
-.v-bg.country-generic{background-image:url("../assets/road_green_drive.jpg"),url("../assets/road-fallback.svg")}
+.v-bg.road{background-image:url("../assets/app/backgrounds/road_green_drive.jpg"),url("../assets/app/fallbacks/road-fallback.svg")}
+.v-bg.country-jp{background-image:url("../assets/countries/JP/images/japan_kyoto_sunset.webp"),url("../assets/app/fallbacks/japan-fallback.svg")}
+.v-bg.country-generic{background-image:url("../assets/app/backgrounds/road_green_drive.jpg"),url("../assets/app/fallbacks/road-fallback.svg")}
 .v-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,28,45,.66),rgba(6,28,44,.25) 44%,rgba(3,22,36,.86))}
 .v-splash .v-shade{background:linear-gradient(180deg,rgba(9,38,59,.20),transparent 38%,rgba(3,21,32,.08) 64%,rgba(2,18,29,.76))}
 .v-splash{display:flex;flex-direction:column;align-items:center;justify-content:space-between;cursor:pointer;padding:calc(30px + env(safe-area-inset-top)) 20px calc(37px + env(safe-area-inset-bottom));text-align:center}
@@ -96,7 +96,7 @@ body.v-detail #detail-screen .hero-bottom .speed-control,body.v-detail #detail-s
 @media(max-height:680px){body.v-detail #detail-screen .hero{flex-basis:39%;height:39%}.v-brand{margin-top:6dvh}.v-list{top:calc(13% + env(safe-area-inset-top))}}
 
 /* v1.2.1 — explicit UX cleanup; icon-only, no captions under controls */
-.v-bg.road{background-image:url("../assets/splash_bg_road_coast_v121.webp"),url("../assets/road_green_drive.jpg"),url("../assets/road-fallback.svg");background-position:center center}
+.v-bg.road{background-image:url("../assets/app/splash/splash_bg_road_coast_v121.webp"),url("../assets/app/backgrounds/road_green_drive.jpg"),url("../assets/app/fallbacks/road-fallback.svg");background-position:center center}
 .v-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .v-destination{display:grid;grid-template-columns:94px minmax(0,1fr);align-items:stretch;gap:11px;min-height:112px;padding:9px;border-radius:18px}
 .v-destination .v-destination-image{width:94px;min-height:94px;height:100%;padding:0;overflow:hidden;border:0;border-radius:12px;background:#254852;cursor:pointer}
