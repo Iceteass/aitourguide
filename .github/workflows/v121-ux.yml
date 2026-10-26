@@ -13,6 +13,7 @@ on:
       - 'tests/validate_narration_sync.mjs'
       - 'tests/validate_app_version.mjs'
       - 'tests/validate_assets.mjs'
+      - 'tests/validate_pack_independence.mjs'
       - '.github/workflows/v121-ux.yml'
   pull_request:
 jobs:
@@ -28,4 +29,5 @@ jobs:
       - run: node tests/validate_narration_sync.mjs
       - run: node tests/validate_app_version.mjs
       - run: node tests/validate_assets.mjs
+      - run: node tests/validate_pack_independence.mjs
       - run: node authoring/validators/validate_pack.mjs travel-packs/JP/kyoto/fushimi-inari

@@ -1,5 +1,7 @@
 # 공통 이미지 자산 계약과 호환성
 
+> v1.2.5의 여행지 루트 자산 삭제와 v1.1 정적 지원 종료는 [완전 독립화 보고서](pack-independence.md)를 따릅니다. 공통 배경 호환 사본과 여행지 전용 자산을 구분합니다.
+
 ## 이번 변경의 기준과 버전
 
 기준 main `4ba094c6113d655a925997184424bb07f25cd3d3`의 앱 v1.2.3을 조사했다. 기준 Node 검사 4개·팩 검증·v1.2.2→v1.2.3 Chromium 업그레이드는 통과했다. 이번에는 이미지 경로와 로딩 동작이 바뀌므로 앱 버전을 **v1.2.4**로 올려 새 셸을 전달한다. 여행팩 v1.2.0 및 여행팩 스키마 1.0.0, manifest 앱 ID·scope·start URL은 유지한다.
@@ -74,21 +76,21 @@ SW는 네트워크에서 manifest를 검증하고 그 응답을 새 버전 셸�
 | `assets/road-fallback.svg`, `assets/japan-fallback.svg` | 보류·호환 사본 유지 | v1.2.3/v1.1 CSS 및 기존 SW 참조 |
 | `assets/history_journey_splash_road_v121.webp` | 보류 | 동일 splash 원본이지만 업로드 원본·외부 사용의 종료를 증명하지 못함 |
 | `assets/UPLOAD_SPLASH_v121.md` | 유지·내용 갱신 | 문서 URL 보존. 이미 존재하는 파일을 미업로드 상태로 설명하던 문구 수정 |
-| 루트 `route-map.jpg` | 유지 | 현재 HTML 초기 지도/오류 fallback 및 v1.1 참조 |
-| 루트 `romon-preview.jpg` | 유지 | catalog cover 미지정 시 대체 이미지 및 v1.1 참조 |
-| 루트 MP3 7개 (`audio_01_odotorii.mp3` ~ `audio_07_return_path.mp3`) | 보류·유지 | 팩 사본과 같지만 v1.1 TRACKS가 참조. 삭제 안전성을 입증하지 못함 |
-| `journey-v11.js`, `journey-v11.css` | 보류·유지 | 현재 HTML은 로드하지 않으나 이전 설치/외부 직접 사용 종료 미확인 |
+| 루트 `route-map.jpg` | v1.2.5 삭제 | 현재 지도는 pack.route.image, 준비/오류는 공통 fallback |
+| 루트 `romon-preview.jpg` | v1.2.5 삭제 | catalog/pack 메타데이터 또는 공통 fallback |
+| 루트 MP3 7개 | v1.2.5 삭제 | v1.1 정적 실행 지원 종료. 팩 내부 음성만 사용 |
+| v1.1 정적 JS/CSS | v1.2.5 삭제 | 사용자 지시로 지원 종료. 개인 사진/설정/현재 팩 캐시는 유지 |
 | `icon-192.png`, `icon-512.png`, `manifest.webmanifest` | 유지 | PWA 설치 ID·아이콘 URL 보존 |
 | 후시미 이나리 전체 팩·catalog | 유지 | 기존 7 spot·31 자산·ID·버전·상대경로 보존 |
 
-**삭제 파일: 없음. 물리적 이동/이름 변경: 없음.** 공통 자산의 정식 경로 전환은 사본을 통해 수행했다. 중복 저장량은 의도적인 호환 비용이며 원본 종료·구 설치/외부 URL 검증 후 별도 PR에서 정리할 수 있다. 기존 앱의 숫자 키 개인 사진 호환 코드와 TTS/MP3 로직도 그대로다.
+**공통 배경 삭제/이동은 없음. 여행지 루트 중복 및 v1.1 정적 파일은 이후 v1.2.5에서 실제 삭제.** 공통 자산의 정식 경로 전환은 사본을 통해 수행했다. 중복 저장량은 의도적인 호환 비용이며 원본 종료·구 설치/외부 URL 검증 후 별도 PR에서 정리할 수 있다. 기존 앱의 숫자 키 개인 사진 호환 코드와 TTS/MP3 로직도 그대로다.
 
 ## 검사 명령과 범위
 
 ```sh
 set -e
 for file in tests/*.mjs; do node "$file"; done
-for file in app/*.js audio-player.js journey-v11.js sw.js; do node --check "$file"; done
+for file in app/*.js audio-player.js sw.js; do node --check "$file"; done
 node authoring/validators/validate_pack.mjs travel-packs/JP/kyoto/fushimi-inari
 python3 tests/browser_app_version.py --baseline-ref 4ba094c6113d655a925997184424bb07f25cd3d3
 python3 tests/browser_assets.py
@@ -104,7 +106,7 @@ Python 브라우저 검사는 Playwright·Chromium 및 baseline commit이 로컬
 
 실기기 음성 출력·한국어 TTS·잠금 화면·콘텐츠 권리 검수·모든 과거 설치 조합은 별도 미검증이다. 브라우저의 디코딩/재생 상태 확인은 사람이 실제 소리를 들었다는 의미가 아니다. 원격 CI·Pages 배포 결과도 로컬 검증과 구분한다.
 
-## 이번 실행 결과
+## v1.2.4 실행 결과 (당시 이력)
 
 | 검사 | 결과 |
 |---|---|
