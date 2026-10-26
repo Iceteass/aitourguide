@@ -59,3 +59,6 @@ node authoring/validators/validate_pack.mjs travel-packs/JP/kyoto/fushimi-inari
 - catalog 전체 순회 CI 및 2개 이상의 시험 팩에 대한 정상/손상 사례 검증.
 
 실제 기존 validator는 필수 키·파일 존재·기록된 크기/해시·POI/좌표 일부를 검사하지만 catalog 전체 연결·모든 타입·files 완전성·배열 순서를 모두 보장하지 않는다. 이 제한을 숨기거나 이번 작업에서 별도 Validator로 재작성하지 않는다. 통합 시 기존 명령·팩1.2.0·스키마1.0.0 호환성과 구 설치 데이터 보존을 먼저 확인한다.
+
+
+v1.2.5부터 공통 코드의 초기 지도·이미지 fallback은 여행지 루트 자산을 사용하지 않습니다. catalog.cover가 없으면 로드한 pack.cover를 사용하며 데이터가 없으면 공통 fallback을 사용합니다. v1.1 정적 실행은 종료했지만 개인 사진 숫자 키 호환은 유지합니다. [지원 종료와 검사](pack-independence.md)를 참고하세요.

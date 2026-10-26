@@ -60,7 +60,7 @@ authoring/validators/validate_pack.mjs      # 등록 전 구조·용량·해시 
 | `travel-packs/JP/kyoto/fushimi-inari/` | 독립 배포 콘텐츠: 팩 메타데이터, 표지, 지도·좌표, 7개 장소의 원고·사진·음성, 라이선스 |
 | `authoring/` | 수동 제작 안내와 Node.js 검증기. 자동 여행팩 생성기는 현재 없음 |
 | `tests/`, `.github/workflows/` | 회귀 검사와 CI. 현재 CI의 여행팩 검증 대상은 후시미 이나리 경로로 고정 |
-| 루트 `audio_*.mp3`, `route-map.jpg`, `romon-preview.jpg`, `journey-v11.*` | 초기 지도·대체 이미지 또는 이전 버전 참조를 위해 보존. 중복이라는 이유로 삭제하지 않음 |
+| 여행지 미디어와 이전 v1.1 정적 파일 | 루트 중복 9개와 v1.1 JS/CSS는 v1.2.5에서 삭제. 콘텐츠는 팩 내부에서 관리하며 개인 사진/설정/현재 팩 캐시 호환은 유지 |
 
 신규 팩은 다음 규칙으로 추가합니다.
 
@@ -82,7 +82,7 @@ authoring/validators/validate_pack.mjs      # 등록 전 구조·용량·해시 
 
 ## 주의
 
-- 기존 후시미 이나리 루트 지도·MP3는 보존합니다. 현재 여행팩은 루트 파일을 공유 참조하지 않고, 팩 내부의 지도·음성 사본과 장소별 `narration.md`를 로드합니다.
+- 후시미 이나리 전용 지도·사진·MP3·원고는 팩 내부에서만 관리합니다. 루트 중복 및 v1.1 정적 JS/CSS는 삭제했으며, 현재 앱의 개인 사진·설정·완료 팩 캐시는 유지합니다. [지원 종료 및 업데이트 영향](docs/pack-independence.md)을 확인하세요.
 - 기존 **누문 실사 사진**은 오프라인 제공됩니다. 다른 6개 장소는 온라인 Wikimedia 사진을 불러올 수 있으나 오프라인에서는 **기존 관람 지도 일러스트**로 대체됩니다. 실제 사진 교체에는 권리 확인과 폴더 업데이트가 필요합니다.
 - 배경은 `assets/manifest.json`의 기본 항목과 `assets/app/`·`assets/countries/`의 정식 경로를 사용합니다. 기존 파일은 구 설치 호환 사본으로 유지하며 제목은 DOM 텍스트입니다. 변경·업로드 절차는 [공통 자산 계약](docs/common-assets.md)을 따릅니다.
 - iPhone과 Android 실기기 재생·화면 잠금 중 재생은 별도 검증이 필요합니다. 본 저장소의 문법·데이터 검증 성공이 실기기 성공을 의미하지는 않습니다.
@@ -120,3 +120,8 @@ authoring/validators/validate_pack.mjs      # 등록 전 구조·용량·해시 
 `assets/app/{splash,backgrounds,fallbacks}/`와 `assets/countries/JP/images/`에 기존 이미지와 같은 바이트의 정식 사본을 배치했습니다. 기존 URL·아이콘·루트 레거시·여행팩은 유지합니다. manifest가 현재 화면의 기본 배경과 fallback을 결정하며, 미등록 국가·도시는 일반/국가 기본 배경으로 표시됩니다. 계절 자동 전환·배경 선택 UI는 없습니다.
 
 [공통 이미지 규격·변경 전후·파일별 유지/보류 판단](docs/common-assets.md)과 [향후 Creator/Publisher 통합 계약 및 수동 등록](docs/travel-pack-integration.md)을 확인하세요. Creator·Publisher·전체 팩 CI는 별도 개발/통합 범위이며 이번에는 기존 앱 검증과 자산 Node 검사만 추가했습니다.
+
+
+## v1.2.5 — 여행팩 완전 독립화
+
+여행지 전용 루트 지도·사진·MP3 9개와 v1.1 정적 JS/CSS를 실제 삭제했습니다. 지도·표지는 선택한 팩 메타데이터로 해석하고 데이터가 없으면 공통 fallback을 사용합니다. 미다운로드 팩의 오프라인 진입은 허용하지 않습니다. 기존 v1.2.3/v1.2.4 업데이트·사진 숫자 키·새 키·설정·팩 캐시를 검증했습니다. 상세 삭제 목록·경로·검사 및 미검증 범위는 [완전 독립화 보고서](docs/pack-independence.md)를 참고하세요.

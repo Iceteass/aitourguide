@@ -27,7 +27,7 @@
    ```sh
    set -e
    for file in tests/*.mjs; do node "$file"; done
-   for file in app/*.js audio-player.js journey-v11.js sw.js; do node --check "$file"; done
+   for file in app/*.js audio-player.js sw.js; do node --check "$file"; done
    node authoring/validators/validate_pack.mjs travel-packs/JP/kyoto/fushimi-inari
    git diff --check
    ```
@@ -53,3 +53,6 @@
 
 
 현재 공통 자산 갱신 baseline은 `4ba094c6113d655a925997184424bb07f25cd3d3`(v1.2.3)이며 같은 명령의 `--baseline-ref`로 지정할 수 있습니다. `python3 tests/browser_assets.py`는 기본 배경·오류/지연·필수 SVG만 있는 오프라인과 기존 MP3/다운로드·삭제 기능을 추가 검사합니다. 이미지 manifest 수정 및 실제 배포는 [공통 자산 계약](common-assets.md)을 따릅니다.
+
+
+v1.2.5는 여행지 루트 자산 삭제와 메타데이터/fallback 경로 변경을 위한 셸 갱신입니다. 팩·스키마·DB·개인 설정은 변경하지 않습니다. v1.2.3과 v1.2.4 baseline을 각각 검사하며 상세 지원 종료 범위는 [여행팩 완전 독립화](pack-independence.md)를 따릅니다.

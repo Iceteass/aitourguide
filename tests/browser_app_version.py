@@ -113,7 +113,9 @@ with tempfile.TemporaryDirectory(prefix='aitourguide-version-') as temp:
             assert baseline_shell in page.evaluate('caches.keys()')
             page.evaluate("""async () => {
               localStorage.setItem('kyoto-speed','1.5');localStorage.setItem('kyoto-voice','upgrade-test-voice');
-              const blob=await (await fetch('romon-preview.jpg')).blob();
+              const entry=(await (await fetch('data/catalog.json')).json()).published[0];
+              const pack=await (await fetch(entry.path)).json();
+              const blob=await (await fetch(new URL(pack.cover,new URL(entry.path,location.href)))).blob();
               const db=await photoDB();
               await new Promise((resolve,reject)=>{
                 const tx=db.transaction('photos','readwrite'),s=tx.objectStore('photos');

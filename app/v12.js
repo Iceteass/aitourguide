@@ -11,6 +11,18 @@ const svgDownload='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
 const svgTrash='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16m-10 4v7m4-7v7M6 7l1 14h10l1-14M9 7V4h6v3"/></svg>';
 const baseUrl=path=>new URL(path,document.baseURI).href;
 const safePath=p=>typeof p==="string"&&!p.startsWith("/")&&!p.includes("..")&&!p.includes("\\")&&!p.includes("://")&&!p.includes("?")&&!p.includes("#");
+function packCover(entry){
+ return state.entry?.pack_id===entry.pack_id&&state.pack&&safePath(state.pack.cover)?baseUrl(state.packBase+state.pack.cover):COMMON_IMAGE_FALLBACK;
+}
+function destinationCover(entry){return entry.cover&&safePath(entry.cover)?baseUrl(entry.cover):packCover(entry)}
+// Card URLs can fail before/after metadata loads; never fall back to a destination at the root.
+root.addEventListener('error',event=>{
+ const image=event.target;if(!image.matches?.('.v-destination-image img')||image.src===COMMON_IMAGE_FALLBACK)return;
+ const entry=published().find(e=>e.pack_id===image.closest('[data-action="open"]').dataset.value);
+ const fallback=entry?packCover(entry):COMMON_IMAGE_FALLBACK;
+ if(image.src!==fallback)image.src=fallback;
+ else if(image.src!==COMMON_IMAGE_FALLBACK)image.src=COMMON_IMAGE_FALLBACK;
+},true);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 async function readJSON(url){const r=await fetch(url);if(!r.ok)throw Error("데이터를 불러올 수 없습니다: "+url);return r.json()}
 // CSS supplies the same bootstrap backgrounds until the local manifest is ready.
@@ -66,7 +78,7 @@ function render(){
  const download=state.offline&&state.entry?.pack_id===e.pack_id;
  const status=state.entry?.pack_id===e.pack_id?offlineText():"온라인 이용 가능";
  items+='<article class="v-destination">'+
- '<button class="v-destination-image" type="button" data-action="open" data-value="'+esc(e.pack_id)+'" aria-label="'+esc(e.title)+' 관람 지도 열기"><img src="'+esc(baseUrl(e.cover||"romon-preview.jpg"))+'" alt=""></button>'+
+ '<button class="v-destination-image" type="button" data-action="open" data-value="'+esc(e.pack_id)+'" aria-label="'+esc(e.title)+' 관람 지도 열기"><img src="'+esc(destinationCover(e))+'" alt=""></button>'+
  '<div class="v-destination-main"><button type="button" class="v-destination-title" data-action="open" data-value="'+esc(e.pack_id)+'"><strong>'+esc(e.title)+'</strong><small>'+(e.poi_count||0)+'개 장소 · 관람 지도 · MP3</small></button>'+
  '<div class="v-destination-actions"><span class="v-sr-only" role="status">'+esc(status)+'</span>'+
  '<button class="v-circle v-download" aria-label="'+(download?"다운로드 완료":"여행지 다운로드")+'" title="'+(download?"저장 완료":"다운로드")+'" data-action="manage" data-value="'+esc(e.pack_id)+'"'+disabled+(download?" disabled":"")+'>'+(download?svgCheck:state.busy?"◌":svgDownload)+'</button>'+
@@ -185,7 +197,7 @@ async function onAction(action,value){
  if(action==="start")setScreen("country");
  else if(action==="back")back();
  else if(action==="country"){const e=published().find(p=>p.country_code===value);if(e){state.country=e.country_code;setScreen("city")}}
- else if(action==="city"){const e=published().find(x=>x.country_code===state.country&&x.city_id===value);if(e){state.city=e.city_id;setScreen("destination");try{await loadPack(e)}catch(err){state.message=err.message;render()}}}
+ else if(action==="city"){const e=published().find(x=>x.country_code===state.country&&x.city_id===value);if(e){state.city=e.city_id;setScreen("destination");try{await loadPack(e);render()}catch(err){state.message=err.message;render()}}}
  else if(action==="open")await chooseDestination(value);
  else if(action==="dismiss"){state.modal="";render()}
  else if(action==="manage"){const entry=published().find(e=>e.pack_id===value);if(!entry)return;try{await loadPack(entry)}catch(e){state.message=e.message;render();return}if(state.offline)return;state.modal="download";render()}
