@@ -1,12 +1,13 @@
 /* History Journey v1.2 — versioned PWA shell and atomic per-destination caches */
-const SHELL='history-journey-v122-shell-20261022';
-const FILES=['./','./index.html','./app/v12.css','./app/v12.js','./audio-player.js','./assets/road_green_drive.jpg','./assets/japan_kyoto_sunset.webp','./assets/road-fallback.svg','./assets/japan-fallback.svg','./data/catalog.json','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
+importScripts('./app/version.js');
+const SHELL='history-journey-v12-shell-'+self.APP_VERSION;
+const FILES=['./','./index.html','./app/version.js','./app/v12.css','./app/v12.js','./audio-player.js','./assets/road_green_drive.jpg','./assets/japan_kyoto_sunset.webp','./assets/road-fallback.svg','./assets/japan-fallback.svg','./data/catalog.json','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 const OPTIONAL_FILES=['./assets/splash_bg_road_coast_v121.webp'];
 const ROOT=new URL('./',self.location.href);
 const MAIN=new URL('./index.html',ROOT).href;
 const INDEX=new URL('./data/catalog.json',ROOT).href;
 const TRIP_PREFIX='travel-v12-';
-self.addEventListener('install',event=>event.waitUntil(caches.open(SHELL).then(async c=>{await c.addAll(FILES);await Promise.all(OPTIONAL_FILES.map(async name=>{try{const url=new URL(name,ROOT);const res=await fetch(url);if(res.ok)await c.put(url.href,res)}catch(_){} }));}).then(()=>self.skipWaiting())));
+self.addEventListener('install',event=>event.waitUntil(caches.open(SHELL).then(async c=>{await c.addAll(FILES.map(name=>new Request(new URL(name,ROOT),{cache:"reload"})));await Promise.all(OPTIONAL_FILES.map(async name=>{try{const url=new URL(name,ROOT);const res=await fetch(url);if(res.ok)await c.put(url.href,res)}catch(_){} }));}).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{
  const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('history-journey-v12')&&k!==SHELL).map(k=>caches.delete(k)));
  await self.clients.claim();

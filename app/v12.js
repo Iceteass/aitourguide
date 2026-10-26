@@ -1,6 +1,7 @@
 /* 여행이 역사가 되는 순간 - release v1.2; UX change specification CR-01..09 */
 (() => {
 "use strict";
+document.title='여행이 역사가 되는 순간 · v'+window.APP_VERSION;
 const $=id=>document.getElementById(id);
 const root=document.createElement("div");root.id="journey-root";document.body.append(root);
 const state={screen:"splash",catalog:null,entry:null,pack:null,packBase:"",pois:[],points:[],country:null,city:null,offline:false,busy:false,percent:0,task:"",modal:"",message:"",abort:false};
@@ -35,7 +36,7 @@ function render(){
  const bg=s==="splash"||s==="country"?"road":imgForCountry(state.country);
  const shade='<div class="v-bg '+bg+'"></div><div class="v-shade"></div>';
  if(s==="splash"){
- root.innerHTML='<main class="v-screen v-splash" tabindex="0" role="button" aria-label="계속하려면 화면을 터치하세요" data-action="start">'+shade+'<div class="v-brand"><h1>여행이<br>역사가 되는 순간</h1><p>아름다운 여행지의 이야기,<br>당신의 특별한 하루가 됩니다.</p></div><p class="v-touch">계속하려면 화면을 터치하세요</p></main>';return;
+ root.innerHTML='<main class="v-screen v-splash" tabindex="0" role="button" aria-label="계속하려면 화면을 터치하세요" data-action="start">'+shade+'<div class="v-brand"><h1>여행이<br>역사가 되는 순간</h1><p>아름다운 여행지의 이야기,<br>당신의 특별한 하루가 됩니다.</p></div><p class="v-touch">계속하려면 화면을 터치하세요<span class="v-app-version">App v'+esc(window.APP_VERSION)+'</span></p></main>';return;
  }
  let items="",heading="",note="";
  if(s==="country"){
