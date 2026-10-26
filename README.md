@@ -1,4 +1,4 @@
-# 여행이 역사가 되는 순간 · v1.2
+# 여행이 역사가 되는 순간
 
 iPhone Safari·Android Chrome에서 동일하게 사용할 수 있는 **설치형 오프라인 여행 해설 PWA**입니다.
 
@@ -69,7 +69,7 @@ authoring/validators/validate_pack.mjs      # 등록 전 구조·용량·해시 
 3. catalog와 pack의 `pack_id`, `pack_version`, 국가·도시 값 및 `poi_count`를 일치시키고, `spots[].dir`와 `meta`의 폴더도 일치시킵니다. 기존 팩의 경로·ID·버전은 단순 정리를 위해 변경하지 않습니다. `audio.original_name`은 출처 기록이며 로딩 경로가 아닙니다.
 4. 오프라인에 필요한 지도·좌표·POI JSON·원고·이미지·MP3·표지를 `files`에 등록하고 실제 바이트 크기와 가능한 SHA-256을 기록합니다. 검증기를 실행한 뒤 catalog의 `published`에 등록합니다. 신규 팩 검증을 CI 대상으로 추가하는 것도 별도로 확인합니다.
 
-파일별 유지 근거, 중복 해시 확인, 캐시 의존성과 승인 후 수행할 후속 작업은 [여행팩 구조 조사](docs/travel-pack-audit.md)를 참고하세요. 이번 정리는 문서만 변경하며 앱 v1.2.2, 팩 v1.2.0 및 기존 저장 데이터는 변경하지 않습니다.
+파일별 유지 근거, 중복 해시 확인, 캐시 의존성과 승인 후 수행할 후속 작업은 [여행팩 구조 조사](docs/travel-pack-audit.md)를 참고하세요. 이 조사는 이전 기준의 기록이며, 현재 앱 버전은 `app/version.js`에서 관리합니다.
 
 ## 비행기 모드 테스트
 
@@ -106,3 +106,10 @@ authoring/validators/validate_pack.mjs      # 등록 전 구조·용량·해시 
 - **주의:** 기기에 오프라인 한국어 TTS 음성이 없으면 비행기 모드에서 TTS가 작동하지 않을 수 있습니다. 기존 관람 지도, MP3 7개, 원고 및 여행지 폴더 구조는 유지됩니다.
 
 회귀 검증: tests/validate_mp3_runtime.mjs, tests/validate_narration_sync.mjs, tests/validate_v121.mjs, 여행팩 검증.
+
+
+## v1.2.3 — 앱 버전 표시 및 관리
+
+첫 화면의 기존 터치 안내 아래에 작은 `App vX.Y.Z`를 표시합니다. 단일 버전 원본은 `app/version.js`이며 문서 제목과 오프라인 앱 셸도 같은 값을 사용합니다. 기존 여행팩 v1.2.0, 스키마 1.0.0 및 저장 데이터는 유지합니다.
+
+[앱·여행팩 버전 관리 및 Commit/PR/Tag/Release 절차](docs/versioning.md)와 [4단계 통합 개발 계획](docs/development-plan.md)을 참고하세요. 이번 단계는 버전 표시만 구현하며 Creator·Publisher 및 전체 팩 CI는 후속 PR 범위입니다. 다음 단계는 현재 PR 검토·병합 후 최신 main에서 시작합니다.
