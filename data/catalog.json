@@ -14,5 +14,32 @@
       "cover": "travel-packs/JP/kyoto/fushimi-inari/cover.jpg",
       "poi_count": 7
     }
+  ],
+  "destinations": [
+    {
+      "destination_id": "jp-kyoto-fushimi-inari",
+      "destination_tags": [
+        "후시미구",
+        "신사",
+        "센본도리이"
+      ],
+      "guides": [
+        {
+          "guide_id": "default",
+          "guide_title": "역사 해설",
+          "guide_type": "history",
+          "guide_version": "1.0.0",
+          "guide_tags": [
+            "기본",
+            "역사"
+          ],
+          "status": "published",
+          "storage_mode": "legacy-pack",
+          "pack_id": "jp-kyoto-fushimi-inari",
+          "pack_version": "1.2.0",
+          "path": "travel-packs/JP/kyoto/fushimi-inari/pack.json"
+        }
+      ]
+    }
   ]
 }

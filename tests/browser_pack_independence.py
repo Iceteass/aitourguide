@@ -6,6 +6,7 @@ from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 from pathlib import Path
 import json,threading,urllib.request,urllib.error
 from playwright.sync_api import sync_playwright
+from browser_helpers import open_guide,store_button,wait_saved
 ROOT=Path(__file__).resolve().parents[1]
 catalog=json.loads((ROOT/'data/catalog.json').read_text());entry=catalog['published'][0]
 pack=json.loads((ROOT/entry['path']).read_text());folder=entry['path'].rsplit('/',1)[0]+'/'
@@ -19,7 +20,7 @@ def choose(page):
  page.locator('[data-action="start"]').click();page.locator('[data-action="country"]').click();page.locator('[data-action="city"]').click()
  page.wait_for_function("window.kyotoAudio.tracks[0]?.name.startsWith('travel-packs/')")
 def detail(page):
- page.locator('[data-action="open"]').first.click();page.wait_for_function("document.body.classList.contains('v-map')")
+ open_guide(page);page.wait_for_function("document.body.classList.contains('v-map')")
  page.locator('#hotspots button').first.click();page.wait_for_function("document.body.classList.contains('v-detail')")
 def observe(context):
  requests=[]
@@ -88,7 +89,7 @@ try:
   page.evaluate('async () => {await navigator.serviceWorker.ready;}');page.reload();page.wait_for_function('navigator.serviceWorker.controller!==null')
   context.set_offline(True);page.reload()
   page.locator('[data-action="start"]').click();page.locator('[data-action="country"]').click();page.locator('[data-action="city"]').click()
-  page.locator('[data-action="open"]').first.click()
+  open_guide(page)
   page.wait_for_function("document.querySelector('.v-warning')?.textContent.includes('여행지를 열 수 없습니다')")
   assert not page.evaluate("document.body.classList.contains('v-map')")
   context.close();browser.close()

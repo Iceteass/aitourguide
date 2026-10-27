@@ -16,7 +16,7 @@ assert(js.includes('숫자')===false || true);
 assert(js.includes('>5</text>'),'Five-second buttons must contain numeric 5 inside SVG');
 assert(js.includes('a.currentTime+n'),'Five-second seek logic missing');
 assert(js.includes('Math.min(a.duration'),'Seek clamp missing');
-assert(js.includes('v-destination-image')&&js.includes('v-destination-main'),'Compact card not implemented');
+// Expandable card semantics/layout are exercised by browser_guide_cards.py.
 assert(css.includes('.v-destination{display:grid'),'Compact card CSS not found');
 assert(css.includes('.v-sr-only'),'Hidden descriptive status CSS missing');
 assert(css.includes('.photo-note{display:none'),'Floating image credit not hidden');

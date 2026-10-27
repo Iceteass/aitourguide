@@ -62,3 +62,8 @@ node authoring/validators/validate_pack.mjs travel-packs/JP/kyoto/fushimi-inari
 
 
 v1.2.5부터 공통 코드의 초기 지도·이미지 fallback은 여행지 루트 자산을 사용하지 않습니다. catalog.cover가 없으면 로드한 pack.cover를 사용하며 데이터가 없으면 공통 fallback을 사용합니다. v1.1 정적 실행은 종료했지만 개인 사진 숫자 키 호환은 유지합니다. [지원 종료와 검사](pack-independence.md)를 참고하세요.
+
+
+## v1.2.6 단계 A 메타데이터
+
+기존 published/pack/POI를 유지한 선택적 destinations/guide index가 추가되었습니다. 가이드 최초 등록 버전은 pack_version과 별개이며 legacy catalog도 기본 가이드 하나로 읽습니다. 현재 storage_mode는 legacy-pack만 지원하고 독립 다중 가이드는 미구현입니다. Creator v0.4.7의 실제 출력과의 호환 검증은 NOT_RUN입니다. [정확한 계약 및 B 저장 게이트](destination-guides.md)를 따르세요.

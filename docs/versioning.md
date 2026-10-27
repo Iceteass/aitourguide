@@ -56,3 +56,6 @@
 
 
 v1.2.5는 여행지 루트 자산 삭제와 메타데이터/fallback 경로 변경을 위한 셸 갱신입니다. 팩·스키마·DB·개인 설정은 변경하지 않습니다. v1.2.3과 v1.2.4 baseline을 각각 검사하며 상세 지원 종료 범위는 [여행팩 완전 독립화](pack-independence.md)를 따릅니다.
+
+
+v1.2.6은 펼침 카드·기본 가이드 UI 및 catalog adapter를 위한 새 셸입니다. guide_version은 명시 콘텐츠 메타데이터이며 app/pack/schema 버전과 별개입니다. 기존 pack 캐시 및 사진/설정은 유지합니다. [A 구현과 B 미구현 범위](destination-guides.md)를 참고하세요.
