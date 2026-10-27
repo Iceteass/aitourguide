@@ -6,6 +6,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import threading
 from playwright.sync_api import sync_playwright
+from browser_helpers import open_guide,store_button,wait_saved
 
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=(ROOT/'assets/manifest.json').read_text()
@@ -29,7 +30,7 @@ def destinations(page):
     check_background(page,'country-jp-background')
 
 def map_detail(page):
-    page.locator('[data-action="open"]').first.click()
+    open_guide(page)
     page.wait_for_function("document.body.classList.contains('v-map')")
     assert page.locator('#hotspots button').count()==7
     page.locator('#hotspots button').first.click()
@@ -50,8 +51,8 @@ try:
     destinations(page);map_detail(page)
     page.wait_for_function("document.querySelector('#narration-mode').value==='tts'")
     page.locator('#v-all-spots').click();page.locator('#v-map-back').click()
-    page.locator('[data-action="manage"]').click();page.locator('[data-action="confirm-download"]').click()
-    page.get_by_role('button',name='다운로드 완료',exact=True).wait_for(timeout=60000)
+    store_button(page).click();page.locator('[data-action="confirm-download"]').click()
+    wait_saved(page)
     page.evaluate('async () => {await navigator.serviceWorker.ready;}');page.reload()
     page.wait_for_function('navigator.serviceWorker.controller !== null')
     cached=page.evaluate("""async () => {
@@ -79,9 +80,9 @@ try:
     }""")
     photo_size=page.evaluate('async () => (await photoGet(0)).size')
     page.locator('#v-all-spots').click();page.locator('#v-map-back').click()
-    page.locator('[data-action="delete"]').click();page.locator('[data-action="confirm-delete"]').click()
+    store_button(page,True).click();page.locator('[data-action="confirm-delete"]').click()
     page.locator('[data-action="confirm-delete"]').wait_for(state='detached')
-    assert page.locator('[data-action="delete"]').is_disabled()
+    assert store_button(page).get_attribute('data-save-state')=='missing'
     assert page.evaluate("async () => (await (await caches.open('travel-v12-jp-kyoto-fushimi-inari@1.2.0')).keys()).length")==0
     assert page.evaluate('async () => (await photoGet(0)).size')==photo_size
     assert page.evaluate("localStorage.getItem('kyoto-speed')")=='1.5'

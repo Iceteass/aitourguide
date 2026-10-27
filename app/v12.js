@@ -3,10 +3,9 @@
 "use strict";
 document.title='여행이 역사가 되는 순간 · v'+window.APP_VERSION;
 const $=id=>document.getElementById(id);
-const root=document.createElement("div");root.id="journey-root";document.body.append(root);
-const state={screen:"splash",catalog:null,entry:null,pack:null,packBase:"",pois:[],points:[],country:null,city:null,offline:false,busy:false,percent:0,task:"",modal:"",message:"",abort:false};
+const root=document.createElement("div");root.id="journey-root";root.setAttribute("aria-busy","true");document.body.append(root);
+const state={screen:"splash",catalog:null,entry:null,pack:null,packBase:"",pois:[],points:[],country:null,city:null,offline:false,busy:false,percent:0,task:"",modal:"",message:"",abort:false,destinations:[],expanded:new Set(),saved:{},selecting:false,guide:null,modalReturnFocus:null};
 const APP_PREFIX="travel-v12-";const COMPLETE="__complete_v12";
-const svgCheck='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>';
 const svgDownload='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 17v3h14v-3"/></svg>';
 const svgTrash='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16m-10 4v7m4-7v7M6 7l1 14h10l1-14M9 7V4h6v3"/></svg>';
 const baseUrl=path=>new URL(path,document.baseURI).href;
@@ -18,7 +17,7 @@ function destinationCover(entry){return entry.cover&&safePath(entry.cover)?baseU
 // Card URLs can fail before/after metadata loads; never fall back to a destination at the root.
 root.addEventListener('error',event=>{
  const image=event.target;if(!image.matches?.('.v-destination-image img')||image.src===COMMON_IMAGE_FALLBACK)return;
- const entry=published().find(e=>e.pack_id===image.closest('[data-action="open"]').dataset.value);
+ const entry=state.destinations.find(d=>d.destination_id===image.closest('[data-destination-id]').dataset.destinationId)?.entry;
  const fallback=entry?packCover(entry):COMMON_IMAGE_FALLBACK;
  if(image.src!==fallback)image.src=fallback;
  else if(image.src!==COMMON_IMAGE_FALLBACK)image.src=COMMON_IMAGE_FALLBACK;
@@ -39,22 +38,50 @@ async function loadAssets(){
  try{assetManifest=window.JourneyAssets.validate(await readJSON(assetManifestURL));applyBackground()}
  catch(error){console.warn('공통 이미지 목록을 불러오지 못해 기본 배경을 유지합니다.',error.message)}
 }
-const published=()=>Array.isArray(state.catalog?.published)?state.catalog.published.filter(p=>p&&p.pack_id&&p.path&&safePath(p.path)):[];
+const published=()=>state.destinations.map(d=>d.entry);
+const packKey=entry=>entry.pack_id+'@'+entry.pack_version;
+const findGuide=key=>state.destinations.filter(d=>d.entry.country_code===state.country&&d.entry.city_id===state.city).flatMap(d=>d.guides).find(g=>g.guide_key===key);
+const tagHTML=tags=>tags.length?tags.map(tag=>'<span>#'+esc(tag.replace(/^#+/,''))+'</span>').join(' '):'<span>태그 미등록</span>';
+let statusRevision=0;
+function restoreFocus(key){
+ const button=key&&Array.from(root.querySelectorAll('[data-focus-key]')).find(e=>e.dataset.focusKey===key&&!e.disabled);
+ if(button)button.focus({preventScroll:true});
+ const dialog=root.querySelector('[role="dialog"]');if(dialog&&!dialog.contains(document.activeElement))dialog.querySelector('button:not(:disabled)')?.focus({preventScroll:true});
+}
+async function storedComplete(entry,pack=null){
+ if(!('caches' in window)||!(await caches.keys()).includes(APP_PREFIX+packKey(entry)))return false;
+ const cache=await caches.open(APP_PREFIX+packKey(entry));
+ const base=entry.path.slice(0,entry.path.lastIndexOf('/')+1);
+ if(!(await cache.match(baseUrl(base+COMPLETE))))return false;
+ try{
+  if(!pack){const response=await cache.match(baseUrl(entry.path));if(!response)return false;pack=await response.json()}
+  if(pack.pack_id!==entry.pack_id||pack.pack_version!==entry.pack_version||!Array.isArray(pack.files))return false;
+  for(const f of pack.files){if(!safePath(f.path))return false;const r=await cache.match(baseUrl(base+f.path));if(!r||!r.ok||f.bytes&&Number(r.headers.get('x-byte-size')||0)!==f.bytes)return false}
+  return true;
+ }catch(_){return false}
+}
+async function refreshGuideStates(){
+ const revision=++statusRevision;const entries=published();
+ const results=await Promise.all(entries.map(async entry=>[packKey(entry),await storedComplete(entry)]));
+ if(revision!==statusRevision||state.busy)return;
+ for(const [key,saved] of results)state.saved[key]=saved;
+ render();
+}
 const baseName=()=>APP_PREFIX+state.pack.pack_id+"@"+state.pack.pack_version;
 const pendingName=()=>APP_PREFIX+"pending-"+state.pack.pack_id+"@"+state.pack.pack_version;
 function setScreen(screen,push=true){if(state.busy)return;state.screen=screen;state.modal="";state.message="";if(push)history.pushState({travelScreen:screen},"","#"+screen);render()}
 function back(){if(state.modal){state.modal="";render();return}const prev={country:"splash",city:"country",destination:"city",map:"destination",detail:"map"};const s=prev[state.screen];if(!s)return;window.stopSpeech?.();if(s==="map")goMap();else setScreen(s)}
 function formatSize(n){return (n/1048576).toFixed(n>=10485760?1:2)+"MB"}
-function offlineText(){return state.offline?"오프라인 저장 완료":state.busy?"다운로드 중 "+state.percent+"%":state.message?"저장 상태 확인 필요":"온라인 이용 가능"}
 function imgForCountry(country){return country==="JP"?"country-jp":"country-generic"}
 function card(action,label,hint,icon,asset,value){return '<button type="button" class="v-card" data-value="'+esc(value||"")+'" data-action="'+action+'"><span class="v-icon">'+(asset?'<img src="'+esc(asset)+'" alt="">':esc(icon||""))+'</span><span class="v-card-text"><strong>'+esc(label)+'</strong><small>'+esc(hint||"")+'</small></span><span class="v-chevron">›</span></button>'}
 function modalHTML(){
  const {modal,percent,task,pack}=state;if(!modal)return "";
- if(modal==="delete")return '<div class="v-modal-layer"><section class="v-modal" role="dialog" aria-modal="true" aria-label="저장 자료 삭제"><h2>저장한 여행지를 삭제할까요?</h2><p>이 여행지의 다운로드한 지도·사진·음성 파일만 삭제됩니다. 온라인 여행지는 목록에 계속 남습니다.</p><div class="v-modal-actions"><button data-action="dismiss">아니요</button><button class="danger" data-action="confirm-delete">예, 삭제</button></div></section></div>';
+ if(modal==="delete")return '<div class="v-modal-layer"><section class="v-modal" role="dialog" aria-modal="true" aria-label="저장 자료 삭제"><h2>저장한 여행지를 삭제할까요?</h2><p>이 여행지의 다운로드한 지도·사진·음성 파일만 삭제됩니다. 온라인 여행지는 목록에 계속 남습니다.</p><div class="v-modal-actions"><button data-focus-key="dialog-dismiss" data-action="dismiss">아니요</button><button class="danger" data-focus-key="dialog-confirm-delete" data-action="confirm-delete">예, 삭제</button></div></section></div>';
  const bytes=pack?.files?.reduce((s,f)=>s+(f.bytes||0),0)||0;
- return '<div class="v-modal-layer"><section class="v-modal" role="dialog" aria-modal="true" aria-label="여행지 다운로드"><h2>'+esc(state.entry?.title||"여행지")+'</h2><p>관람 지도, 장소별 사진·원고, 제작 MP3를 저장해 비행기 모드에서 이용합니다.</p><p class="v-size">예상 저장 용량 '+formatSize(bytes)+'</p>'+(modal==="saving"?'<div class="v-progress"><div style="width:'+percent+'%"></div></div><p role="status">'+percent+'% · '+esc(task)+'</p><div class="v-modal-actions"><button data-action="cancel-download">취소</button></div>':'<div class="v-modal-actions"><button data-action="dismiss">아니요</button><button class="main" data-action="confirm-download">다운로드</button></div>')+'</section></div>'
+ return '<div class="v-modal-layer"><section class="v-modal" role="dialog" aria-modal="true" aria-label="여행지 다운로드"><h2>'+esc(state.guide?.guide_title||state.entry?.title||"여행지")+'</h2><p>관람 지도, 장소별 사진·원고, 제작 MP3를 저장해 비행기 모드에서 이용합니다.</p><p class="v-size">예상 저장 용량 '+formatSize(bytes)+'</p>'+(modal==="saving"?'<div class="v-progress"><div style="width:'+percent+'%"></div></div><p role="status">'+percent+'% · '+esc(task)+'</p><div class="v-modal-actions"><button data-focus-key="dialog-cancel-download" data-action="cancel-download">취소</button></div>':'<div class="v-modal-actions"><button data-focus-key="dialog-dismiss" data-action="dismiss">아니요</button><button class="main" data-focus-key="dialog-confirm-download" data-action="confirm-download">다운로드</button></div>')+'</section></div>'
 }
 function render(){
+ const focusKey=(!state.modal&&state.modalReturnFocus)||document.activeElement?.dataset.focusKey;
  const s=state.screen;
  document.body.classList.toggle("v-select",s==="splash"||s==="country"||s==="city"||s==="destination");
  document.body.classList.toggle("v-map",s==="map");document.body.classList.toggle("v-detail",s==="detail");
@@ -62,7 +89,7 @@ function render(){
  const bg=s==="splash"||s==="country"?"road":imgForCountry(state.country);
  const shade='<div class="v-bg '+bg+'"></div><div class="v-shade"></div>';
  if(s==="splash"){
- root.innerHTML='<main class="v-screen v-splash" tabindex="0" role="button" aria-label="계속하려면 화면을 터치하세요" data-action="start">'+shade+'<div class="v-brand"><h1>여행이<br>역사가 되는 순간</h1><p>아름다운 여행지의 이야기,<br>당신의 특별한 하루가 됩니다.</p></div><p class="v-touch">계속하려면 화면을 터치하세요<span class="v-app-version">App v'+esc(window.APP_VERSION)+'</span></p></main>';applyBackground();return;
+ root.innerHTML='<main class="v-screen v-splash" tabindex="0" role="button" aria-label="계속하려면 화면을 터치하세요" data-action="start">'+shade+'<div class="v-brand"><h1>여행이<br>역사가 되는 순간</h1><p>아름다운 여행지의 이야기,<br>당신의 특별한 하루가 됩니다.</p></div><p class="v-touch">계속하려면 화면을 터치하세요<span class="v-app-version">App v'+esc(window.APP_VERSION)+'</span></p></main>';applyBackground();restoreFocus(focusKey);if(!state.modal)state.modalReturnFocus=null;return;
  }
  let items="",heading="",note="";
  if(s==="country"){
@@ -72,33 +99,37 @@ function render(){
  heading="도시를 선택해주세요";note="가보고 싶은 도시를 선택하세요.";
  const seen=new Set();for(const e of published().filter(x=>x.country_code===state.country)){if(seen.has(e.city_id))continue;seen.add(e.city_id);items+=card("city",e.city_name||e.city_id,"여행지 "+published().filter(x=>x.country_code===e.country_code&&x.city_id===e.city_id).length+"곳","🏯",null,e.city_id)}
  }else{
- heading="여행지를 선택해주세요";note="관람 지도와 해설을 이용할 여행지를 선택하세요.";
- for(const e of published().filter(x=>x.country_code===state.country&&x.city_id===state.city)){
- const disabled=state.busy?" disabled":"";
- const download=state.offline&&state.entry?.pack_id===e.pack_id;
- const status=state.entry?.pack_id===e.pack_id?offlineText():"온라인 이용 가능";
- items+='<article class="v-destination">'+
- '<button class="v-destination-image" type="button" data-action="open" data-value="'+esc(e.pack_id)+'" aria-label="'+esc(e.title)+' 관람 지도 열기"><img src="'+esc(destinationCover(e))+'" alt=""></button>'+
- '<div class="v-destination-main"><button type="button" class="v-destination-title" data-action="open" data-value="'+esc(e.pack_id)+'"><strong>'+esc(e.title)+'</strong><small>'+(e.poi_count||0)+'개 장소 · 관람 지도 · MP3</small></button>'+
- '<div class="v-destination-actions"><span class="v-sr-only" role="status">'+esc(status)+'</span>'+
- '<button class="v-circle v-download" aria-label="'+(download?"다운로드 완료":"여행지 다운로드")+'" title="'+(download?"저장 완료":"다운로드")+'" data-action="manage" data-value="'+esc(e.pack_id)+'"'+disabled+(download?" disabled":"")+'>'+(download?svgCheck:state.busy?"◌":svgDownload)+'</button>'+
- '<button class="v-circle v-delete" aria-label="저장 자료 삭제" title="저장 자료 삭제" data-action="delete" data-value="'+esc(e.pack_id)+'"'+(state.offline||state.message?"":" disabled")+disabled+'>'+svgTrash+'</button>'+
- '</div></div></article>';
+ heading="여행지를 선택해주세요";note="";
+ for(const destination of state.destinations.filter(d=>d.entry.country_code===state.country&&d.entry.city_id===state.city)){
+ const e=destination.entry,open=state.expanded.has(destination.destination_id),disabled=state.busy||state.selecting?' disabled':'';
+ const id='guides-'+destination.destination_id;
+ items+='<article class="v-destination" data-destination-id="'+esc(destination.destination_id)+'">'+
+ '<button type="button" class="v-destination-toggle" data-focus-key="toggle/'+esc(destination.destination_id)+'" data-action="expand" data-value="'+esc(destination.destination_id)+'" aria-expanded="'+open+'" aria-controls="'+id+'"'+disabled+'>'+
+ '<span class="v-destination-image"><img src="'+esc(destinationCover(e))+'" alt=""></span><span class="v-destination-main"><strong class="v-destination-title">'+esc(e.title)+'</strong><span class="v-destination-tags" title="'+esc(destination.destination_tags.join(' · '))+'">'+tagHTML(destination.destination_tags)+'</span></span><span class="v-expand-icon" aria-hidden="true">'+(open?'▴':'▾')+'</span></button>'+
+ '<div class="v-guide-list" id="'+id+'" role="list" aria-label="'+esc(e.title)+' 가이드"'+(open?'':' hidden')+'>';
+ for(const guide of destination.guides){
+ const saved=!!state.saved[packKey(guide.entry)],working=state.busy&&state.guide?.guide_key===guide.guide_key;
+ const status=working?'다운로드 또는 삭제 처리 중 '+state.percent+'%':saved?'오프라인 저장 완료':'저장되지 않음';
+ const label=working?'처리 중':saved?'삭제':'다운로드';
+ items+='<div class="v-guide" role="listitem"><button type="button" class="v-guide-main" data-focus-key="open/'+esc(guide.guide_key)+'" data-action="open" data-value="'+esc(guide.guide_key)+'" aria-describedby="status-'+esc(guide.entry.pack_id)+'"'+disabled+'><span class="v-guide-title" title="'+esc(guide.guide_title)+'">'+esc(guide.guide_title)+'</span><span class="v-guide-meta"><span class="v-guide-version">'+(guide.guide_version?'v'+esc(guide.guide_version):'버전 미등록')+'</span><span class="v-guide-tags" title="'+esc(guide.guide_tags.join(' · '))+'">'+tagHTML(guide.guide_tags)+'</span></span></button>'+
+ '<button type="button" class="v-guide-save" data-focus-key="save/'+esc(guide.guide_key)+'" data-action="store" data-value="'+esc(guide.guide_key)+'" data-save-state="'+(working?'busy':saved?'saved':'missing')+'" aria-label="'+esc(guide.guide_title)+' '+label+'" aria-describedby="status-'+esc(guide.entry.pack_id)+'"'+disabled+'>'+(working?'◌':saved?svgTrash:svgDownload)+'</button><span class="v-sr-only" id="status-'+esc(guide.entry.pack_id)+'" role="status">'+esc(status)+'</span></div>';
+ }
+ items+='</div></article>';
  }
  }
  if(!items)items='<div class="v-empty">현재 선택 가능한 여행지가 없습니다.</div>';
- root.innerHTML='<main class="v-screen">'+shade+'<header class="v-top"><button class="v-back" data-action="back" aria-label="뒤로 가기">‹</button><div class="v-crumb">'+esc(s==="country"?"여행이 역사가 되는 순간":s==="city"?published().find(e=>e.country_code===state.country)?.country_name||"국가 선택":(published().find(e=>e.city_id===state.city)?.city_name||"도시 선택"))+'</div></header><section class="v-list"><h2>'+heading+'</h2><p class="v-hint">'+note+'</p><div class="v-cards">'+items+'</div>'+(state.message?'<p class="v-warning">'+esc(state.message)+'</p>':"")+'</section>'+modalHTML()+'</main>';
- applyBackground();
+ root.innerHTML='<main class="v-screen">'+shade+'<header class="v-top"><button class="v-back" data-action="back" aria-label="뒤로 가기">‹</button><div class="v-crumb">'+esc(s==="country"?"여행이 역사가 되는 순간":s==="city"?published().find(e=>e.country_code===state.country)?.country_name||"국가 선택":(published().find(e=>e.city_id===state.city)?.city_name||"도시 선택"))+'</div></header><section class="v-list"><h2>'+heading+'</h2>'+(note?'<p class="v-hint">'+note+'</p>':'')+'<div class="v-cards">'+items+'</div>'+(state.message?'<p class="v-warning">'+esc(state.message)+'</p>':"")+'</section>'+modalHTML()+'</main>';
+ applyBackground();restoreFocus(focusKey);if(!state.modal)state.modalReturnFocus=null;
 }
 async function loadCatalog(){
- try {const c=await readJSON(baseUrl("./data/catalog.json"));if(!c||!Array.isArray(c.published))throw Error("등록 목록 형식 오류");state.catalog=c}
- catch(e){state.message="여행지 목록을 불러오지 못했습니다. 인터넷 연결을 확인하세요.";state.catalog={published:[]}}
- render();
+ try {const c=await readJSON(baseUrl("./data/catalog.json"));if(!c||!Array.isArray(c.published))throw Error("등록 목록 형식 오류");state.destinations=window.JourneyCatalog.normalize(c);state.catalog=c}
+ catch(e){state.message="여행지 목록을 불러오지 못했습니다. 연결 상태와 등록 정보를 확인하세요.";state.catalog={published:[]};state.destinations=[]}
+ root.setAttribute("aria-busy","false");render();await refreshGuideStates();
 }
 function packPath(relative){if(!safePath(relative))throw Error("허용되지 않는 여행지 파일 경로: "+relative);return state.packBase+relative}
 async function loadPack(entry){
- if(state.pack&&state.entry?.pack_id===entry.pack_id&&state.pois?.length)return;
- const metadata=await readJSON(baseUrl(entry.path));if(metadata.pack_id!==entry.pack_id||!metadata.route||!Array.isArray(metadata.spots)||!Array.isArray(metadata.files))throw Error("여행지 자료 형식이 올바르지 않습니다.");
+ if(state.pack&&state.entry?.pack_id===entry.pack_id&&state.pack.pack_version===entry.pack_version&&state.pois?.length){state.offline=await checkOffline();return;}
+ const metadata=await readJSON(baseUrl(entry.path));if(metadata.pack_id!==entry.pack_id||metadata.pack_version!==entry.pack_version||!metadata.route||!Array.isArray(metadata.spots)||!Array.isArray(metadata.files))throw Error("여행지 자료 형식이 올바르지 않습니다.");
  state.pack=metadata;state.entry=entry;state.packBase=entry.path.slice(0,entry.path.lastIndexOf("/")+1);
  const points=await readJSON(baseUrl(packPath(metadata.route.points)));
  const spotArray=await Promise.all(metadata.spots.map(async spot=>{
@@ -131,10 +162,8 @@ function syncLegacy(){
 }
 function marker(){return baseUrl(state.packBase+COMPLETE)}
 async function checkOffline(){
- if(!("caches" in window)||!state.pack)return false;
- const c=await caches.open(baseName());if(!(await c.match(marker())))return false;
- for(const f of state.pack.files){const r=await c.match(baseUrl(packPath(f.path)));if(!r||!r.ok&&r.type!=="opaque")return false;if(f.bytes&&Number(r.headers.get("x-byte-size")||0)!==f.bytes)return false}
- return true;
+ if(!state.pack||!state.entry)return false;
+ const saved=await storedComplete(state.entry,state.pack);state.saved[packKey(state.entry)]=saved;return saved;
 }
 async function cachedBlob(c,resource,expected){
  const response=await fetch(baseUrl(resource),{cache:"reload"});if(!response.ok||response.status!==200)throw Error("파일을 가져올 수 없습니다: "+resource);
@@ -145,7 +174,7 @@ async function cachedBlob(c,resource,expected){
 async function download(){
  if(state.busy)return;if(!navigator.onLine){state.message="인터넷 연결 후 다운로드해주세요.";state.modal="";render();return}
  if(!("caches" in window)||!window.isSecureContext){state.message="HTTPS 주소에서만 다운로드할 수 있습니다.";state.modal="";render();return}
- state.busy=true;state.abort=false;state.percent=0;state.modal="saving";render();
+ ++statusRevision;state.busy=true;state.abort=false;state.percent=0;state.modal="saving";render();
  const tempName=pendingName(),temp=await caches.open(tempName);
  try{
  const entries=[{path:state.entry.path},{path:packPath(state.pack.route.points)},...state.pack.files.map(f=>({...f,path:packPath(f.path)}))];
@@ -166,7 +195,7 @@ async function download(){
  finally{state.busy=false;state.percent=0;render()}
 }
 async function removeSaved(){
- if(state.busy||!state.pack)return;state.busy=true;render();
+ if(state.busy||!state.pack)return;++statusRevision;state.busy=true;render();
  try{
  window.stopSpeech?.();
  const names=await caches.keys();for(const name of names){
@@ -186,28 +215,45 @@ function goMapScreen(){
 const baseOpen=openPlace,baseMap=goMap;
 openPlace=function(i){window.stopSpeech?.();baseOpen(i);state.screen="detail";render();window.kyotoAudio?.selectDefault?.(i);};
 goMap=function(){window.stopSpeech?.();baseMap();state.screen="map";render();};
-async function chooseDestination(id){
- const entry=published().find(p=>p.pack_id===id&&p.country_code===state.country&&p.city_id===state.city);
- if(!entry){state.message="등록된 여행지가 없습니다.";render();return}
- try{await loadPack(entry);if(!state.offline&&!navigator.onLine){state.message="인터넷 연결이 필요합니다. 미리 다운로드한 여행지만 오프라인으로 열 수 있습니다.";render();return}
- goMapScreen();
- }catch(e){state.message="여행지를 열 수 없습니다: "+e.message;render()}
+async function useGuide(value,store=false){
+ const guide=findGuide(value);if(!guide){state.message='등록된 가이드가 없습니다.';render();return}
+ state.selecting=true;state.guide=guide;render();
+ try{
+  await loadPack(guide.entry);
+  if(store){state.modalReturnFocus='save/'+guide.guide_key;state.modal=state.offline?'delete':'download'}
+  else if(!state.offline&&!navigator.onLine)state.message='인터넷 연결이 필요합니다. 미리 다운로드한 가이드만 오프라인으로 열 수 있습니다.';
+  else goMapScreen();
+ }catch(error){state.message='여행지를 열 수 없습니다: '+error.message}
+ finally{state.selecting=false;render()}
 }
 async function onAction(action,value){
- if(action==="start")setScreen("country");
- else if(action==="back")back();
- else if(action==="country"){const e=published().find(p=>p.country_code===value);if(e){state.country=e.country_code;setScreen("city")}}
- else if(action==="city"){const e=published().find(x=>x.country_code===state.country&&x.city_id===value);if(e){state.city=e.city_id;setScreen("destination");try{await loadPack(e);render()}catch(err){state.message=err.message;render()}}}
- else if(action==="open")await chooseDestination(value);
- else if(action==="dismiss"){state.modal="";render()}
- else if(action==="manage"){const entry=published().find(e=>e.pack_id===value);if(!entry)return;try{await loadPack(entry)}catch(e){state.message=e.message;render();return}if(state.offline)return;state.modal="download";render()}
- else if(action==="delete"){const entry=published().find(e=>e.pack_id===value);if(!entry)return;try{await loadPack(entry)}catch(e){state.message=e.message;render();return}if(state.offline||state.message){state.modal="delete";render()}}
- else if(action==="confirm-download")await download();
- else if(action==="cancel-download"){state.abort=true;state.task="다운로드 중지 요청";render()}
- else if(action==="confirm-delete")await removeSaved();
+ if(state.selecting||(state.busy&&action!=='cancel-download'))return;
+ if(action==='start')setScreen('country');
+ else if(action==='back')back();
+ else if(action==='country'){const e=published().find(p=>p.country_code===value);if(e){state.country=e.country_code;setScreen('city')}}
+ else if(action==='city'){
+  const e=published().find(x=>x.country_code===state.country&&x.city_id===value);
+  if(e){state.city=e.city_id;state.selecting=true;setScreen('destination');try{await loadPack(e)}catch(error){state.message=error.message}finally{state.selecting=false;render();await refreshGuideStates()}}
+ }
+ else if(action==='expand'){const d=state.destinations.find(d=>d.destination_id===value);if(d){if(state.expanded.has(value))state.expanded.delete(value);else state.expanded.add(value);render()}}
+ else if(action==='open')await useGuide(value);
+ else if(action==='store')await useGuide(value,true);
+ else if(action==='dismiss'){state.modal='';render()}
+ else if(action==='confirm-download')await download();
+ else if(action==='cancel-download'){state.abort=true;state.task='다운로드 중지 요청';render()}
+ else if(action==='confirm-delete')await removeSaved();
 }
 root.addEventListener("click",e=>{const hit=e.target.closest("[data-action]");if(hit&&!hit.disabled)onAction(hit.dataset.action,hit.dataset.value).catch(err=>{state.message=err.message;state.modal="";render()})});
 root.addEventListener("keydown",e=>{if(state.screen==="splash"&&(e.key==="Enter"||e.key===" ")){e.preventDefault();setScreen("country")}});
+root.addEventListener('keydown',event=>{
+ const dialog=root.querySelector('[role="dialog"]');if(!dialog)return;
+ if(event.key==='Escape'){event.preventDefault();event.stopPropagation();if(!state.busy){state.modal='';render()}}
+ if(event.key==='Tab'){
+  const buttons=Array.from(dialog.querySelectorAll('button:not(:disabled)'));const first=buttons[0],last=buttons[buttons.length-1];
+  if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus()}
+  else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus()}
+ }
+});
 // Preserve previous per-spot personal photos but use stable destination/POI keys for new packs.
 const legacyPhotoGet=photoGet,legacyPhotoDelete=photoDelete;
 function personalKey(i){return (state.pack?.pack_id||"legacy")+":"+(state.pois[i]?.poi_id||String(i))}
@@ -224,7 +270,7 @@ photoDelete=async function(i){await personalPhoto("delete",i);if(state.pack?.pac
 function installMapBack(){
  const h=document.createElement("div");h.className="v-map-top";h.innerHTML='<button type="button" id="v-map-back">‹ 여행지 선택</button><span id="v-map-top-label">관람 가이드 지도</span>';
  $("map-screen").querySelector(".map-screen").append(h);
- $("v-map-back").onclick=()=>{window.stopSpeech?.();setScreen("destination")};
+ $("v-map-back").onclick=()=>{window.stopSpeech?.();state.modalReturnFocus=state.guide?"open/"+state.guide.guide_key:null;setScreen("destination")};
 }
 function installAudio(){
  const detail=$("detail-screen").querySelector(".detail");
@@ -279,7 +325,6 @@ installMapBack();installAudio();
 $("map-bottom").onclick=()=>goMap();
 $("previous").onclick=()=>selected===0?goMap():openPlace(selected-1);
 $("next").onclick=()=>selected>=data.length-1?goMap():openPlace(selected+1);
-document.addEventListener("keydown",e=>{if(e.key==="Escape"&&state.modal){state.modal="";render()}});
 window.addEventListener("popstate",()=>{if(state.busy)return;const h=location.hash.replace("#","");if(["splash","country","city","destination"].includes(h)){window.stopSpeech?.();state.screen=h;render()}else if(h==="map")goMap()});
 history.replaceState({travelScreen:"splash"},"","#splash");
 render();loadCatalog();loadAssets();

@@ -12,6 +12,7 @@ import tarfile
 import tempfile
 import threading
 from playwright.sync_api import sync_playwright
+from browser_helpers import open_guide,store_button,wait_saved
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--baseline-ref', required=True)
@@ -154,7 +155,7 @@ with tempfile.TemporaryDirectory(prefix='aitourguide-version-') as temp:
             page.locator('[data-action="country"]').click()
             page.locator('[data-action="city"]').click()
             page.wait_for_function("window.kyotoAudio?.tracks?.[0]?.name?.startsWith('travel-packs/')")
-            page.locator('[data-action="open"]').first.click()
+            open_guide(page)
             page.wait_for_function("document.body.classList.contains('v-map')")
             assert page.locator('#hotspots button').count() == 7
             page.wait_for_function("document.querySelector('#map-screen .map-wrap img').naturalWidth > 0")

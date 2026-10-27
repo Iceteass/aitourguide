@@ -29,13 +29,6 @@ html,body{margin:0;max-width:100%;overflow-x:hidden}
 .v-icon img{width:100%;height:100%;object-fit:cover}
 .v-card-text{min-width:0;flex:1}.v-card strong{display:block;font-size:18px;font-weight:850}.v-card small{display:block;font-size:12px;color:#e3f2f7;margin-top:6px}
 .v-chevron{font-size:30px;color:#fff;margin-left:auto}
-.v-destination{padding:10px;border-radius:22px;border:1px solid #fff7;background:rgba(4,33,48,.77);backdrop-filter:blur(13px)}
-.v-destination>.v-card{border:0;background:transparent;min-height:78px;backdrop-filter:none}
-.v-destination-actions{display:flex;gap:9px;align-items:center;padding:5px 8px 4px}
-.v-download-state{font-size:12px;font-weight:700;flex:1;color:#e5f9f5;line-height:1.35}
-.v-circle{height:48px;width:48px;min-width:48px;border-radius:50%;border:2px solid #ffffffaa;color:white;background:#057f79;font-weight:900;font-size:25px;display:grid;place-items:center;line-height:1}
-.v-circle.v-delete{border:2px solid #ff9ca6;color:#fff;background:#ab293c;font-size:20px}
-.v-circle:disabled{opacity:.48;filter:grayscale(.5)}
 .v-empty,.v-warning{border-radius:13px;background:#082e42c7;color:#fff;padding:13px;font-size:13px;line-height:1.6}
 .v-warning{border:1px solid #eab3a1}
 .v-card:focus-visible,.v-circle:focus-visible,.v-back:focus-visible{outline:3px solid #f7ce75;outline-offset:2px}
@@ -98,19 +91,27 @@ body.v-detail #detail-screen .hero-bottom .speed-control,body.v-detail #detail-s
 /* v1.2.1 — explicit UX cleanup; icon-only, no captions under controls */
 .v-bg.road{background-image:url("../assets/app/splash/splash_bg_road_coast_v121.webp"),url("../assets/app/backgrounds/road_green_drive.jpg"),url("../assets/app/fallbacks/road-fallback.svg");background-position:center center}
 .v-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.v-destination{display:grid;grid-template-columns:94px minmax(0,1fr);align-items:stretch;gap:11px;min-height:112px;padding:9px;border-radius:18px}
-.v-destination .v-destination-image{width:94px;min-height:94px;height:100%;padding:0;overflow:hidden;border:0;border-radius:12px;background:#254852;cursor:pointer}
-.v-destination .v-destination-image img{display:block;width:100%;height:100%;object-fit:cover}
-.v-destination-main{min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:5px;padding:1px 2px 0 0}
-.v-destination-title{display:flex;min-height:43px;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;width:100%;padding:0;border:0;background:none;color:#fff}
-.v-destination-title strong{display:block;font-size:clamp(14px,4.2vw,18px);font-weight:800;line-height:1.25}
-.v-destination-title small{display:block;font-size:11px;color:#e1eef1;line-height:1.3;margin-top:4px}
-.v-destination-actions{padding:0;display:flex;align-items:center;justify-content:flex-end;gap:3px;margin:0}
-.v-destination-actions .v-circle{width:44px;min-width:44px;height:44px;border:4px solid transparent;background-clip:padding-box;border-radius:50%;font-size:18px;display:grid;place-items:center}
-.v-destination-actions .v-circle svg{width:21px;height:21px}
-.v-destination .v-circle.v-download{background-color:#0a8a7b}
-.v-destination .v-circle.v-delete{background-color:#b92846;border-color:transparent}
-.v-destination-actions .v-circle:focus-visible,.v-destination-title:focus-visible,.v-destination-image:focus-visible{outline:3px solid #f6d77f;outline-offset:0px}
+.v-destination{display:grid;grid-template-columns:minmax(0,1fr);border:1px solid #fff7;border-radius:16px;background:rgba(4,33,48,.65);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);overflow:hidden}
+.v-destination-toggle{display:grid;grid-template-columns:60px minmax(0,1fr) 44px;gap:8px;align-items:center;width:100%;min-width:0;padding:8px;border:0;background:none;color:#fff;text-align:left}
+.v-destination-image{display:block;width:60px;height:60px;overflow:hidden;border-radius:10px;background:#254852}
+.v-destination-image img{display:block;width:60px;height:60px;object-fit:cover}
+.v-destination-main{display:block;min-width:0}
+.v-destination-title{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:18px;line-height:1.4;font-weight:800}
+.v-destination-tags{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;line-height:1.5;margin-top:3px;color:#e1eef1}
+.v-expand-icon{display:grid;place-items:center;width:44px;height:44px;font-size:20px}
+.v-guide-list{border-top:1px solid #ffffff45}
+.v-guide-list[hidden]{display:none!important}
+.v-guide{display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:8px;align-items:center;padding:2px 8px}
+.v-guide-main{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;min-width:0;min-height:44px;padding:5px 0;border:0;background:none;color:#fff;text-align:left}
+.v-guide-title{flex:1 1 6em;min-width:0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:14px;line-height:1.5}
+.v-guide-meta{display:flex;flex:0 1 auto;align-items:center;gap:6px;min-width:0;max-width:100%;font-size:12px;line-height:1.5;color:#e1eef1}
+.v-guide-version{flex:0 1 auto;min-width:0;max-width:50%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v-guide-tags{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v-guide-save{display:grid;place-items:center;width:44px;height:44px;padding:10px;border:0;border-radius:10px;background:none;color:#fff}
+.v-guide-save svg{display:block;width:22px;height:22px}
+.v-guide-save[data-save-state=saved]{color:#ffb3bb}
+.v-destination-toggle:disabled,.v-guide-main:disabled,.v-guide-save:disabled{opacity:.6;cursor:wait}
+.v-destination-toggle:focus-visible,.v-guide-main:focus-visible,.v-guide-save:focus-visible{outline:3px solid #f6d77f;outline-offset:-3px}
 body.v-detail #detail-screen .hero .back{display:none!important}
 body.v-detail #detail-screen .photo-note{display:none!important}
 body.v-detail #detail-screen .v-spotnav{display:none!important}
