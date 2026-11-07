@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.0.0",
+  "coordinate_system": "relative",
+  "destination_id": "jp-kyoto-kinkakuji",
+  "route_type": "reference",
+  "status": "REVIEW_REQUIRED",
+  "background_sha256": "22ad8d48a7ff8b9fbb9084df30b0de2baf42fcd8bf5e527502e751fed76eda08",
+  "required_connections": 7,
+  "displayed_connections": 5,
+  "segments": [
+    {
+      "segment_id": "kyokochi__shariden-kinkaku",
+      "from_poi_id": "kyokochi",
+      "to_poi_id": "shariden-kinkaku",
+      "waypoints": [
+        {
+          "x": 0.14,
+          "y": 0.49
+        },
+        {
+          "x": 0.18,
+          "y": 0.498
+        },
+        {
+          "x": 0.255,
+          "y": 0.495
+        },
+        {
+          "x": 0.335,
+          "y": 0.478
+        },
+        {
+          "x": 0.415,
+          "y": 0.446
+        },
+        {
+          "x": 0.468,
+          "y": 0.413
+        },
+        {
+          "x": 0.505,
+          "y": 0.395
+        }
+      ],
+      "source_ids": [
+        "REF-002"
+      ],
+      "geometry_status": "PRELIMINARY_VISUAL_TRACE",
+      "visibility": "show",
+      "navigation_guaranteed": false,
+      "verification": "map_visual_estimate_CP3_review_pending"
+    },
+    {
+      "segment_id": "gingasen-gankasui__ryumontaki-kinkakujigaki",
+      "from_poi_id": "gingasen-gankasui",
+      "to_poi_id": "ryumontaki-kinkakujigaki",
+      "waypoints": [
+        {
+          "x": 0.555,
+          "y": 0.216
+        },
+        {
+          "x": 0.56,
+          "y": 0.232
+        },
+        {
+          "x": 0.574,
+          "y": 0.252
+        },
+        {
+          "x": 0.602,
+          "y": 0.276
+        },
+        {
+          "x": 0.635,
+          "y": 0.283
+        },
+        {
+          "x": 0.66,
+          "y": 0.279
+        }
+      ],
+      "source_ids": [
+        "REF-002"
+      ],
+      "geometry_status": "PRELIMINARY_VISUAL_TRACE",
+      "visibility": "show",
+      "navigation_guaranteed": false,
+      "verification": "map_visual_estimate_CP3_review_pending"
+    },
+    {
+      "segment_id": "ryumontaki-kinkakujigaki__anmintaku-hakujanotsuka",
+      "from_poi_id": "ryumontaki-kinkakujigaki",
+      "to_poi_id": "anmintaku-hakujanotsuka",
+      "waypoints": [
+        {
+          "x": 0.66,
+          "y": 0.279
+        },
+        {
+          "x": 0.699,
+          "y": 0.289
+        },
+        {
+          "x": 0.732,
+          "y": 0.303
+        },
+        {
+          "x": 0.755,
+          "y": 0.311
+        }
+      ],
+      "source_ids": [
+        "REF-002"
+      ],
+      "geometry_status": "PRELIMINARY_VISUAL_TRACE",
+      "visibility": "show",
+      "navigation_guaranteed": false,
+      "verification": "map_visual_estimate_CP3_review_pending"
+    },
+    {
+      "segment_id": "anmintaku-hakujanotsuka__sekkatei",
+      "from_poi_id": "anmintaku-hakujanotsuka",
+      "to_poi_id": "sekkatei",
+      "waypoints": [
+        {
+          "x": 0.755,
+          "y": 0.311
+        },
+        {
+          "x": 0.797,
+          "y": 0.336
+        },
+        {
+          "x": 0.842,
+          "y": 0.379
+        },
+        {
+          "x": 0.878,
+          "y": 0.432
+        },
+        {
+          "x": 0.895,
+          "y": 0.473
+        },
+        {
+          "x": 0.897,
+          "y": 0.52
+        }
+      ],
+      "source_ids": [
+        "REF-002",
+        "REF-004"
+      ],
+      "geometry_status": "PRELIMINARY_VISUAL_TRACE",
+      "visibility": "show",
+      "navigation_guaranteed": false,
+      "verification": "map_visual_estimate_CP3_review_pending"
+    },
+    {
+      "segment_id": "sekkatei__fudodo",
+      "from_poi_id": "sekkatei",
+      "to_poi_id": "fudodo",
+      "waypoints": [
+        {
+          "x": 0.897,
+          "y": 0.52
+        },
+        {
+          "x": 0.932,
+          "y": 0.558
+        },
+        {
+          "x": 0.947,
+          "y": 0.6
+        },
+        {
+          "x": 0.942,
+          "y": 0.633
+        },
+        {
+          "x": 0.901,
+          "y": 0.665
+        },
+        {
+          "x": 0.828,
+          "y": 0.715
+        },
+        {
+          "x": 0.77,
+          "y": 0.737
+        },
+        {
+          "x": 0.735,
+          "y": 0.751
+        }
+      ],
+      "source_ids": [
+        "REF-002",
+        "REF-004"
+      ],
+      "geometry_status": "PRELIMINARY_VISUAL_TRACE",
+      "visibility": "show",
+      "navigation_guaranteed": false,
+      "verification": "map_visual_estimate_CP3_review_pending"
+    }
+  ],
+  "omitted_connections": [
+    {
+      "from_poi_id": "shariden-kinkaku",
+      "to_poi_id": "rikushunomatsu",
+      "reason": "walkway_shape_not_grounded_in_approved_order",
+      "visibility": "omit"
+    },
+    {
+      "from_poi_id": "rikushunomatsu",
+      "to_poi_id": "gingasen-gankasui",
+      "reason": "walkway_shape_not_grounded_in_approved_order",
+      "visibility": "omit"
+    }
+  ],
+  "notice": "추천 동선은 참고용입니다. 실제 이동 시 현장 안내와 출입 제한을 우선하세요.",
+  "explanatory_note": "2->4 직행 점선 없음. 2->3,3->4는 생략. 4->5부터 별도 선 시작. AI draft is not approved route data."
+}

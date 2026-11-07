@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "sekkatei",
+  "sequence": 7,
+  "title": "석가정(셋카테이)",
+  "title_ja": "夕佳亭",
+  "summary": "에도 시대 다실과 차 문화",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "017d4ab2ffdc94775740a8b800125a0f36438490c01c5b69081d60dac18c1b26",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "CONTENT_APPROVED",
+  "visual_review": "REVIEW_REQUIRED"
+}

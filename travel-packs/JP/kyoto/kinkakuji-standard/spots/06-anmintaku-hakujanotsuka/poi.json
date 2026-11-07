@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "anmintaku-hakujanotsuka",
+  "sequence": 6,
+  "title": "안민택·백사총",
+  "title_ja": "安民沢・白蛇の塚",
+  "summary": "기우 신앙, 숲속 연못과 석탑",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "a882dcbe55b2aeeaca8d19594232886d80d84ce0538a4935b1be66e0a8ec4c95",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "CONTENT_APPROVED",
+  "visual_review": "REVIEW_REQUIRED"
+}

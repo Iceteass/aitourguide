@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "shariden-kinkaku",
+  "sequence": 2,
+  "title": "사리전 금각",
+  "title_ja": "舎利殿 金閣",
+  "summary": "아시카가 요시미쓰, 세 층의 건축 양식과 금박·봉황",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "d335a8001446d37ad6a02e8cd20ef839e51d1c5a3f0c8e2cd2bf4b02e8608d80",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "CONTENT_APPROVED",
+  "visual_review": "REVIEW_REQUIRED"
+}

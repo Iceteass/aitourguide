@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "ryumontaki-kinkakujigaki",
+  "sequence": 5,
+  "title": "용문폭포·금각사 울타리",
+  "title_ja": "龍門滝・金閣寺垣",
+  "summary": "등용문 고사, 잉어바위, 대나무 울타리와 석교",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "d9bc3e055dcf079b1896b88ce65f4407454435de097a0002b7bec6c9c737625c",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "CONTENT_APPROVED",
+  "visual_review": "REVIEW_REQUIRED"
+}
