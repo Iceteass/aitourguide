@@ -16,7 +16,20 @@ const source=rel=>{if(!safe(rel)){fail('Unsafe relative path: '+rel);return null
 const found=new Set();
 for(const f of root.files||[]){const abs=source(f.path);if(found.has(f.path))fail('Duplicate file path '+f.path);found.add(f.path);if(!abs)continue;const body=fs.readFileSync(abs);if(Number.isInteger(f.bytes)&&body.length!==f.bytes)fail('Byte size differs: '+f.path);if(f.sha256&&crypto.createHash('sha256').update(body).digest('hex').toLowerCase()!==f.sha256.toLowerCase())fail('SHA-256 mismatch: '+f.path)}
 source(root.cover);if(root.route){source(root.route.image);const pts=source(root.route.points);if(pts){const points=readJson(pts)?.points||[];const ids=new Set();for(const p of points){if(ids.has(p.poi_id))fail('Duplicate map poi_id '+p.poi_id);ids.add(p.poi_id);if(!(p.x>=0&&p.x<=1&&p.y>=0&&p.y<=1))fail('Invalid normalized coordinates: '+p.poi_id)}for(const id of root.poi_ids||[])if(!ids.has(id))fail('Missing map point for '+id)}}
-const ids=new Set();for(const s of root.spots||[]){if(ids.has(s.poi_id))fail('Duplicate spot ID '+s.poi_id);ids.add(s.poi_id);const abs=source(s.meta);if(!abs)continue;const meta=readJson(abs);if(!meta)continue;if(meta.poi_id!==s.poi_id)fail('POI ID mismatch for '+s.meta);const folder=path.posix.dirname(s.meta);source(folder+'/'+meta.narration);source(folder+'/'+meta.image.path);source(folder+'/'+meta.audio.path)}
+const ids=new Set();for(const s of root.spots||[]){if(ids.has(s.poi_id))fail('Duplicate spot ID '+s.poi_id);ids.add(s.poi_id);const abs=source(s.meta);if(!abs)continue;const meta=readJson(abs);if(!meta)continue;if(meta.poi_id!==s.poi_id)fail('POI ID mismatch for '+s.meta);const folder=path.posix.dirname(s.meta);source(folder+'/'+meta.narration);source(folder+'/'+meta.image.path);const audio=meta.audio;
+if(!audio||!safe(audio.path)){fail('Invalid audio declaration: '+s.meta);continue}
+const audioPath=folder+'/'+audio.path;
+if(audio.status==='not_generated'){
+ if(audio.bytes!==null||audio.sha256!==null)fail('not_generated requires null bytes/SHA: '+audioPath);
+ if(found.has(audioPath))fail('not_generated audio is registered in files: '+audioPath);
+ if(fs.existsSync(path.join(cwd,audioPath)))fail('not_generated audio exists: '+audioPath);
+}else{
+ const file=(root.files||[]).find(f=>f.path===audioPath);
+ if(!file)fail('Generated audio missing from files: '+audioPath);
+ if(!Number.isInteger(audio.bytes)||audio.bytes<=0||! /^[a-f0-9]{64}$/i.test(audio.sha256||''))fail('Invalid generated audio size/SHA: '+audioPath);
+ if(file&&(file.bytes!==audio.bytes||file.sha256?.toLowerCase()!==audio.sha256?.toLowerCase()))fail('Audio metadata/files mismatch: '+audioPath);
+ source(audioPath);
+}}
 if((root.poi_ids||[]).length!==ids.size)fail('poi_ids and spots counts differ');
 if(!fs.existsSync(path.join(cwd,'LICENSES.md')))fail('Missing LICENSES.md');
 if(errors.length){for(const e of errors)console.error('FAIL:',e);console.error('Total failures: '+errors.length);process.exit(1)}

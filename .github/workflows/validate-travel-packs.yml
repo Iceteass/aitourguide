@@ -5,11 +5,15 @@ on:
       - 'travel-packs/**'
       - 'data/catalog.json'
       - 'authoring/validators/**'
+      - 'tests/validate_optional_audio.mjs'
+      - '.github/workflows/validate-travel-packs.yml'
   pull_request:
     paths:
       - 'travel-packs/**'
       - 'data/catalog.json'
       - 'authoring/validators/**'
+      - 'tests/validate_optional_audio.mjs'
+      - '.github/workflows/validate-travel-packs.yml'
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -18,4 +22,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node authoring/validators/validate_pack.mjs travel-packs/JP/kyoto/fushimi-inari
+      - run: node authoring/validators/validate_all_packs.mjs
+      - run: node tests/validate_optional_audio.mjs
