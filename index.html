@@ -9,7 +9,7 @@
 const data=[],photos=[],coords=[];
 const $=id=>document.getElementById(id);let selected=0, token=0, activeSpeech=null, speaking=false, paused=false, utterance=null, timer=null, began=0;
 function makePins(){coords.forEach((p,i)=>{const b=document.createElement('button');b.className='hotspot';b.style.left=p[0]+'%';b.style.top=p[1]+'%';b.textContent=i+1;b.setAttribute('aria-label',(i+1)+' '+data[i][0]+' 해설 시작');b.onclick=()=>openPlace(i);$('hotspots').append(b);const m=document.createElement('button');m.textContent=(i+1)+' '+data[i][0];m.onclick=()=>openPlace(i);$('mini').append(m)})}
-function stopSpeech(){narrationRun++;token++;clearInterval(timer);timer=null;speaking=false;paused=false;clearSpeechHighlight();if('speechSynthesis' in window)speechSynthesis.cancel();$('toggle').textContent='▶';$('clock').textContent='0:00';$('seek').value=0}
+function stopSpeech(){narrationRun++;token++;clearInterval(timer);timer=null;speaking=false;paused=false;clearSpeechHighlight();narrationParts=[];narrationIndex=0;narrationSelected=null;narrationNodes=[];utterance=null;activeSpeech=null;if('speechSynthesis' in window){speechSynthesis.cancel();if(speechSynthesis.paused)speechSynthesis.resume()}$('toggle').textContent='▶';$('clock').textContent='0:00';$('seek').value=0}
 function setTab(t){document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('selected',b.dataset.tab===t));['listen','text','photo'].forEach(x=>$('tab-'+x).hidden=x!==t)}
 const COMMON_IMAGE_FALLBACK=new URL('./assets/app/fallbacks/road-fallback.svg',document.baseURI).href;
 const initialMapImage=document.querySelector('#map-screen .map-wrap img');
@@ -35,6 +35,7 @@ function chosenVoice(){const chosen=koreanVoices.find(v=>voiceKey(v)===$('voice-
 function speechText(t){return t.replace(/([.!?。！？])\s*/g,'$1\n').replace(/([가-힣])\s*·\s*([가-힣])/g,'$1, $2')}
 function newUtterance(t){const u=new SpeechSynthesisUtterance(t);u.lang='ko-KR';u.rate=Number($('speed').value);u.pitch=0.97;u.voice=chosenVoice();return u}
 let narrationParts=[],narrationIndex=0,narrationRun=0;
+let narrationSelected=null;
 let narrationNodes=[],previousNarrationNode=null;
 function clearSpeechHighlight(){
  if(previousNarrationNode){previousNarrationNode.classList.remove('tts-current');previousNarrationNode=null}
@@ -83,33 +84,36 @@ function splitNarration(text){
  return out.length?out:[text];
 }
 function speakNext(run){
- if(run!==narrationRun)return;
+ if(run!==narrationRun)return;if(narrationSelected!==selected)return;
  if(narrationIndex>=narrationParts.length){
-   speaking=false;paused=false;clearInterval(timer);clearSpeechHighlight();$('toggle').textContent='▶';$('status').textContent='해설 재생 완료';return;
+   speaking=false;paused=false;clearInterval(timer);timer=null;utterance=null;clearSpeechHighlight();$('toggle').textContent='▶';$('status').textContent='해설 재생 완료';return;
  }
  const u=newUtterance(narrationParts[narrationIndex]);utterance=u;
- u.onstart=()=>{if(run!==narrationRun)return;highlightSpokenSentence(narrationIndex);speaking=true;$('toggle').textContent='Ⅱ';$('status').textContent='해설 재생 중 · '+(narrationIndex+1)+' / '+narrationParts.length+' 구간'};
- u.onend=()=>{if(run!==narrationRun)return;narrationIndex++;speakNext(run)};
- u.onerror=e=>{if(run!==narrationRun||['canceled','interrupted'].includes(e.error))return;clearInterval(timer);speaking=false;clearSpeechHighlight();$('toggle').textContent='▶';$('status').textContent='음성 재생이 중단되었습니다 ('+e.error+'). ▶를 눌러 다시 시작해 보세요.'};
+ u.onstart=()=>{if(run!==narrationRun||utterance!==u||narrationSelected!==selected)return;highlightSpokenSentence(narrationIndex);speaking=true;$('toggle').textContent='Ⅱ';$('status').textContent='해설 재생 중 · '+(narrationIndex+1)+' / '+narrationParts.length+' 구간'};
+ u.onend=()=>{if(run!==narrationRun||utterance!==u||narrationSelected!==selected)return;narrationIndex++;speakNext(run)};
+ u.onerror=e=>{if(run!==narrationRun||utterance!==u||narrationSelected!==selected||['canceled','interrupted'].includes(e.error))return;clearInterval(timer);timer=null;utterance=null;speaking=false;paused=false;clearSpeechHighlight();$('toggle').textContent='▶';$('status').textContent='음성 재생이 중단되었습니다 ('+e.error+'). ▶를 눌러 다시 시작해 보세요.'};
  speechSynthesis.speak(u);
 }
-function startSpeech(){
+function playNarrationAt(index){
  stopSpeech();
  if(!('speechSynthesis' in window)){$('status').textContent='이 기기는 음성 읽기를 지원하지 않습니다.';return}
  refreshVoices();narrationRun++;const run=narrationRun;
- narrationParts=segmentVisibleNarration(data[selected][3]);narrationIndex=0;
+ narrationParts=segmentVisibleNarration(data[selected][3]);narrationSelected=selected;narrationIndex=Math.max(0,Math.min(narrationParts.length-1,index));
  began=Date.now();speaking=true;$('toggle').textContent='Ⅱ';
  timer=setInterval(()=>{$('clock').textContent=fmt(Math.floor((Date.now()-began)/1000))},1000);
  $('status').textContent='해설을 '+narrationParts.length+'개 구간으로 나누어 재생합니다.';
  speakNext(run);
 }
+function startSpeech(){playNarrationAt(0)}
+function moveSpeechSentence(delta){const index=narrationSelected===selected?narrationIndex:0;playNarrationAt(index+delta)}
+window.historyJourneyTTS={moveSentence:moveSpeechSentence,restart:()=>startSpeech()};
 $('voice-select').onchange=()=>{try{localStorage.setItem('kyoto-voice',$('voice-select').value)}catch(e){}if(speaking||paused){startSpeech();$('status').textContent='목소리 변경: 처음부터 다시 재생합니다.'}};
-$('voice-preview').onclick=()=>{if(!('speechSynthesis' in window))return;stopSpeech();refreshVoices();const u=newUtterance('안녕하세요. 지금부터 아름다운 여행지의 역사 속으로 함께 떠나보겠습니다.');utterance=u;u.onstart=()=>{$('status').textContent='목소리 미리 듣기 중입니다.'};u.onend=()=>{$('status').textContent='미리 듣기가 끝났습니다.'};u.onerror=()=>{$('status').textContent='미리 듣기 실패. 다른 목소리를 선택해 보세요.'};speechSynthesis.speak(u)};
+$('voice-preview').onclick=()=>{if(!('speechSynthesis' in window))return;stopSpeech();refreshVoices();const u=newUtterance('안녕하세요. 지금부터 아름다운 여행지의 역사 속으로 함께 떠나보겠습니다.');utterance=u;const run=narrationRun,owner=selected;const current=()=>run===narrationRun&&utterance===u&&owner===selected;u.onstart=()=>{if(current())$('status').textContent='목소리 미리 듣기 중입니다.'};u.onend=()=>{if(current())$('status').textContent='미리 듣기가 끝났습니다.'};u.onerror=()=>{if(current())$('status').textContent='미리 듣기 실패. 다른 목소리를 선택해 보세요.'};speechSynthesis.speak(u)};
 if('speechSynthesis' in window){refreshVoices();speechSynthesis.addEventListener?.('voiceschanged',refreshVoices)}
 
 function fmt(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
 $('speed').addEventListener('change',()=>{try{localStorage.setItem('kyoto-speed', $('speed').value)}catch(e){};if(speaking||paused){startSpeech();$('status').textContent='속도 변경으로 해설을 처음부터 다시 재생합니다.'}});try{const saved=localStorage.getItem('kyoto-speed');if(['1','1.25','1.5','1.75','2'].includes(saved))$('speed').value=saved}catch(e){}
-$('toggle').onclick=()=>{if(!('speechSynthesis' in window))return;if(speechSynthesis.paused){speechSynthesis.resume();paused=false;$('toggle').textContent='Ⅱ'}else if(speaking||speechSynthesis.speaking){speechSynthesis.pause();paused=true;$('toggle').textContent='▶'}else if(narrationIndex>0&&narrationIndex<narrationParts.length){speaking=true;speakNext(narrationRun)}else startSpeech()};$('restart').onclick=startSpeech;$('stop').onclick=()=>{stopSpeech();$('status').textContent='음성 중지됨'};
+$('toggle').onclick=()=>{if(!('speechSynthesis' in window))return;if(narrationSelected!==selected||!narrationParts.length){startSpeech();return}if(paused){speechSynthesis.resume();paused=false;$('toggle').textContent='Ⅱ'}else if(speaking){speechSynthesis.pause();paused=true;$('toggle').textContent='▶'}else if(narrationIndex<narrationParts.length){playNarrationAt(narrationIndex)}else startSpeech()};$('restart').onclick=startSpeech;$('stop').onclick=()=>{stopSpeech();$('status').textContent='음성 중지됨'};
 $('map-bottom').onclick=goMap;$('previous').onclick=()=>selected===0?goMap():openPlace(selected-1);$('next').onclick=()=>selected===data.length-1?goMap():openPlace(selected+1);
 
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('detail-screen').classList.contains('active'))goMap()});makePins();

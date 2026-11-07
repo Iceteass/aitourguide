@@ -30,26 +30,60 @@ function render(wrap,{points,pois,route,pinStyle,warning=''}){
    const line=document.createElementNS(links.namespaceURI,'line');line.setAttribute('vector-effect','non-scaling-stroke');links.append(line);
    b.replaceChildren(number,label);labels.push({b,label,anchor,p,line});
   });
+  const legend=document.createElement('details');legend.dataset.mapOverlay='label-legend';legend.className='v-map-label-legend';legend.hidden=true;
+  const summary=document.createElement('summary');summary.textContent='장소 이름 보기';legend.append(summary);
+  const list=document.createElement('ol');legend.append(list);
+  labels.forEach(({b,label,p},i)=>{const item=document.createElement('li'),button=document.createElement('button');button.type='button';button.textContent=(p.number||i+1)+'. '+label.textContent;button.onclick=()=>b.click();item.append(button);list.append(item)});wrap.append(legend);
   const position=()=>{
+   // Restore measurable captions after a previous compact fallback.
+   labels.forEach(({label})=>{label.style.visibility='hidden';label.style.display=''});
    const width=wrap.clientWidth,height=wrap.clientHeight;if(!width||!height)return;
-   const placed=[],pinBoxes=labels.map(({anchor})=>({left:anchor.x*width-24,right:anchor.x*width+24,top:anchor.y*height-24,bottom:anchor.y*height+24}));
-   const overlaps=(a,b)=>a.left<b.right+2&&a.right>b.left-2&&a.top<b.bottom+2&&a.bottom>b.top-2;
-   labels.forEach(({label,anchor,p,line})=>{
-    const candidate=validPoint(p.label_anchor_candidate)?p.label_anchor_candidate:{x:anchor.x+(anchor.x>.65?-.13:.13),y:anchor.y-.04};
-    const half=label.offsetWidth/2,halfHeight=label.offsetHeight/2;
-    let box=null,x=0,y=0;
-    // Candidate anchors are hints: never place a caption over a numbered touch target.
-    for(const cx of [candidate.x*width,anchor.x*width-half-28,anchor.x*width+half+28,width/2]){
-     for(const dy of [0,-32,32,-64,64,-96,96,-128,128]){
-      x=Math.max(half+2,Math.min(width-half-2,cx));y=Math.max(halfHeight+2,Math.min(height-halfHeight-2,candidate.y*height+dy));
-      const next={left:x-half,right:x+half,top:y-halfHeight,bottom:y+halfHeight};
-      if(![...pinBoxes,...placed].some(other=>overlaps(next,other))){box=next;break}
-     }
-     if(box)break;
+   const overlaps=(a,b)=>a.left<b.right+3&&a.right>b.left-3&&a.top<b.bottom+3&&a.bottom>b.top-3;
+   const crosses=(a,b)=>{
+    const turn=(x,y,z)=>(y.x-x.x)*(z.y-x.y)-(y.y-x.y)*(z.x-x.x);
+    const on=(p,q,r)=>Math.abs(turn(p,q,r))<.001&&r.x>=Math.min(p.x,q.x)-.001&&r.x<=Math.max(p.x,q.x)+.001&&r.y>=Math.min(p.y,q.y)-.001&&r.y<=Math.max(p.y,q.y)+.001;
+    return (turn(a.start,a.end,b.start)*turn(a.start,a.end,b.end)<0&&turn(b.start,b.end,a.start)*turn(b.start,b.end,a.end)<0)||on(a.start,a.end,b.start)||on(a.start,a.end,b.end)||on(b.start,b.end,a.start)||on(b.start,b.end,a.end);
+   };
+   const hits=(line,box)=>{
+    const corners=[{x:box.left,y:box.top},{x:box.right,y:box.top},{x:box.right,y:box.bottom},{x:box.left,y:box.bottom}];
+    return corners.some((start,i)=>crosses(line,{start,end:corners[(i+1)%4]}));
+   };
+   const pinBoxes=labels.map(({anchor})=>({left:anchor.x*width-24,right:anchor.x*width+24,top:anchor.y*height-24,bottom:anchor.y*height+24}));
+   // Generate short local connectors first, then solve labels and lines together.
+   // Checking future pins here prevents an early caption from blocking another spot.
+   const candidates=labels.map(({label,anchor,p},index)=>{
+    const start={x:anchor.x*width,y:anchor.y*height},half=label.offsetWidth/2,hh=label.offsetHeight/2,result=[];
+    const hint=validPoint(p.label_anchor_candidate)?{x:p.label_anchor_candidate.x*width,y:p.label_anchor_candidate.y*height}:start;
+    const step=Math.max(8,Math.sqrt(width*height/5000));
+    for(let y=hh+3;y<=height-hh-3;y+=step)for(let x=half+3;x<=width-half-3;x+=step){
+     const box={left:x-half,right:x+half,top:y-hh,bottom:y+hh};
+     if(pinBoxes.some(pin=>overlaps(box,pin)))continue;
+     const dx=x-start.x,dy=y-start.y,ratio=Math.min(half/Math.abs(dx||.001),hh/Math.abs(dy||.001));
+     const line={start,end:{x:x-dx*ratio,y:y-dy*ratio}};
+     if(pinBoxes.some((pin,j)=>j!==index&&hits(line,pin)))continue;
+     result.push({box,line,x,y,score:Math.hypot(dx,dy)+.08*Math.hypot(x-hint.x,y-hint.y)});
     }
-    placed.push(box||{left:x-half,right:x+half,top:y-halfHeight,bottom:y+halfHeight});
+    return result.sort((a,b)=>a.score-b.score).slice(0,160);
+   });
+   const placed=[];let attempts=0;const maxAttempts=12000;
+   const solve=index=>{
+    if(index===labels.length)return true;
+    for(const next of candidates[index]){
+     if(attempts>=maxAttempts)return false;attempts++;
+     if(placed.some(other=>overlaps(next.box,other.box)||hits(next.line,other.box)||hits(other.line,next.box)||crosses(next.line,other.line)))continue;
+     placed.push(next);if(solve(index+1))return true;placed.pop();
+    }
+    return false;
+   };
+   const solved=solve(0);
+   legend.hidden=solved;links.style.display=solved?'':'none';wrap.dataset.labelLayout=solved?'placed':'legend';
+   labels.forEach(({label})=>{label.style.visibility=solved?'':'hidden';label.style.display=solved?'':'none'});
+   if(!solved)return;
+   labels.forEach(({label,anchor,line},i)=>{
+    const {x,y,line:connector}=placed[i];
     label.style.left=(22+x-anchor.x*width)+'px';label.style.top=(22+y-anchor.y*height)+'px';
-    line.setAttribute('x1',1000*anchor.x);line.setAttribute('y1',1000*anchor.y);line.setAttribute('x2',1000*x/width);line.setAttribute('y2',1000*y/height);
+    line.setAttribute('x1',1000*anchor.x);line.setAttribute('y1',1000*anchor.y);
+    line.setAttribute('x2',1000*connector.end.x/width);line.setAttribute('y2',1000*connector.end.y/height);
    });
   };
   observer=new ResizeObserver(position);observer.observe(wrap);position();

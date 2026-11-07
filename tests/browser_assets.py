@@ -50,6 +50,8 @@ try:
     assert page.locator('.v-app-version').inner_text()=='App v'+page.evaluate('APP_VERSION')
     destinations(page);map_detail(page)
     page.wait_for_function("document.querySelector('#narration-mode').value==='tts'")
+    assert page.locator('#v-minus').get_attribute('aria-label')=='이전 문장'
+    assert page.locator('#v-plus').get_attribute('aria-label')=='다음 문장'
     page.locator('#v-all-spots').click();page.locator('#v-map-back').click()
     store_button(page).click();page.locator('[data-action="confirm-download"]').click()
     wait_saved(page)
@@ -64,6 +66,8 @@ try:
     context.set_offline(True);page.reload();check_background(page,'app-splash')
     destinations(page);map_detail(page)
     page.wait_for_function("document.querySelector('#narration-mode').value==='mp3'")
+    assert page.locator('#v-minus').get_attribute('aria-label')=='5초 뒤로'
+    assert page.locator('#v-plus').get_attribute('aria-label')=='5초 앞으로'
     page.locator('#toggle').click()
     page.wait_for_function('!kyotoAudio.player.paused && kyotoAudio.player.currentTime>0')
     page.locator('#toggle').click();assert page.evaluate('kyotoAudio.player.paused')
