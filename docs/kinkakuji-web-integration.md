@@ -1,6 +1,6 @@
 # 금각사 웹 통합 v1.3.0 / 승인된 공개 베타
 
-지도 구현은 PR#9로 main `c37de03fffc809ff3891ee2c5915036bbefe6c2a`에 병합되어 있습니다. 앱은 v1.3.0을 유지합니다. 이번 `feat/publish-kinkakuji-beta` 브랜치는 사용자 공개 베타 승인에 따라 준비된 등록 패치를 적용한 후속 변경입니다. 이미지·원고·기존 후시미 이나리·앱 런타임을 변경하지 않습니다.
+지도 구현 PR #9와 공개 베타 등록 PR #10은 main `33c549753aa6e7f7704c1a765c3d3d6264b22451`에 병합되었습니다. 앱 v1.3.0 및 금각사 `0.1.0-beta.1` 공개 등록은 완료된 상태입니다. 이번 정리는 문서의 상태 표기와 LICENSES.md 무결성 기록만 보정하며, 앱 기능·이미지·원고·후시미 이나리·catalog·버전은 변경하지 않습니다.
 
 ## 등록과 승인 상태
 
@@ -48,9 +48,15 @@ PASS:
 
 ## 게시 및 남은 항목
 
-- 등록승인은 받았지만 원격브랜치/PR/병합/배포는 실제결과를별도확인해야 합니다.
-- 현재로컬검사만으로공개웹배포완료라고판정하지 않습니다.
-- 배포주소: https://iceteass.github.io/aitourguide/ . 병합후Pages배포성공, 실제8스팟흐름/필수자산404/콘솔오류 확인 필요.
-- 이환경에서는 GitHub API/Pages접근이 Forbidden으로차단된 이력이 있습니다. 실제시도결과를사용자에게보고합니다.
+| 상태 | 의미·근거 |
+|---|---|
+| `BETA_PUBLISHED` | 사용자 베타 게시 완료 확인, PR #9·#10 병합, main의 catalog 등록 및 pack.status=published / 0.1.0-beta.1을 재확인했습니다. 게시 작업을 미완료로 되돌리지 않습니다. |
+| `TECHNICAL_VERIFIED` | 위에 기록한 파일·해시·앱 흐름·오프라인 회귀 검사의 실제 수행 범위입니다. 이번 문서 정정에서도 Validator와 Node 검사를 재확인합니다. 실제 발성·실기기 등 미검증 항목을 포함하지 않습니다. |
+| `CONTENT_QA_PENDING` | 이미지·위치·동선 고증과 공개 이용 권리·표기·사찰 정책 검수는 미완료입니다. 베타 게시 승인이나 기술 PASS가 콘텐츠·권리 승인을 뜻하지 않습니다. |
+
+- 게시 주소: https://iceteass.github.io/aitourguide/ . 공개 베타 게시 완료 상태를 유지합니다.
+- GitHub API는 `Forbidden`이었으나 웹 Actions 페이지로 재확인했습니다. main `33c5497`의 [여행팩 검증](https://github.com/Iceteass/aitourguide/actions/runs/42378731455), [UX 회귀](https://github.com/Iceteass/aitourguide/actions/runs/42378731442), [Pages 배포](https://github.com/Iceteass/aitourguide/actions/runs/42378731080)가 모두 `SUCCESS`입니다. Pages run 상세에서도 현재 main SHA를 확인했습니다.
+- LICENSES.md의 과거 TECHNICAL DRAFT / NOT FOR PUBLICATION 표기를 현재 베타 게시 상태와 구분했습니다. 개별 REVIEW_REQUIRED는 유지했습니다.
+- 해당 문서는 팩 files[]에 포함되어 있어 pack.json의 LICENSES.md 항목에 한해 bytes/SHA를 동기화했습니다. 콘텐츠 버전·catalog 등록은 그대로입니다. 기존 오프라인 복사본의 문서는 과거 기록을 유지할 수 있으며, 최신 문서 반영에는 재다운로드가 필요할 수 있습니다. 이번 변경에서 사용자 캐시·사진·설정을 삭제하거나 마이그레이션하지 않습니다.
 - 스팟3육주송의금각인접관계, 스팟5잉어바위형상, 표지/AI이미지외관·권리·사찰정책, 지도/참고길실제공간정합성과CP5고증은 미완료 상태입니다.
 - 기술좌표정합성/베타공개승인은 콘텐츠정확성이나법적권리승인을 뜻하지 않습니다.
