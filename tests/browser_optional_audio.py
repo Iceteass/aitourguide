@@ -31,7 +31,7 @@ with tempfile.TemporaryDirectory(prefix='optional-audio-browser-') as tmp:
    context=browser.new_context();page=context.new_page();errors=[];requests=[];page.on('pageerror',lambda e:errors.append(str(e)));page.on('request',lambda r:requests.append(r.url))
    page.goto(f'http://127.0.0.1:{server.server_port}/aitourguide/')
    page.locator('[data-action=start]').click();page.locator('[data-action=country]').click();page.locator('[data-action=city]').click()
-   page.wait_for_function("document.querySelectorAll('.v-destination-toggle').length===3 && !document.querySelector('.v-destination-toggle').disabled")
+   page.wait_for_function("n=>document.querySelectorAll('.v-destination-toggle').length===n && !document.querySelector('.v-destination-toggle').disabled",arg=len(catalog['published']))
    for name,total in [('fixture-zero',0),('fixture-partial',2)]:
     card=page.locator(f'[data-destination-id="{name}"]');card.locator('.v-destination-toggle').click()
     card.locator('.v-guide-save').click();page.locator('[data-action=confirm-download]').click()

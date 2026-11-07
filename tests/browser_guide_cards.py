@@ -15,7 +15,7 @@ class Handler(SimpleHTTPRequestHandler):
 server=ThreadingHTTPServer(('127.0.0.1',0),partial(Handler,directory=str(ROOT.parent)))
 t=threading.Thread(target=server.serve_forever,daemon=True);t.start();base=f'http://127.0.0.1:{server.server_port}/aitourguide/'
 def arrive(page):
- page.goto(base);page.locator('[data-action=start]').click();page.locator('[data-action=country]').click();page.locator('[data-action=city]').click();expect(page.locator('.v-destination-toggle')).to_be_enabled()
+ page.goto(base);page.locator('[data-action=start]').click();page.locator('[data-action=country]').click();page.locator('[data-action=city]').click();expect(page.locator('.v-destination-toggle').first).to_be_enabled()
 def layout(page):
  data=page.evaluate("""() => {
  const box=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,right:r.right,bottom:r.bottom}};
@@ -35,20 +35,20 @@ try:
  with sync_playwright() as p:
   browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox','--disable-dev-shm-usage'])
   context=browser.new_context(viewport={'width':390,'height':844});page=context.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)));arrive(page)
-  toggle=page.locator('.v-destination-toggle');expect(toggle).to_have_attribute('aria-expanded','false')
+  toggle=page.locator('.v-destination-toggle').first;expect(toggle).to_have_attribute('aria-expanded','false')
   assert page.locator('button button').count()==0
-  assert page.locator('.v-destination-tags span').all_text_contents()==['#후시미구','#신사','#센본도리이']
-  assert not page.locator('.v-guide-main').is_visible()
-  assert page.locator('.v-destination').count()==1
+  assert page.locator('.v-destination-tags').first.locator('span').all_text_contents()==['#후시미구','#신사','#센본도리이']
+  assert not page.locator('.v-guide-main').first.is_visible()
+  assert page.locator('.v-destination').count()==len(CATALOG['destinations'])
   if args.screenshots:page.screenshot(path=str(ROOT/'docs/screenshots/destination-collapsed.png'))
   toggle.focus();page.keyboard.press('Space');expect(toggle).to_have_attribute('aria-expanded','true');expect(toggle).to_be_focused()
   page.keyboard.press('Enter');expect(toggle).to_have_attribute('aria-expanded','false');expect(toggle).to_be_focused()
-  page.locator('.v-destination-image img').click();expect(toggle).to_have_attribute('aria-expanded','true')
-  page.locator('.v-destination-title').click();expect(toggle).to_have_attribute('aria-expanded','false')
+  page.locator('.v-destination-image img').first.click();expect(toggle).to_have_attribute('aria-expanded','true')
+  page.locator('.v-destination-title').first.click();expect(toggle).to_have_attribute('aria-expanded','false')
   expand_guides(page)
-  assert page.locator('.v-guide-tags span').all_text_contents()==['#기본','#역사']
-  assert page.locator('.v-guide-version').inner_text()=='v1.0.0'
-  assert page.locator('.v-guide-main').get_attribute('data-value').endswith('/default')
+  assert page.locator('.v-guide-tags').first.locator('span').all_text_contents()==['#기본','#역사']
+  assert page.locator('.v-guide-version').first.inner_text()=='v1.0.0'
+  assert page.locator('.v-guide-main').first.get_attribute('data-value').endswith('/default')
   for width in [360,390,430]:
    for scale in [1,1.25,1.5,2]:
     page.set_viewport_size({'width':width,'height':844})
@@ -61,7 +61,7 @@ try:
   button=store_button(page);button.focus();button.click();page.locator('[role=dialog]').wait_for()
   first=page.locator('[data-action=dismiss]');expect(first).to_be_focused();page.keyboard.press('Shift+Tab');expect(page.locator('[data-action=confirm-download]')).to_be_focused()
   page.keyboard.press('Escape');expect(store_button(page)).to_be_focused()
-  page.locator('.v-guide-main').click();page.wait_for_function("document.body.classList.contains('v-map')");page.locator('#v-map-back').click();expect(page.locator('.v-guide-main')).to_be_focused()
+  page.locator('.v-guide-main').first.click();page.wait_for_function("document.body.classList.contains('v-map')");page.locator('#v-map-back').click();expect(page.locator('.v-guide-main').first).to_be_focused()
   assert not errors,errors
   context.close();print('PASS: 12 text-size/width layouts, 60px image, 44px controls/alignment, tags/version, expand via image/title/keyboard, focus and dialog trap',flush=True)
 
@@ -71,7 +71,7 @@ try:
    else:route.continue_()
   context.route('**/audio/ko-N1.mp3',hold)
   store_button(page).click();page.locator('[data-action=confirm-download]').click();page.wait_for_function('window.__blockedAudio===true')
-  assert page.locator('.v-guide-save').get_attribute('data-save-state')=='busy';assert page.locator('.v-guide-save').is_disabled()
+  assert page.locator('.v-guide-save').first.get_attribute('data-save-state')=='busy';assert page.locator('.v-guide-save').first.is_disabled()
   page.keyboard.press('Escape');expect(page.locator('[role=dialog]')).to_be_visible();expect(page.locator('[data-action=cancel-download]')).to_be_enabled()
   page.locator('[data-action=cancel-download]').click();held[0].continue_()
   page.locator('[role=dialog]').wait_for(state='detached');expect(store_button(page)).to_have_attribute('data-save-state','missing')
@@ -84,8 +84,14 @@ try:
 
   legacy=json.loads(json.dumps(CATALOG));del legacy['destinations']
   context=browser.new_context(service_workers='block');context.route('**/data/catalog.json',lambda route:route.fulfill(json=legacy));page=context.new_page();arrive(page);expand_guides(page)
-  assert page.locator('.v-destination-tags').inner_text()=='태그 미등록';assert page.locator('.v-guide-version').inner_text()=='버전 미등록';assert page.locator('.v-guide-title').inner_text()=='기본 가이드';context.close()
+  assert page.locator('.v-destination-tags').first.inner_text()=='태그 미등록';assert page.locator('.v-guide-version').first.inner_text()=='버전 미등록';assert page.locator('.v-guide-title').first.inner_text()=='기본 가이드';context.close()
   private=json.loads(json.dumps(CATALOG));private['destinations'][0]['guides'][0]['status']='review'
+  context=browser.new_context(service_workers='block');context.route('**/data/catalog.json',lambda route:route.fulfill(json=private));page=context.new_page();arrive(page)
+  assert page.locator('[data-destination-id="jp-kyoto-fushimi-inari"]').count()==0
+  assert page.locator('[data-destination-id="jp-kyoto-kinkakuji"]').count()==1
+  context.close()
+  for destination in private['destinations']:
+   for guide in destination['guides']:guide['status']='review'
   context=browser.new_context(service_workers='block');context.route('**/data/catalog.json',lambda route:route.fulfill(json=private));page=context.new_page();page.goto(base);page.locator('[data-action=start]').click();page.wait_for_function("document.getElementById('journey-root').getAttribute('aria-busy')==='false'");assert page.locator('[data-action=country]').count()==0;context.close()
   long=json.loads(json.dumps(CATALOG));long['published'][0]['title']='매우 긴 여행지 이름 '*20;long['destinations'][0]['destination_tags']=['아주긴지역태그'*20,'아주긴유형태그'*20,'아주긴특징태그'*20];long['destinations'][0]['guides'][0]['guide_title']='아주 긴 가이드 제목 '*20;long['destinations'][0]['guides'][0]['guide_tags']=['긴가이드태그'*20,'또다른태그'*20]
   context=browser.new_context(service_workers='block',viewport={'width':360,'height':844});context.route('**/data/catalog.json',lambda route:route.fulfill(json=long));page=context.new_page();arrive(page);expand_guides(page);layout(page);context.close()

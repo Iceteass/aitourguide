@@ -14,9 +14,9 @@ https://iceteass.github.io/aitourguide/
 
 GitHub Pages 업데이트 후 Safari 또는 Chrome에서 열어 홈 화면에 추가합니다. 설치 후 **일본 → 교토 → 후시미 이나리 신사 → 기존 관람 가이드 지도(7곳) → 장소 선택 및 MP3 해설** 순서로 이용합니다.
 
-## v1.3.0 지도 통합 준비
+## v1.3.0 지도 통합 및 금각사 베타
 
-선택형 번호·명칭 핀과 SVG 참고 동선을 추가했습니다. 금각사 공개 등록은 승인 대기이며 현재 catalog에는 반영하지 않았습니다. [구현·검증·게시 절차](docs/kinkakuji-web-integration.md)와 [승인 후 적용할 베타 등록 변경안](docs/kinkakuji-publication.patch)을 참고하세요.
+선택형 번호·명칭 핀과 SVG 참고 동선을 지원합니다. 사용자 승인에 따라 금각사 `0.1.0-beta.1`을 catalog에 등록했습니다. 병합·배포 후 **일본 → 교토 → 금각사 → 역사 해설 → 지도 8곳**에서 이용할 수 있으며 MP3 미생성 스팟은 기기 TTS를 사용합니다. 이미지·공간·권리 검수는 미완료 상태입니다. [구현·검증·게시 상태](docs/kinkakuji-web-integration.md)를 참고하세요.
 
 ## v1.2에서 달라진 점
 

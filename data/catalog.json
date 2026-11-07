@@ -13,6 +13,18 @@
       "title": "후시미 이나리 신사",
       "cover": "travel-packs/JP/kyoto/fushimi-inari/cover.jpg",
       "poi_count": 7
+    },
+    {
+      "pack_id": "jp-kyoto-kinkakuji-standard",
+      "pack_version": "0.1.0-beta.1",
+      "country_code": "JP",
+      "country_name": "일본",
+      "city_id": "kyoto",
+      "city_name": "교토",
+      "title": "금각사",
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/pack.json",
+      "cover": "travel-packs/JP/kyoto/kinkakuji-standard/cover.jpg",
+      "poi_count": 8
     }
   ],
   "destinations": [
@@ -38,6 +50,31 @@
           "pack_id": "jp-kyoto-fushimi-inari",
           "pack_version": "1.2.0",
           "path": "travel-packs/JP/kyoto/fushimi-inari/pack.json"
+        }
+      ]
+    },
+    {
+      "destination_id": "jp-kyoto-kinkakuji",
+      "destination_tags": [
+        "기타구",
+        "사찰",
+        "금각"
+      ],
+      "guides": [
+        {
+          "guide_id": "default",
+          "guide_title": "역사 해설",
+          "guide_type": "history",
+          "guide_version": "0.1.0-beta.1",
+          "guide_tags": [
+            "기본",
+            "역사"
+          ],
+          "status": "published",
+          "storage_mode": "legacy-pack",
+          "pack_id": "jp-kyoto-kinkakuji-standard",
+          "pack_version": "0.1.0-beta.1",
+          "path": "travel-packs/JP/kyoto/kinkakuji-standard/pack.json"
         }
       ]
     }

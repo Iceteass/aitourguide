@@ -1,4 +1,4 @@
-"""Actual draft pack + catalog response fixture; never changes public catalog."""
+"""Actual registered pack end-to-end test, with optional catalog fixture override."""
 import argparse,json,hashlib,threading
 from functools import partial
 from pathlib import Path
@@ -7,12 +7,12 @@ from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright,expect
 ROOT=Path(__file__).resolve().parents[1];FOLDER='travel-packs/JP/kyoto/kinkakuji-standard/';KID='jp-kyoto-kinkakuji';FID='jp-kyoto-fushimi-inari'
 pack=json.loads((ROOT/FOLDER/'pack.json').read_text());points=json.loads((ROOT/FOLDER/pack['route']['points']).read_text())['points'];catalog=(ROOT/'tests/fixtures/kinkakuji-catalog.json').read_bytes()
-parser=argparse.ArgumentParser();parser.add_argument('--screenshots',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--screenshots',action='store_true');parser.add_argument('--fixture-catalog',action='store_true');args=parser.parse_args()
 class Handler(SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
  def do_GET(self):
   path=urlsplit(self.path).path
-  if path=='/aitourguide/data/catalog.json':
+  if path=='/aitourguide/data/catalog.json' and args.fixture_catalog:
    self.send_response(200);self.send_header('Content-Type','application/json');self.end_headers();self.wfile.write(catalog);return
   if path.endswith('/kinkakuji-standard/route/path.json') and self.server.bad_path:
    if self.server.bad_path=='missing':self.send_error(404);return
@@ -62,7 +62,7 @@ try:
   page.locator('.v-route-toggle').click();assert not svg.is_visible();page.locator('.v-route-toggle').click();assert svg.is_visible();spots(page)
   images=[str(f.relative_to(ROOT)) for f in (ROOT/FOLDER).rglob('*.jpg')];assert len(images)==10;assert all(page.evaluate('async paths=>Promise.all(paths.map(async path=>{const i=new Image();i.src=path;await i.decode();return i.naturalWidth>0}))',images))
   expected={str(f.relative_to(ROOT)):hashlib.sha256(f.read_bytes()).hexdigest() for f in (ROOT/FOLDER).rglob('*') if f.is_file()}
-  actual=page.evaluate("""async()=>{const c=await caches.open('travel-v12-jp-kyoto-kinkakuji-standard@0.1.0-draft.1'),r={};for(const key of await c.keys()){const b=await(await c.match(key)).arrayBuffer();r[new URL(key.url).pathname.replace('/aitourguide/','')]=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b))).map(n=>n.toString(16).padStart(2,'0')).join('')}return r}""");assert all(actual[k]==v for k,v in expected.items())
+  actual=page.evaluate("""async name=>{const c=await caches.open(name),r={};for(const key of await c.keys()){const b=await(await c.match(key)).arrayBuffer();r[new URL(key.url).pathname.replace('/aitourguide/','')]=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b))).map(n=>n.toString(16).padStart(2,'0')).join('')}return r}""",arg='travel-v12-'+pack['pack_id']+'@'+pack['pack_version']);assert all(actual[k]==v for k,v in expected.items())
   page.locator('#v-map-back').click();enter(page,FID,7);assert page.locator('.v-labelled-pin').count()==0 and page.locator('.v-reference-route').count()==0 and page.locator('.v-route-toggle').count()==0
   page.locator('#hotspots button').first.click();page.wait_for_function("document.querySelector('#narration-mode').value==='mp3'");page.locator('#toggle').click();page.wait_for_function('!kyotoAudio.player.paused && kyotoAudio.player.currentTime>0');page.locator('#toggle').click();page.evaluate('async()=>{await photoPut(0,new Blob(["keep"]));localStorage.setItem("kyoto-speed","1.25")}');page.locator('#v-all-spots').click();page.locator('#v-map-back').click()
   page.evaluate('async()=>{await navigator.serviceWorker.ready}');page.reload();page.wait_for_function('navigator.serviceWorker.controller!==null');context.set_offline(True);arrive(page);enter(page,KID,8);assert page.locator('.v-reference-route polyline').count()==5;spots(page);page.locator('#v-map-back').click()

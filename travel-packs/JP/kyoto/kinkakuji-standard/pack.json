@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0.0",
   "pack_id": "jp-kyoto-kinkakuji-standard",
-  "pack_version": "0.1.0-draft.1",
-  "status": "draft",
+  "pack_version": "0.1.0-beta.1",
+  "status": "published",
   "locale": "ko-KR",
   "country_code": "JP",
   "country_name": "일본",
   "city_id": "kyoto",
   "city_name": "교토",
   "title": "금각사",
-  "description": "교토 금각사 8개 스팟 — 게시 전 기술 검수 초안",
+  "description": "교토 금각사 8개 스팟 — 공개 베타, 이미지·공간·권리 검수 미완료",
   "cover": "cover.jpg",
   "route": {
     "image": "route/route-map.jpg",
