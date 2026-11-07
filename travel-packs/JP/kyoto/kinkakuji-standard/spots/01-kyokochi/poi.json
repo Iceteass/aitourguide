@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "kyokochi",
+  "sequence": 1,
+  "title": "경호지",
+  "title_ja": "鏡湖池",
+  "summary": "연못의 섬과 석조 배치, 금각의 반영",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "ec7a3a4d47671765e781e0ac435129a3041ce675410d43567dbb4ea6bff6eaf6",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "CONTENT_APPROVED",
+  "visual_review": "REVIEW_REQUIRED"
+}

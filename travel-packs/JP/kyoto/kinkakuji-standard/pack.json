@@ -1,0 +1,255 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "jp-kyoto-kinkakuji-standard",
+  "pack_version": "0.1.0-draft.1",
+  "status": "draft",
+  "locale": "ko-KR",
+  "country_code": "JP",
+  "country_name": "일본",
+  "city_id": "kyoto",
+  "city_name": "교토",
+  "title": "금각사",
+  "description": "교토 금각사 8개 스팟 — 게시 전 기술 검수 초안",
+  "cover": "cover.jpg",
+  "route": {
+    "image": "route/route-map.jpg",
+    "points": "route/points.json",
+    "path": "route/path.json"
+  },
+  "poi_ids": [
+    "kyokochi",
+    "shariden-kinkaku",
+    "rikushunomatsu",
+    "gingasen-gankasui",
+    "ryumontaki-kinkakujigaki",
+    "anmintaku-hakujanotsuka",
+    "sekkatei",
+    "fudodo"
+  ],
+  "spots": [
+    {
+      "poi_id": "kyokochi",
+      "sequence": 1,
+      "dir": "spots/01-kyokochi",
+      "meta": "spots/01-kyokochi/poi.json"
+    },
+    {
+      "poi_id": "shariden-kinkaku",
+      "sequence": 2,
+      "dir": "spots/02-shariden-kinkaku",
+      "meta": "spots/02-shariden-kinkaku/poi.json"
+    },
+    {
+      "poi_id": "rikushunomatsu",
+      "sequence": 3,
+      "dir": "spots/03-rikushunomatsu",
+      "meta": "spots/03-rikushunomatsu/poi.json"
+    },
+    {
+      "poi_id": "gingasen-gankasui",
+      "sequence": 4,
+      "dir": "spots/04-gingasen-gankasui",
+      "meta": "spots/04-gingasen-gankasui/poi.json"
+    },
+    {
+      "poi_id": "ryumontaki-kinkakujigaki",
+      "sequence": 5,
+      "dir": "spots/05-ryumontaki-kinkakujigaki",
+      "meta": "spots/05-ryumontaki-kinkakujigaki/poi.json"
+    },
+    {
+      "poi_id": "anmintaku-hakujanotsuka",
+      "sequence": 6,
+      "dir": "spots/06-anmintaku-hakujanotsuka",
+      "meta": "spots/06-anmintaku-hakujanotsuka/poi.json"
+    },
+    {
+      "poi_id": "sekkatei",
+      "sequence": 7,
+      "dir": "spots/07-sekkatei",
+      "meta": "spots/07-sekkatei/poi.json"
+    },
+    {
+      "poi_id": "fudodo",
+      "sequence": 8,
+      "dir": "spots/08-fudodo",
+      "meta": "spots/08-fudodo/poi.json"
+    }
+  ],
+  "files": [
+    {
+      "path": "LICENSES.md",
+      "bytes": 2540,
+      "sha256": "62a95203174a6fefb708082c0b6828fc30a2291afd5e2fda2c121746fda7fca9",
+      "role": "rights-record"
+    },
+    {
+      "path": "cover.jpg",
+      "bytes": 796951,
+      "sha256": "12059018e073824dba17dcbaa03a4791f1ba9046612edaa3f110c957e7ef466e",
+      "role": "cover"
+    },
+    {
+      "path": "route/path.json",
+      "bytes": 5056,
+      "sha256": "e3a7c3d49e93c354fcdaa2e1c3240d4a46dbcffa8318b92bcf5aec0424742912",
+      "role": "reference-path"
+    },
+    {
+      "path": "route/points.json",
+      "bytes": 4195,
+      "sha256": "0fdd2be9cd6fed953748fa32f29de32fad828953063b5792d460d3ad56d59245",
+      "role": "route-points"
+    },
+    {
+      "path": "route/route-map.jpg",
+      "bytes": 1303522,
+      "sha256": "22ad8d48a7ff8b9fbb9084df30b0de2baf42fcd8bf5e527502e751fed76eda08",
+      "role": "route-map"
+    },
+    {
+      "path": "spots/01-kyokochi/images/main.jpg",
+      "bytes": 933569,
+      "sha256": "58a800e36957f1b739144c7dff1c7a00ff0d5f23c6c0ad735a4ef2fa64f2b363",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/01-kyokochi/narration.md",
+      "bytes": 864,
+      "sha256": "ec7a3a4d47671765e781e0ac435129a3041ce675410d43567dbb4ea6bff6eaf6",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/01-kyokochi/poi.json",
+      "bytes": 944,
+      "sha256": "75bd5621775c6504fc406d611db545e7f507d561e8bed91b3b2a35162211ec74",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/02-shariden-kinkaku/images/main.jpg",
+      "bytes": 748444,
+      "sha256": "089a69f6384e48170a3141708b112c9e91616ff307c7ee704dd7665d1b97b6fc",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/02-shariden-kinkaku/narration.md",
+      "bytes": 895,
+      "sha256": "d335a8001446d37ad6a02e8cd20ef839e51d1c5a3f0c8e2cd2bf4b02e8608d80",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/02-shariden-kinkaku/poi.json",
+      "bytes": 987,
+      "sha256": "a141254fb0f182d6728b98971034b2668526f7c1782a63b405d10cef96a1e12a",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/03-rikushunomatsu/images/main.jpg",
+      "bytes": 914366,
+      "sha256": "748f36a1dd0028fb19cb58e0f4a5275bdad8ec629ed0eb4e2370593bad270329",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/03-rikushunomatsu/narration.md",
+      "bytes": 819,
+      "sha256": "dfc2f4f4da9f743e9e8eb8bd9d9948d32bf15e7a45b094f5b5a1f5d7ff8b8930",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/03-rikushunomatsu/poi.json",
+      "bytes": 955,
+      "sha256": "d897c13baebeb882d8fcd20b901fc7b422a9b13ca77de3388f6cc7b7bf71da73",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/04-gingasen-gankasui/images/main.jpg",
+      "bytes": 915863,
+      "sha256": "85ba0cea58f2a0894b2dd78bd4419470f9229023c10f6157fc2bc39711afdac2",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/04-gingasen-gankasui/narration.md",
+      "bytes": 784,
+      "sha256": "38376bacc4360f15e3527366759c6b97d823f62f646d222108f13ee5577e4acc",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/04-gingasen-gankasui/poi.json",
+      "bytes": 982,
+      "sha256": "fcd8ceba3f6e299a167ae674e208a21309ee5a2020985912d848a5fbfb69fa50",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/05-ryumontaki-kinkakujigaki/images/main.jpg",
+      "bytes": 981965,
+      "sha256": "abab62a1da781ee9759daece4af91de4b9405f735b553813d77bd257e5e4ebd9",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/05-ryumontaki-kinkakujigaki/narration.md",
+      "bytes": 799,
+      "sha256": "d9bc3e055dcf079b1896b88ce65f4407454435de097a0002b7bec6c9c737625c",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/05-ryumontaki-kinkakujigaki/poi.json",
+      "bytes": 1012,
+      "sha256": "b3f6c65664798cbe9c9ebb03c20b6e2cb724096c446df200fdbf6c47a568cb48",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/06-anmintaku-hakujanotsuka/images/main.jpg",
+      "bytes": 969380,
+      "sha256": "81903a9515246acdb8f93b7f5049229ac78e236b49e03e57fc28d31c0b6c970d",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/06-anmintaku-hakujanotsuka/narration.md",
+      "bytes": 807,
+      "sha256": "a882dcbe55b2aeeaca8d19594232886d80d84ce0538a4935b1be66e0a8ec4c95",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/06-anmintaku-hakujanotsuka/poi.json",
+      "bytes": 975,
+      "sha256": "0c55251d40e5304f0df4d91c914fb3866227c251fb86fc080426d623ecac5524",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/07-sekkatei/images/main.jpg",
+      "bytes": 937151,
+      "sha256": "bebbafe9d97d41a6df89e8f9943fff20adb0dae9aaeaec198e7e4833c227ec33",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/07-sekkatei/narration.md",
+      "bytes": 859,
+      "sha256": "017d4ab2ffdc94775740a8b800125a0f36438490c01c5b69081d60dac18c1b26",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/07-sekkatei/poi.json",
+      "bytes": 944,
+      "sha256": "53af0621f4964a7424f0d1d627b43022be71e7d421fd14eb9976cc7a55845005",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/08-fudodo/images/main.jpg",
+      "bytes": 908058,
+      "sha256": "53359009afe6703a8d2b1f534cb40ba29c289940e84b39b3e9964367458d6966",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/08-fudodo/narration.md",
+      "bytes": 863,
+      "sha256": "413583a0ec4ed277ca4c089dcf3acaec974d857cc6bb5ac63d98c69a20f2f86a",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/08-fudodo/poi.json",
+      "bytes": 930,
+      "sha256": "8181def6418f98d7004bf421378ffc3215d7e25e63db5fec694b0affc7750920",
+      "role": "spot-metadata"
+    }
+  ]
+}
