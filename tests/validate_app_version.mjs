@@ -42,6 +42,7 @@ async function runWorker(version,failInstall=false,{badManifest=false,missingIma
   assert(installed.includes('./app/version.js'),'Offline shell must contain version source');
   assert(installed.includes('./app/assets.js'),'Offline shell must contain image selector');
   assert(installed.includes('./app/catalog.js'),'Offline shell must contain catalog adapter');
+  assert(installed.includes('./app/map-overlay.js'),'Offline shell must contain map overlays');
   assert(stored.has('https://example.test/aitourguide/assets/manifest.json'),'Offline shell must contain the validated image manifest');
   assert(installed.includes('./assets/app/fallbacks/road-fallback.svg'),'Offline fallback must be required');
  }

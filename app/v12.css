@@ -150,3 +150,14 @@ body.v-detail #story .narration-segment.tts-current{
   box-decoration-break:clone;
 }
 body.v-detail #story{overflow-y:auto;scroll-behavior:auto}
+/* Opt-in normalized overlays: legacy maps retain their embedded number artwork. */
+.v-reference-route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.v-reference-route polyline{fill:none;stroke:#fff4a3;stroke-width:3;stroke-dasharray:7 5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 1px #102734)}
+body.v-map #map-screen .hotspot.v-labelled-pin{width:44px;height:44px;aspect-ratio:auto;border:0;overflow:visible;color:#fff;background:none;font-size:14px}
+.v-pin-number{position:absolute;left:6px;top:6px;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;border:2px solid #fff;background:#a71e31;box-shadow:0 1px 5px #0009;line-height:1;font-weight:800}
+.v-pin-label{position:absolute;transform:translate(-50%,-50%);max-width:120px;padding:6px 8px;border:1px solid #fff9;border-radius:14px;background:#092739ed;color:white;font-size:11px;line-height:1.3;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 1px 4px #0008}
+.v-route-toggle{position:absolute;z-index:5;bottom:40px;right:8px;min-height:44px;border:1px solid #fff9;border-radius:12px;background:#092739ed;color:#fff;padding:6px 10px;font-size:12px}
+.v-route-notice{position:absolute;z-index:4;bottom:0;left:0;right:0;margin:0;padding:6px 8px;background:#092739ed;color:#fff;font-size:10px;line-height:1.35;pointer-events:none}
+
+.v-pin-connectors{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.v-pin-connectors line{stroke:#e5f5ffb3;stroke-width:1.2}

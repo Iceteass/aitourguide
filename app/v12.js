@@ -144,6 +144,8 @@ async function loadPack(entry){
  const pointMap=new Map(points.points.map(p=>[p.poi_id,p]));
  if(spotArray.some(p=>!pointMap.has(p.poi_id)))throw Error("관람 지도 좌표가 누락되었습니다.");
  state.pois=spotArray;state.points=spotArray.map(p=>pointMap.get(p.poi_id));
+ state.routePath=null;state.routeWarning='';
+ if(metadata.route.path){try{state.routePath=await readJSON(baseUrl(packPath(metadata.route.path)))}catch(error){state.routeWarning='추천 경로를 불러오지 못했습니다. 지도 스팟은 계속 이용할 수 있습니다.'}}
  state.offline=await checkOffline();state.message="";
  syncLegacy();
 }
@@ -154,6 +156,7 @@ function syncLegacy(){
  photos.splice(0,photos.length,...p.map(x=>({src:x.image.type==="photograph"?baseUrl(x.base+x.image.path):(x.image.remote_url||baseUrl(x.base+x.image.path)),local:baseUrl(x.base+x.image.path),credit:x.image.credit_url||"",label:x.title,remote:x.image.remote_url||"",kind:x.image.type})));
  coords.splice(0,coords.length,...state.points.map(pt=>[100*pt.x,100*pt.y]));
  $("hotspots").replaceChildren();$("mini").replaceChildren();makePins();
+ window.JourneyMapOverlay.render($("map-screen").querySelector(".map-wrap"),{points:state.points,pois:p,route:state.routePath,pinStyle:state.pack.route.pin_style,warning:state.routeWarning});
  const map=$("map-screen").querySelector(".map-wrap img");map.alt=state.pack.title+" 관람 가이드 지도";map.src=baseUrl(packPath(state.pack.route.image));$("v-map-top-label").textContent="관람 가이드 지도 · "+p.length+"개 장소";
  map.onload=()=>{if(map.naturalWidth&&map.naturalHeight)document.documentElement.style.setProperty("--v-map-ratio",map.naturalWidth+"/"+map.naturalHeight)};
  const tracks=p.map(x=>x.audio&&x.audio.status!=="not_generated"?{name:x.base+x.audio.path,bytes:x.audio.bytes,sha256:x.audio.sha256}:null);
