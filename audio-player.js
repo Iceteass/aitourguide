@@ -58,7 +58,7 @@
   voiceBox.parentNode.insertBefore(controls, voiceBox);
   const mode = $('narration-mode');
   mode.value='tts'; try {localStorage.setItem('kyoto-narration-mode','tts')} catch(_) {}
-  function updateModeUI() { mode.disabled = !TRACKS[selected]; controls.style.display = TRACKS.some(Boolean) ? '' : 'none'; voiceBox.style.display = mode.value === 'mp3' ? 'none' : ''; $('seek').disabled = mode.value !== 'mp3' || !Number.isFinite(player.duration) }
+  function updateModeUI() { mode.disabled = !TRACKS[selected]; controls.style.display = TRACKS.some(Boolean) ? '' : 'none'; voiceBox.style.display = mode.value === 'mp3' ? 'none' : ''; $('seek').disabled = mode.value !== 'mp3' || !Number.isFinite(player.duration); window.dispatchEvent?.(new Event('journey-narration-mode')) }
   function fmt(sec) { sec=Math.max(0,Math.floor(Number(sec)||0)); return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0') }
   function stopAudio() { active=false;player.pause();player.removeAttribute('src');player.load();duration=0;$('seek').max=100;$('seek').value=0;$('seek').disabled=true; }
   window.stopSpeech = function() { stopAudio(); return originalStopSpeech() };

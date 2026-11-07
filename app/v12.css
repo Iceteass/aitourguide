@@ -161,3 +161,10 @@ body.v-map #map-screen .hotspot.v-labelled-pin{width:44px;height:44px;aspect-rat
 
 .v-pin-connectors{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
 .v-pin-connectors line{stroke:#e5f5ffb3;stroke-width:1.2}
+
+/* Compact maps retain full spot captions in a single readable legend. */
+.v-map-label-legend{position:absolute;z-index:6;top:64px;right:8px;max-width:calc(100% - 16px);max-height:45%;overflow:auto;border:1px solid #fff9;border-radius:12px;background:#092739f5;color:#fff;padding:8px;font-size:13px;line-height:1.4}
+.v-map-label-legend[hidden]{display:none}
+.v-map-label-legend summary{cursor:pointer;padding:12px 4px;min-height:44px}
+.v-map-label-legend ol{list-style:none;padding:0;margin:6px 0 0}
+.v-map-label-legend button{display:block;width:100%;min-height:44px;text-align:left;border:0;background:transparent;color:inherit;font:inherit;padding:6px;white-space:normal;overflow-wrap:anywhere}

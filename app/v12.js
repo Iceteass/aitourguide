@@ -308,11 +308,19 @@ function installAudio(){
  $("v-prev-spot").onclick=()=>selected===0?goMap():openPlace(selected-1);
  $("v-next-spot").onclick=()=>selected>=data.length-1?goMap():openPlace(selected+1);
  $("v-all-spots").onclick=()=>goMap();
- $("v-reset").onclick=()=>{const a=window.kyotoAudio?.player;if(mode?.value==="mp3"&&a){a.currentTime=0;seek.value=0;clock.textContent="0:00"}};
+ $("v-reset").onclick=()=>{const a=window.kyotoAudio?.player;if(mode?.value==="mp3"&&a){a.currentTime=0;seek.value=0;clock.textContent="0:00"}else window.historyJourneyTTS.restart()};
  for(const [id,n] of [["v-minus",-5],["v-plus",5]])$(id).onclick=()=>{
    const a=window.kyotoAudio?.player;
    if(mode?.value==="mp3"&&a&&Number.isFinite(a.duration)&&a.duration>0)a.currentTime=Math.min(a.duration,Math.max(0,a.currentTime+n));
+   else if(mode?.value!=="mp3")window.historyJourneyTTS.moveSentence(Math.sign(n));
  };
+ const updatePlaybackActions=()=>{
+  const mp3=mode?.value==="mp3";
+  for(const [id,title,icon] of [["v-minus",mp3?"5초 뒤로":"이전 문장",mp3?"minus":"prev"],["v-plus",mp3?"5초 앞으로":"다음 문장",mp3?"plus":"next"]]){
+   const b=$(id);b.setAttribute("aria-label",title);b.setAttribute("title",title);b.innerHTML=icons[icon];
+  }
+ };
+ window.addEventListener('journey-narration-mode',updatePlaybackActions);updatePlaybackActions();
  const a=window.kyotoAudio?.player;
  if(a){
    a.addEventListener("loadedmetadata",()=>{if(Number.isFinite(a.duration))total.textContent=toTime(a.duration)});

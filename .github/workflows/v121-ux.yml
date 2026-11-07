@@ -12,6 +12,7 @@ on:
       - 'tests/validate_v121.mjs'
       - 'tests/validate_mp3_runtime.mjs'
       - 'tests/validate_narration_sync.mjs'
+      - 'tests/validate_tts_state.mjs'
       - 'tests/validate_app_version.mjs'
       - 'tests/validate_assets.mjs'
       - 'tests/validate_catalog.mjs'
@@ -31,6 +32,7 @@ jobs:
       - run: node tests/validate_v121.mjs
       - run: node tests/validate_mp3_runtime.mjs
       - run: node tests/validate_narration_sync.mjs
+      - run: node tests/validate_tts_state.mjs
       - run: node tests/validate_app_version.mjs
       - run: node tests/validate_assets.mjs
       - run: node tests/validate_catalog.mjs
