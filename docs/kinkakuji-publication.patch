@@ -1,0 +1,74 @@
+--- a/data/catalog.json
++++ b/data/catalog.json
+@@ -13,6 +13,18 @@
+       "title": "후시미 이나리 신사",
+       "cover": "travel-packs/JP/kyoto/fushimi-inari/cover.jpg",
+       "poi_count": 7
++    },
++    {
++      "pack_id": "jp-kyoto-kinkakuji-standard",
++      "pack_version": "0.1.0-beta.1",
++      "country_code": "JP",
++      "country_name": "일본",
++      "city_id": "kyoto",
++      "city_name": "교토",
++      "title": "금각사",
++      "path": "travel-packs/JP/kyoto/kinkakuji-standard/pack.json",
++      "cover": "travel-packs/JP/kyoto/kinkakuji-standard/cover.jpg",
++      "poi_count": 8
+     }
+   ],
+   "destinations": [
+@@ -40,6 +52,31 @@
+           "path": "travel-packs/JP/kyoto/fushimi-inari/pack.json"
+         }
+       ]
++    },
++    {
++      "destination_id": "jp-kyoto-kinkakuji",
++      "destination_tags": [
++        "기타구",
++        "사찰",
++        "금각"
++      ],
++      "guides": [
++        {
++          "guide_id": "default",
++          "guide_title": "역사 해설",
++          "guide_type": "history",
++          "guide_version": "0.1.0-beta.1",
++          "guide_tags": [
++            "기본",
++            "역사"
++          ],
++          "status": "published",
++          "storage_mode": "legacy-pack",
++          "pack_id": "jp-kyoto-kinkakuji-standard",
++          "pack_version": "0.1.0-beta.1",
++          "path": "travel-packs/JP/kyoto/kinkakuji-standard/pack.json"
++        }
++      ]
+     }
+   ]
+ }
+--- a/travel-packs/JP/kyoto/kinkakuji-standard/pack.json
++++ b/travel-packs/JP/kyoto/kinkakuji-standard/pack.json
+@@ -1,15 +1,15 @@
+ {
+   "schema_version": "1.0.0",
+   "pack_id": "jp-kyoto-kinkakuji-standard",
+-  "pack_version": "0.1.0-draft.1",
+-  "status": "draft",
++  "pack_version": "0.1.0-beta.1",
++  "status": "published",
+   "locale": "ko-KR",
+   "country_code": "JP",
+   "country_name": "일본",
+   "city_id": "kyoto",
+   "city_name": "교토",
+   "title": "금각사",
+-  "description": "교토 금각사 8개 스팟 — 게시 전 기술 검수 초안",
++  "description": "교토 금각사 8개 스팟 — 공개 베타, 이미지·공간·권리 검수 미완료",
+   "cover": "cover.jpg",
+   "route": {
+     "image": "route/route-map.jpg",

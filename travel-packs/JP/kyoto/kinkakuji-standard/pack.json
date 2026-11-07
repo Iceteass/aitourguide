@@ -14,7 +14,8 @@
   "route": {
     "image": "route/route-map.jpg",
     "points": "route/points.json",
-    "path": "route/path.json"
+    "path": "route/path.json",
+    "pin_style": "number-label"
   },
   "poi_ids": [
     "kyokochi",
