@@ -156,7 +156,7 @@ function syncLegacy(){
  $("hotspots").replaceChildren();$("mini").replaceChildren();makePins();
  const map=$("map-screen").querySelector(".map-wrap img");map.alt=state.pack.title+" 관람 가이드 지도";map.src=baseUrl(packPath(state.pack.route.image));$("v-map-top-label").textContent="관람 가이드 지도 · "+p.length+"개 장소";
  map.onload=()=>{if(map.naturalWidth&&map.naturalHeight)document.documentElement.style.setProperty("--v-map-ratio",map.naturalWidth+"/"+map.naturalHeight)};
- const tracks=p.map(x=>({name:x.base+x.audio.path,bytes:x.audio.bytes,sha256:x.audio.sha256}));
+ const tracks=p.map(x=>x.audio&&x.audio.status!=="not_generated"?{name:x.base+x.audio.path,bytes:x.audio.bytes,sha256:x.audio.sha256}:null);
  window.kyotoAudio?.setTracks?.(tracks,{cacheName:baseName(),completeMarker:marker()});
  window.kyotoAudio?.selectDefault?.(selected);
 }

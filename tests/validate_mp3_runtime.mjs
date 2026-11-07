@@ -10,6 +10,7 @@ const audio={
 };
 function el(id){
  if(elements.has(id))return elements.get(id);
+ const assigned=[...elements.values()].find(n=>n.id===id);if(assigned)return assigned;
  const n={id,textContent:'',innerHTML:'',value:id==='speed'?'1':'tts',disabled:false,style:{},
   parentNode:{insertBefore(){},appendChild(){}},classList:{add(){},remove(){}},
   appendChild(){},setAttribute(){},addEventListener(type,fn){events.set(id+':'+type,fn)},
@@ -35,7 +36,7 @@ const cache={async match(key){
 const caches={keys:async()=>isAvailable?[cacheName]:[],open:async()=>cache};
 window.caches=caches; // Browser window exposes CacheStorage alongside global caches.
 const navigator={onLine:true};
-new Function('document','window','localStorage','caches','navigator','selected','URL',code)
+const setSelected=new Function('document','window','localStorage','caches','navigator','selected','URL',code+';return i=>{selected=i};')
  (document,window,localStorage,caches,navigator,0,URL);
 const manager=window.kyotoAudio;
 assert(manager,'Player must register on window.kyotoAudio');
@@ -62,3 +63,21 @@ assert.equal(el('narration-mode').value,'tts','Audio error must switch to TTS');
 assert.equal(window.ttsCalls,2,'Audio playback error must actually invoke TTS');
 assert.equal(audio.playCalls,2);
 console.log('PASS: missing MP3 selects TTS, cached MP3 plays, errors fall back, no completion dialog');
+
+// A hole must preserve the following POI's audio index; switching packs clears mode.
+manager.setTracks([null,{name,bytes:452396,sha256:'test'}],{cacheName,completeMarker:marker});
+assert.equal(manager.tracks.length,2);
+assert.equal(manager.tracks[0],null);
+await manager.selectDefault(0);
+assert.equal(el('narration-mode').value,'tts');
+await new Promise(resolve=>setTimeout(resolve,0));
+assert.match(el('offline-audio-status').textContent,/1\/1개/,'Pack counter must survive POI selection verification');
+setSelected(1);await manager.selectDefault(1);
+assert.equal(el('narration-mode').value,'mp3');
+manager.start();assert.equal(audio.src,new URL(name,document.baseURI).href);
+manager.setTracks([],{});
+assert.equal(manager.tracks.length,0);
+assert.equal(el('narration-mode').value,'tts');
+assert.equal(manager.hasCachedMp3,false);
+assert.equal(el('offline-audio').disabled,true);
+console.log('PASS: sparse audio indices and empty pack reset');
