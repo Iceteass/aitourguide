@@ -1,15 +1,16 @@
 {
   "schema_version": "1.0.0",
   "pack_id": "jp-kyoto-kiyomizudera-standard",
-  "pack_version": "0.1.0-draft.5",
-  "status": "draft",
+  "pack_version": "0.1.0-beta.1",
+  "status": "published",
+  "content_qa_status": "CONTENT_QA_PENDING",
   "locale": "ko-KR",
   "country_code": "JP",
   "country_name": "일본",
   "city_id": "kyoto",
   "city_name": "교토",
   "title": "청수사",
-  "description": "교토 청수사 8스팟 기본 역사 가이드 — 모든 스팟 AI 사진급 재구성 이미지 후보 배치(07·08 저해상도 소스 보간), 출판 전 검수 필요",
+  "description": "청수사 공개 베타 · AI 재구성 이미지(07·08 저해상도 보간), 원고·지도·외형·권리 검수 미완료",
   "destination_id": "jp-kyoto-kiyomizudera",
   "destination_tags": [
     "히가시야마구",
@@ -93,8 +94,8 @@
   "files": [
     {
       "path": "LICENSES.md",
-      "bytes": 6690,
-      "sha256": "f6adb47c09aabe512ec91117b50e57a7e57642ddb67263421eb3c948b36ee221",
+      "bytes": 7589,
+      "sha256": "0a70d99d79e37fc1a08586c346d2d48459e19368b3b0dafba787bfe5f759671c",
       "role": "rights-record"
     },
     {

@@ -25,6 +25,18 @@
       "path": "travel-packs/JP/kyoto/kinkakuji-standard/pack.json",
       "cover": "travel-packs/JP/kyoto/kinkakuji-standard/cover.jpg",
       "poi_count": 8
+    },
+    {
+      "pack_id": "jp-kyoto-kiyomizudera-standard",
+      "pack_version": "0.1.0-beta.1",
+      "country_code": "JP",
+      "country_name": "일본",
+      "city_id": "kyoto",
+      "city_name": "교토",
+      "title": "청수사",
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/pack.json",
+      "cover": "travel-packs/JP/kyoto/kiyomizudera-standard/cover.jpg",
+      "poi_count": 8
     }
   ],
   "destinations": [
@@ -75,6 +87,31 @@
           "pack_id": "jp-kyoto-kinkakuji-standard",
           "pack_version": "0.1.0-beta.1",
           "path": "travel-packs/JP/kyoto/kinkakuji-standard/pack.json"
+        }
+      ]
+    },
+    {
+      "destination_id": "jp-kyoto-kiyomizudera",
+      "destination_tags": [
+        "히가시야마구",
+        "사찰",
+        "청수 무대"
+      ],
+      "guides": [
+        {
+          "guide_id": "default",
+          "guide_title": "기본 역사 가이드",
+          "guide_type": "history",
+          "guide_version": "0.1.0-beta.1",
+          "guide_tags": [
+            "AI 재구성",
+            "검수중"
+          ],
+          "status": "published",
+          "storage_mode": "legacy-pack",
+          "pack_id": "jp-kyoto-kiyomizudera-standard",
+          "pack_version": "0.1.0-beta.1",
+          "path": "travel-packs/JP/kyoto/kiyomizudera-standard/pack.json"
         }
       ]
     }
