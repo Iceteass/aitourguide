@@ -94,8 +94,8 @@
   "files": [
     {
       "path": "LICENSES.md",
-      "bytes": 7589,
-      "sha256": "0a70d99d79e37fc1a08586c346d2d48459e19368b3b0dafba787bfe5f759671c",
+      "bytes": 10276,
+      "sha256": "18404c0cffa9251e35fb5a603c20ec5227217c8d3ea012802e3e75a065587d61",
       "role": "rights-record"
     },
     {
@@ -142,8 +142,8 @@
     },
     {
       "path": "spots/02-saimon/images/main.jpg",
-      "bytes": 806124,
-      "sha256": "6569c587edcc1c3d5d06841a48a3c87e71f12cf0129862b31530668fb9e24140",
+      "bytes": 391121,
+      "sha256": "09f42a24ff24a538a398bb7fa538188d1e7a89f3ab9f7a43caf3c4af3e6b0cb9",
       "role": "spot-illustration"
     },
     {
@@ -154,8 +154,8 @@
     },
     {
       "path": "spots/02-saimon/poi.json",
-      "bytes": 966,
-      "sha256": "0ec1b974cd6120935666cd54ccb149259f5477d2ef414e9387bf3e6535d77c62",
+      "bytes": 1101,
+      "sha256": "7ab57b647c697011a6ab3a1a2a664ec391c998c9d4017581d7cdb18ab73e2388",
       "role": "spot-metadata"
     },
     {
@@ -232,8 +232,8 @@
     },
     {
       "path": "spots/07-otowa/images/main.jpg",
-      "bytes": 334296,
-      "sha256": "b9359337d8490a48ccd0fe357011824a35f6952569df1f81b12d4a94a1b02dfd",
+      "bytes": 586114,
+      "sha256": "82b69da3143aa695945037d0690f7c520e864fe4c101e715f76521d6a2de3150",
       "role": "spot-illustration"
     },
     {
@@ -244,14 +244,14 @@
     },
     {
       "path": "spots/07-otowa/poi.json",
-      "bytes": 1145,
-      "sha256": "b2dd6aaed39e797c599d00aa39ed40b16299b2d1bd6ad9cc3040f91f01953c63",
+      "bytes": 1299,
+      "sha256": "ae4766863e1978975442a58b25261db5bc78c27080354694ca3c02ca2442a5be",
       "role": "spot-metadata"
     },
     {
       "path": "spots/08-koyasuto/images/main.jpg",
-      "bytes": 322626,
-      "sha256": "46d7c6194536748715d06d4022a418c1c5fe361bdba3e64a482a0a9338906e90",
+      "bytes": 324753,
+      "sha256": "fce9bd62b9ef42320748702e41b43f9e01ef5577dd655f96e711320f2067181a",
       "role": "spot-illustration"
     },
     {
@@ -262,8 +262,8 @@
     },
     {
       "path": "spots/08-koyasuto/poi.json",
-      "bytes": 1131,
-      "sha256": "7b9608c03abd2d0c7525f58fabc5ac8f6a901f9ffb82f3ed4c9d1382764f79e5",
+      "bytes": 1282,
+      "sha256": "4d5dfd30913ca8fcad04ccb448a55ce31be2e24e08f48e22ac6e4848c5ea361e",
       "role": "spot-metadata"
     }
   ]

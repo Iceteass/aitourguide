@@ -1,3 +1,16 @@
+# 이미지 교체 검수 후보 — 운영 미게시
+
+이 절은 현재 작업 브랜치의 이미지 출처를 설명한다. 아래 베타 이력의 AI 전체 표기는 기존 자산에 대한 기록이다. 이미지 교체 승인과 사용권·고증 승인은 별개이며 REVIEW_REQUIRED를 유지한다.
+
+- 02-saimon: 사용자 제공 실사진. 지정 원출처 [Kiyomizu-dera4.jpg](https://commons.wikimedia.org/wiki/File:Kiyomizu-dera4.jpg), 저작자 Vitalie Ciubotaru, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). 업로드 중 리사이즈·재인코딩 가능; Commons 원본과 바이트 동일성 미확인. 저작자표시 및 해당 CC BY-SA의 동일조건변경허락·수정표시 조건을 유지해야 한다. 파일 설명 페이지 접근이 proxy 403으로 차단되어 저작자·라이선스 독립 검증은 미완료이며 게시 전 확인 필요. 로컬 파일 SHA256: 09f42a24ff24a538a398bb7fa538188d1e7a89f3ab9f7a43caf3c4af3e6b0cb9.
+- 07-otowa: 사용자 제공 실사진. 지정 원출처 [Otowa Waterfall at Kiyomizudera Temple.jpg](https://commons.wikimedia.org/wiki/File:Otowa_Waterfall_at_Kiyomizudera_Temple.jpg), 저작자 そらみみ, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). 업로드 중 리사이즈·재인코딩 가능; Commons 원본과 바이트 동일성 미확인. 저작자표시 및 해당 CC BY-SA의 동일조건변경허락·수정표시 조건을 유지해야 한다. 파일 설명 페이지 접근이 proxy 403으로 차단되어 저작자·라이선스 독립 검증은 미완료이며 게시 전 확인 필요. 로컬 파일 SHA256: 82b69da3143aa695945037d0690f7c520e864fe4c101e715f76521d6a2de3150.
+- 08-koyasuto: 사용자 제공 실사진. 지정 원출처 [Koyasu Tower of Kiyomizudera Temple.jpg](https://commons.wikimedia.org/wiki/File:Koyasu_Tower_of_Kiyomizudera_Temple.jpg), 저작자 そらみみ, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). 업로드 중 리사이즈·재인코딩 가능; Commons 원본과 바이트 동일성 미확인. 저작자표시 및 해당 CC BY-SA의 동일조건변경허락·수정표시 조건을 유지해야 한다. 파일 설명 페이지 접근이 proxy 403으로 차단되어 저작자·라이선스 독립 검증은 미완료이며 게시 전 확인 필요. 로컬 파일 SHA256: fce9bd62b9ef42320748702e41b43f9e01ef5577dd655f96e711320f2067181a.
+
+앱은 실사진의 Wikimedia 출처 링크만으로 저작자·라이선스 전체를 표시하지 않을 수 있다. 오프라인에서 원문 출처를 열 수 있는지 및 CC 이행은 정식 게시 전 별도 확인이 필요하다.
+
+---
+## 기존 베타 이력
+
 # LICENSES — 청수사 기본편 공개 베타의 출처·검수 상태
 
 > **공개 베타 게시 승인:** 사용자가 `0.1.0-beta.1` 게시를 승인했습니다. 게시 절차의 실행·배포 상태는 PR/Actions에서 별도 확인합니다.

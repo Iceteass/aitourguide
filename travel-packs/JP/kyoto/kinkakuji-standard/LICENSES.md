@@ -1,3 +1,15 @@
+# 이미지 교체 검수 후보 — 운영 미게시
+
+이 절은 현재 작업 브랜치의 이미지 출처를 설명한다. 아래 베타 이력의 AI 전체 표기는 기존 자산에 대한 기록이다. 이미지 교체 승인과 사용권·고증 승인은 별개이며 REVIEW_REQUIRED를 유지한다.
+
+- 03-rikushunomatsu: OpenAI 생성 AI 일러스트이며 실제 촬영 사진이 아니다. 외부 게시 사용 정책 및 완전한 고증 REVIEW_REQUIRED. SHA256: d8f82ef47cdc4d79837a0ad49162413fcec5fe13f138e0b1ad5bc45fead05e9d.
+- 05-ryumontaki-kinkakujigaki: 사용자 제공 실사진. 지정 원출처 [Ryumonnotaki Waterfall and Carp Stone in Rokuonji Temple.jpg](https://commons.wikimedia.org/wiki/File:Ryumonnotaki_Waterfall_and_Carp_Stone_in_Rokuonji_Temple.jpg), 저작자 そらみみ, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). 업로드 중 리사이즈·재인코딩 가능; Commons 원본과 바이트 동일성 미확인. 저작자표시 및 해당 CC BY-SA의 동일조건변경허락·수정표시 조건을 유지해야 한다. 파일 설명 페이지 접근이 proxy 403으로 차단되어 저작자·라이선스 독립 검증은 미완료이며 게시 전 확인 필요. 로컬 파일 SHA256: a730777633ed82290df11ef847c81c37bc04f7a3c414319be11f4b905717f049.
+
+앱은 실사진의 Wikimedia 출처 링크만으로 저작자·라이선스 전체를 표시하지 않을 수 있다. 오프라인에서 원문 출처를 열 수 있는지 및 CC 이행은 정식 게시 전 별도 확인이 필요하다.
+
+---
+## 기존 베타 이력
+
 # LICENSES.md — 금각사 공개 베타의 출처·검수 상태
 
 > **BETA_PUBLISHED — `0.1.0-beta.1` 공개 베타 게시 완료.** 사용자 승인 및 PR #9·#10 병합에 따른 게시 상태입니다. 이전의 `TECHNICAL DRAFT` / `NOT FOR PUBLICATION` 표기는 게시 전 검수 단계의 기록이며 현재 베타 게시 상태를 나타내지 않습니다.

@@ -8,13 +8,13 @@
   "narration": "narration.md",
   "image": {
     "path": "images/main.jpg",
-    "type": "illustration",
-    "asset_origin": "ai_generated",
-    "render_style": "photorealistic",
+    "type": "photograph",
+    "asset_origin": "wikimedia_commons",
     "usage_status": "REVIEW_REQUIRED",
-    "source_credit": "LICENSES.md",
+    "source_credit": "User-provided derivative; designated source: そらみみ · CC BY-SA 3.0 (verification pending)",
     "production_method": "cropped_from_ai_generated_8panel_collage",
-    "source_quality_warning": "SOURCE_TILE_378x417_UPSAMPLED__NOT_NATIVE_HIGH_RESOLUTION"
+    "source_quality_warning": "SOURCE_TILE_378x417_UPSAMPLED__NOT_NATIVE_HIGH_RESOLUTION",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Koyasu_Tower_of_Kiyomizudera_Temple.jpg"
   },
   "audio": {
     "path": "audio/ko-N1.mp3",

@@ -8,11 +8,11 @@
   "narration": "narration.md",
   "image": {
     "path": "images/main.jpg",
-    "type": "illustration",
-    "asset_origin": "ai_generated",
-    "render_style": "photorealistic",
+    "type": "photograph",
+    "asset_origin": "wikimedia_commons",
     "usage_status": "REVIEW_REQUIRED",
-    "source_credit": "LICENSES.md"
+    "source_credit": "User-provided derivative; designated source: そらみみ · CC BY-SA 4.0 (verification pending)",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Ryumonnotaki_Waterfall_and_Carp_Stone_in_Rokuonji_Temple.jpg"
   },
   "audio": {
     "path": "audio/ko-N1.mp3",

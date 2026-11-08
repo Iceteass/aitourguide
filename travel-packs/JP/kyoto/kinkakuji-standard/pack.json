@@ -80,8 +80,8 @@
   "files": [
     {
       "path": "LICENSES.md",
-      "bytes": 3805,
-      "sha256": "ca016ed43c45dc2f381eb4b7b021ec5f7ffa955f002b2f78ac356b4a7c7538e1",
+      "bytes": 5390,
+      "sha256": "89c2ad677736aaacc699208fdd9ac232506b9779537f6ee1af7baee2127bb4c9",
       "role": "rights-record"
     },
     {
@@ -146,8 +146,8 @@
     },
     {
       "path": "spots/03-rikushunomatsu/images/main.jpg",
-      "bytes": 914366,
-      "sha256": "748f36a1dd0028fb19cb58e0f4a5275bdad8ec629ed0eb4e2370593bad270329",
+      "bytes": 1014656,
+      "sha256": "d8f82ef47cdc4d79837a0ad49162413fcec5fe13f138e0b1ad5bc45fead05e9d",
       "role": "spot-illustration"
     },
     {
@@ -158,8 +158,8 @@
     },
     {
       "path": "spots/03-rikushunomatsu/poi.json",
-      "bytes": 955,
-      "sha256": "d897c13baebeb882d8fcd20b901fc7b422a9b13ca77de3388f6cc7b7bf71da73",
+      "bytes": 994,
+      "sha256": "64630ca87d0936dc7e1889fada5640381e18abad2f8afda487dfaaa841388dd0",
       "role": "spot-metadata"
     },
     {
@@ -182,8 +182,8 @@
     },
     {
       "path": "spots/05-ryumontaki-kinkakujigaki/images/main.jpg",
-      "bytes": 981965,
-      "sha256": "abab62a1da781ee9759daece4af91de4b9405f735b553813d77bd257e5e4ebd9",
+      "bytes": 723774,
+      "sha256": "a730777633ed82290df11ef847c81c37bc04f7a3c414319be11f4b905717f049",
       "role": "spot-illustration"
     },
     {
@@ -194,8 +194,8 @@
     },
     {
       "path": "spots/05-ryumontaki-kinkakujigaki/poi.json",
-      "bytes": 1012,
-      "sha256": "b3f6c65664798cbe9c9ebb03c20b6e2cb724096c446df200fdbf6c47a568cb48",
+      "bytes": 1184,
+      "sha256": "a6173a8ed398b7285d277c3b8f46c850040d55362a8297f17ec119f7efa7c0e6",
       "role": "spot-metadata"
     },
     {
