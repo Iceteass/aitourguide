@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0.0",
+  "coordinate_system": "relative",
+  "destination_id": "jp-kyoto-kiyomizudera",
+  "route_type": "reference",
+  "status": "REVIEW_REQUIRED",
+  "background_sha256": "af0317d6c1967d6f8225ac694986e74092acb06b7f8ad9865be244dcb3ad1651",
+  "required_connections": 7,
+  "displayed_connections": 3,
+  "segments": [
+    {
+      "segment_id": "zuigudo__sanjunoto",
+      "from_poi_id": "zuigudo",
+      "to_poi_id": "sanjunoto",
+      "waypoints": [
+        {
+          "x": 0.311,
+          "y": 0.559
+        },
+        {
+          "x": 0.348,
+          "y": 0.566
+        },
+        {
+          "x": 0.391,
+          "y": 0.563
+        },
+        {
+          "x": 0.433,
+          "y": 0.553
+        },
+        {
+          "x": 0.48,
+          "y": 0.555
+        },
+        {
+          "x": 0.532,
+          "y": 0.559
+        },
+        {
+          "x": 0.588,
+          "y": 0.554
+        }
+      ],
+      "source_ids": [
+        "S00-OFFICIAL-TEMPLE-MAP",
+        "S01-OFFICIAL-WHEELCHAIR-MAP"
+      ],
+      "geometry_status": "PRELIMINARY_VISUAL_TRACE",
+      "verification": "AI_background_visual_trace_not_geographic",
+      "navigation_guaranteed": false,
+      "visibility": "show",
+      "review": "REVIEW_REQUIRED"
+    },
+    {
+      "segment_id": "okunoin__otowa",
+      "from_poi_id": "okunoin",
+      "to_poi_id": "otowa",
+      "waypoints": [
+        {
+          "x": 0.681,
+          "y": 0.206
+        },
+        {
+          "x": 0.687,
+          "y": 0.229
+        },
+        {
+          "x": 0.683,
+          "y": 0.261
+        },
+        {
+          "x": 0.696,
+          "y": 0.283
+        },
+        {
+          "x": 0.727,
+          "y": 0.298
+        },
+        {
+          "x": 0.771,
+          "y": 0.309
+        },
+        {
+          "x": 0.821,
+          "y": 0.313
+        }
+      ],
+      "source_ids": [
+        "S00-OFFICIAL-TEMPLE-MAP",
+        "S01-OFFICIAL-WHEELCHAIR-MAP"
+      ],
+      "geometry_status": "PRELIMINARY_VISUAL_TRACE",
+      "verification": "AI_background_visual_trace_not_geographic",
+      "navigation_guaranteed": false,
+      "visibility": "show",
+      "review": "REVIEW_REQUIRED"
+    },
+    {
+      "segment_id": "otowa__koyasuto",
+      "from_poi_id": "otowa",
+      "to_poi_id": "koyasuto",
+      "waypoints": [
+        {
+          "x": 0.821,
+          "y": 0.313
+        },
+        {
+          "x": 0.845,
+          "y": 0.329
+        },
+        {
+          "x": 0.879,
+          "y": 0.354
+        },
+        {
+          "x": 0.903,
+          "y": 0.379
+        },
+        {
+          "x": 0.904,
+          "y": 0.414
+        },
+        {
+          "x": 0.884,
+          "y": 0.452
+        },
+        {
+          "x": 0.86,
+          "y": 0.484
+        },
+        {
+          "x": 0.883,
+          "y": 0.517
+        }
+      ],
+      "source_ids": [
+        "S00-OFFICIAL-TEMPLE-MAP",
+        "S01-OFFICIAL-WHEELCHAIR-MAP"
+      ],
+      "geometry_status": "PRELIMINARY_VISUAL_TRACE",
+      "verification": "AI_background_visual_trace_not_geographic",
+      "navigation_guaranteed": false,
+      "visibility": "show",
+      "review": "REVIEW_REQUIRED"
+    }
+  ],
+  "omitted_connections": [
+    {
+      "from_poi_id": "niomon",
+      "to_poi_id": "saimon",
+      "reason": "walkway_occluded_or_not_independently_traceable_without_crossing_building",
+      "source_ids": [
+        "S00-OFFICIAL-TEMPLE-MAP",
+        "S01-OFFICIAL-WHEELCHAIR-MAP"
+      ]
+    },
+    {
+      "from_poi_id": "saimon",
+      "to_poi_id": "zuigudo",
+      "reason": "walkway_occluded_or_not_independently_traceable_without_crossing_building",
+      "source_ids": [
+        "S00-OFFICIAL-TEMPLE-MAP",
+        "S01-OFFICIAL-WHEELCHAIR-MAP"
+      ]
+    },
+    {
+      "from_poi_id": "sanjunoto",
+      "to_poi_id": "hondo",
+      "reason": "walkway_occluded_or_not_independently_traceable_without_crossing_building",
+      "source_ids": [
+        "S00-OFFICIAL-TEMPLE-MAP",
+        "S01-OFFICIAL-WHEELCHAIR-MAP"
+      ]
+    },
+    {
+      "from_poi_id": "hondo",
+      "to_poi_id": "okunoin",
+      "reason": "walkway_occluded_or_not_independently_traceable_without_crossing_building",
+      "source_ids": [
+        "S00-OFFICIAL-TEMPLE-MAP",
+        "S01-OFFICIAL-WHEELCHAIR-MAP"
+      ]
+    }
+  ],
+  "notice": "AI 재구성 지도 위의 참고 경로 후보입니다. 현장 통행 가능 여부·실측 좌표·정확한 길 안내를 보증하지 않습니다. 실제 이동은 현장 안내를 우선하세요."
+}

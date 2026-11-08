@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "hondo",
+  "sequence": 5,
+  "title": "본당·청수 무대",
+  "title_ja": "本堂・清水の舞台",
+  "summary": "전통 목구조와 관음 신앙",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md",
+    "production_method": "single_scene_ai_generation"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "e929d4f63ece912e4251c283e2a44b9f4713949165f53dd8ee6decd8b57bb077",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "REVIEW_REQUIRED",
+  "visual_review": "REVIEW_REQUIRED",
+  "source_ids": [
+    "S05",
+    "S09"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "koyasuto",
+  "sequence": 8,
+  "title": "고야스탑",
+  "title_ja": "子安塔",
+  "summary": "안산 기원을 품은 작은 삼층탑",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md",
+    "production_method": "cropped_from_ai_generated_8panel_collage",
+    "source_quality_warning": "SOURCE_TILE_378x417_UPSAMPLED__NOT_NATIVE_HIGH_RESOLUTION"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "95e269be50b81b59bed114f6ccedcca7ad99aa8f8fc77ee275257ccf10042ebc",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "REVIEW_REQUIRED",
+  "visual_review": "REVIEW_REQUIRED",
+  "source_ids": [
+    "S08"
+  ]
+}

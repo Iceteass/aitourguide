@@ -153,7 +153,7 @@ function syncLegacy(){
  window.historyJourneyPackTitle=state.pack.title;
  const p=state.pois;
  data.splice(0,data.length,...p.map(x=>[x.title,x.title_ja||"",x.summary||"",x.script]));
- photos.splice(0,photos.length,...p.map(x=>({src:x.image.type==="photograph"?baseUrl(x.base+x.image.path):(x.image.remote_url||baseUrl(x.base+x.image.path)),local:baseUrl(x.base+x.image.path),credit:x.image.credit_url||"",label:x.title,remote:x.image.remote_url||"",kind:x.image.type})));
+ photos.splice(0,photos.length,...p.map(x=>({src:x.image.type==="photograph"?baseUrl(x.base+x.image.path):(x.image.remote_url||baseUrl(x.base+x.image.path)),local:baseUrl(x.base+x.image.path),credit:x.image.credit_url||"",label:x.title,remote:x.image.remote_url||"",kind:x.image.type,assetOrigin:x.image.asset_origin||""})));
  coords.splice(0,coords.length,...state.points.map(pt=>[100*pt.x,100*pt.y]));
  $("hotspots").replaceChildren();$("mini").replaceChildren();makePins();
  window.JourneyMapOverlay.render($("map-screen").querySelector(".map-wrap"),{points:state.points,pois:p,route:state.routePath,pinStyle:state.pack.route.pin_style,warning:state.routeWarning});
@@ -315,7 +315,8 @@ function installAudio(){
    else if(mode?.value!=="mp3")window.historyJourneyTTS.moveSentence(Math.sign(n));
  };
  const updatePlaybackActions=()=>{
-  const mp3=mode?.value==="mp3";
+  const mp3=mode?.value==="mp3",duration=window.kyotoAudio?.player.duration;
+  total.textContent=mp3?(Number.isFinite(duration)?toTime(duration):"0:00"):"--:--";
   for(const [id,title,icon] of [["v-minus",mp3?"5초 뒤로":"이전 문장",mp3?"minus":"prev"],["v-plus",mp3?"5초 앞으로":"다음 문장",mp3?"plus":"next"]]){
    const b=$(id);b.setAttribute("aria-label",title);b.setAttribute("title",title);b.innerHTML=icons[icon];
   }
@@ -323,7 +324,7 @@ function installAudio(){
  window.addEventListener('journey-narration-mode',updatePlaybackActions);updatePlaybackActions();
  const a=window.kyotoAudio?.player;
  if(a){
-   a.addEventListener("loadedmetadata",()=>{if(Number.isFinite(a.duration))total.textContent=toTime(a.duration)});
+   a.addEventListener("loadedmetadata",()=>{if(mode?.value==="mp3"&&Number.isFinite(a.duration))total.textContent=toTime(a.duration)});
    // MP3 has no sentence timestamps: manual script scrolling only.
  }
  document.querySelector("#detail-screen .hero-bottom .playline")?.remove();

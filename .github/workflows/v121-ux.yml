@@ -1,7 +1,7 @@
 name: v1.2.1 UX regression checks
 on:
   push:
-    branches: [main, ux-v1.2.1-compact-player, fix-v121-mp3-player-init, fix-v122-narration-audio-fallback]
+    branches: [main, ux-v1.2.1-compact-player, fix-v121-mp3-player-init, fix-v122-narration-audio-fallback, feat/kiyomizudera-integration]
     paths:
       - 'app/**'
       - 'assets/**'
@@ -15,6 +15,7 @@ on:
       - 'tests/validate_tts_state.mjs'
       - 'tests/validate_app_version.mjs'
       - 'tests/validate_assets.mjs'
+      - 'tests/validate_image_attribution.mjs'
       - 'tests/validate_catalog.mjs'
       - 'tests/validate_map_overlay.mjs'
       - 'tests/fixtures/**'
@@ -35,6 +36,7 @@ jobs:
       - run: node tests/validate_tts_state.mjs
       - run: node tests/validate_app_version.mjs
       - run: node tests/validate_assets.mjs
+      - run: node tests/validate_image_attribution.mjs
       - run: node tests/validate_catalog.mjs
       - run: node tests/validate_map_overlay.mjs
       - run: node tests/validate_pack_independence.mjs

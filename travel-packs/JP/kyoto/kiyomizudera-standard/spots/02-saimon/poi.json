@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "saimon",
+  "sequence": 2,
+  "title": "서문",
+  "title_ja": "西門",
+  "summary": "서쪽 낙조와 정토를 바라보는 장소",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "afc15108346e3669461efc04c15d789bb4dbc6184e7d107a0f7afd4ba668bbc5",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "REVIEW_REQUIRED",
+  "visual_review": "REVIEW_REQUIRED",
+  "source_ids": [
+    "S02"
+  ]
+}

@@ -8,6 +8,7 @@ from playwright.sync_api import sync_playwright,expect
 ROOT=Path(__file__).resolve().parents[1];FOLDER='travel-packs/JP/kyoto/kinkakuji-standard/';KID='jp-kyoto-kinkakuji';FID='jp-kyoto-fushimi-inari'
 pack=json.loads((ROOT/FOLDER/'pack.json').read_text());points=json.loads((ROOT/FOLDER/pack['route']['points']).read_text())['points'];catalog=(ROOT/'tests/fixtures/kinkakuji-catalog.json').read_bytes()
 parser=argparse.ArgumentParser();parser.add_argument('--screenshots',action='store_true');parser.add_argument('--fixture-catalog',action='store_true');args=parser.parse_args()
+expected_destinations=len(json.loads(catalog if args.fixture_catalog else (ROOT/'data/catalog.json').read_bytes())['destinations'])
 class Handler(SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
  def do_GET(self):
@@ -20,7 +21,7 @@ class Handler(SimpleHTTPRequestHandler):
   super().do_GET()
 s=ThreadingHTTPServer(('127.0.0.1',0),partial(Handler,directory=str(ROOT.parent)));s.bad_path='';threading.Thread(target=s.serve_forever,daemon=True).start();base=f'http://127.0.0.1:{s.server_port}/aitourguide/'
 def arrive(page):
- page.goto(base);page.locator('[data-action=start]').click();page.locator('[data-action=country]').click();page.locator('[data-action=city]').click();page.wait_for_function("document.querySelectorAll('.v-destination-toggle').length===2 && !document.querySelector('.v-destination-toggle').disabled")
+ page.goto(base);page.locator('[data-action=start]').click();page.locator('[data-action=country]').click();page.locator('[data-action=city]').click();page.wait_for_function("n=>document.querySelectorAll('.v-destination-toggle').length===n && !document.querySelector('.v-destination-toggle').disabled",arg=expected_destinations)
 def card(page,id):
  c=page.locator(f'[data-destination-id="{id}"]');t=c.locator('.v-destination-toggle');expect(t).to_be_enabled()
  if t.get_attribute('aria-expanded')=='false':t.click()

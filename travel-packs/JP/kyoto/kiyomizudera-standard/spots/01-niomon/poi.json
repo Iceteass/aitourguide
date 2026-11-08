@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "niomon",
+  "sequence": 1,
+  "title": "인왕문",
+  "title_ja": "仁王門",
+  "summary": "청수사의 정문과 재건 역사",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "7fdf25e3f7f37b774a4e8b914ee7e1f163f6309867aef7bdd57fee7c10a932db",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "REVIEW_REQUIRED",
+  "visual_review": "REVIEW_REQUIRED",
+  "source_ids": [
+    "S01"
+  ]
+}

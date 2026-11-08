@@ -1,0 +1,270 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "jp-kyoto-kiyomizudera-standard",
+  "pack_version": "0.1.0-beta.1",
+  "status": "published",
+  "content_qa_status": "CONTENT_QA_PENDING",
+  "locale": "ko-KR",
+  "country_code": "JP",
+  "country_name": "일본",
+  "city_id": "kyoto",
+  "city_name": "교토",
+  "title": "청수사",
+  "description": "청수사 공개 베타 · AI 재구성 이미지(07·08 저해상도 보간), 원고·지도·외형·권리 검수 미완료",
+  "destination_id": "jp-kyoto-kiyomizudera",
+  "destination_tags": [
+    "히가시야마구",
+    "사찰",
+    "청수 무대"
+  ],
+  "guide_id": "standard",
+  "guide_title": "기본 역사 가이드",
+  "guide_type": "standard",
+  "guide_tags": [
+    "기본",
+    "역사"
+  ],
+  "cover": "cover.jpg",
+  "route": {
+    "image": "route/route-map.jpg",
+    "points": "route/points.json",
+    "path": "route/path.json",
+    "pin_style": "number-label"
+  },
+  "poi_ids": [
+    "niomon",
+    "saimon",
+    "zuigudo",
+    "sanjunoto",
+    "hondo",
+    "okunoin",
+    "otowa",
+    "koyasuto"
+  ],
+  "spots": [
+    {
+      "poi_id": "niomon",
+      "sequence": 1,
+      "dir": "spots/01-niomon",
+      "meta": "spots/01-niomon/poi.json"
+    },
+    {
+      "poi_id": "saimon",
+      "sequence": 2,
+      "dir": "spots/02-saimon",
+      "meta": "spots/02-saimon/poi.json"
+    },
+    {
+      "poi_id": "zuigudo",
+      "sequence": 3,
+      "dir": "spots/03-zuigudo",
+      "meta": "spots/03-zuigudo/poi.json"
+    },
+    {
+      "poi_id": "sanjunoto",
+      "sequence": 4,
+      "dir": "spots/04-sanjunoto",
+      "meta": "spots/04-sanjunoto/poi.json"
+    },
+    {
+      "poi_id": "hondo",
+      "sequence": 5,
+      "dir": "spots/05-hondo",
+      "meta": "spots/05-hondo/poi.json"
+    },
+    {
+      "poi_id": "okunoin",
+      "sequence": 6,
+      "dir": "spots/06-okunoin",
+      "meta": "spots/06-okunoin/poi.json"
+    },
+    {
+      "poi_id": "otowa",
+      "sequence": 7,
+      "dir": "spots/07-otowa",
+      "meta": "spots/07-otowa/poi.json"
+    },
+    {
+      "poi_id": "koyasuto",
+      "sequence": 8,
+      "dir": "spots/08-koyasuto",
+      "meta": "spots/08-koyasuto/poi.json"
+    }
+  ],
+  "files": [
+    {
+      "path": "LICENSES.md",
+      "bytes": 7589,
+      "sha256": "0a70d99d79e37fc1a08586c346d2d48459e19368b3b0dafba787bfe5f759671c",
+      "role": "rights-record"
+    },
+    {
+      "path": "cover.jpg",
+      "bytes": 686285,
+      "sha256": "10ecc1cafda83de218fc5c73e7dcc9e11288c745c506e3fb737dcdc4aba02bce",
+      "role": "cover"
+    },
+    {
+      "path": "route/path.json",
+      "bytes": 4479,
+      "sha256": "95490474046e8640ff383315f3cedc14614394f2761fd856abd0b4e2e99c96ad",
+      "role": "reference-path"
+    },
+    {
+      "path": "route/points.json",
+      "bytes": 4102,
+      "sha256": "5248ffba24ac14c262edc182f4fb24d4f25e5f2470e22c171b76d940fa5646e4",
+      "role": "route-points"
+    },
+    {
+      "path": "route/route-map.jpg",
+      "bytes": 1504405,
+      "sha256": "af0317d6c1967d6f8225ac694986e74092acb06b7f8ad9865be244dcb3ad1651",
+      "role": "route-map"
+    },
+    {
+      "path": "spots/01-niomon/images/main.jpg",
+      "bytes": 921090,
+      "sha256": "350cd8353fc4ef1b03d6b0ffd9d111a1c9d3664a42aef98eac4ad3fa34bc6f49",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/01-niomon/narration.md",
+      "bytes": 822,
+      "sha256": "7fdf25e3f7f37b774a4e8b914ee7e1f163f6309867aef7bdd57fee7c10a932db",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/01-niomon/poi.json",
+      "bytes": 962,
+      "sha256": "31db24fac397d59970ee7ccee81c956f50ed1bfb4b30239c0cc60c9059467e3c",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/02-saimon/images/main.jpg",
+      "bytes": 806124,
+      "sha256": "6569c587edcc1c3d5d06841a48a3c87e71f12cf0129862b31530668fb9e24140",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/02-saimon/narration.md",
+      "bytes": 781,
+      "sha256": "afc15108346e3669461efc04c15d789bb4dbc6184e7d107a0f7afd4ba668bbc5",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/02-saimon/poi.json",
+      "bytes": 966,
+      "sha256": "0ec1b974cd6120935666cd54ccb149259f5477d2ef414e9387bf3e6535d77c62",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/03-zuigudo/images/main.jpg",
+      "bytes": 992927,
+      "sha256": "81bae5f71a55eb3f3c9e76869dbb8cdb4530c9b1139fdf987fca131abed377c6",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/03-zuigudo/narration.md",
+      "bytes": 836,
+      "sha256": "7833c4976564cb50befad76a59d6d7c072cf86220374832f1ef551fdb2754514",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/03-zuigudo/poi.json",
+      "bytes": 1017,
+      "sha256": "0d9fe170d9fbbfaf1ee00896093d7b0c57369c8f04f2eac42f52a23709b9e7e8",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/04-sanjunoto/images/main.jpg",
+      "bytes": 773093,
+      "sha256": "3bf53ada907c39888bfaa96c1cf490500ba9ad099e7301ee3a7a8e0964a7ab93",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/04-sanjunoto/narration.md",
+      "bytes": 839,
+      "sha256": "6a3130cc221ba9d6a6f1f3cd8545e7cc71d4b7c6d85fbe9360d643bd447d8509",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/04-sanjunoto/poi.json",
+      "bytes": 1023,
+      "sha256": "f5bd34049887aa71941450e1b8bcfac22ed78e01e6e8f2fe3d04b6e6cf05765e",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/05-hondo/images/main.jpg",
+      "bytes": 838042,
+      "sha256": "68a090641bc2291ee189f1a329db2b088667f01acf08463b93a8078cba9e1f4b",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/05-hondo/narration.md",
+      "bytes": 969,
+      "sha256": "e929d4f63ece912e4251c283e2a44b9f4713949165f53dd8ee6decd8b57bb077",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/05-hondo/poi.json",
+      "bytes": 1051,
+      "sha256": "c742cfed6410f7125fda3cb19cdc5eec04518a54c9d6f5a6a7d1924bd02bae51",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/06-okunoin/images/main.jpg",
+      "bytes": 868697,
+      "sha256": "adb2115ff896f2190ae367ecd448668a27a2e78a0af2bf0af4b108873c4432ce",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/06-okunoin/narration.md",
+      "bytes": 816,
+      "sha256": "17d78c7cfe3ec561dcee58aaf0bb2491082b831b01f26b4b34afe539b4aab230",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/06-okunoin/poi.json",
+      "bytes": 1022,
+      "sha256": "74094dad6a1b81c92e5d81e34233ce32f17c8e708bc69d383056ea30ff295319",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/07-otowa/images/main.jpg",
+      "bytes": 334296,
+      "sha256": "b9359337d8490a48ccd0fe357011824a35f6952569df1f81b12d4a94a1b02dfd",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/07-otowa/narration.md",
+      "bytes": 917,
+      "sha256": "21007869925963bb00619a13a1f8e9d9578fd95665339a26d28d17fc0f258241",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/07-otowa/poi.json",
+      "bytes": 1145,
+      "sha256": "b2dd6aaed39e797c599d00aa39ed40b16299b2d1bd6ad9cc3040f91f01953c63",
+      "role": "spot-metadata"
+    },
+    {
+      "path": "spots/08-koyasuto/images/main.jpg",
+      "bytes": 322626,
+      "sha256": "46d7c6194536748715d06d4022a418c1c5fe361bdba3e64a482a0a9338906e90",
+      "role": "spot-illustration"
+    },
+    {
+      "path": "spots/08-koyasuto/narration.md",
+      "bytes": 878,
+      "sha256": "95e269be50b81b59bed114f6ccedcca7ad99aa8f8fc77ee275257ccf10042ebc",
+      "role": "spot-narration"
+    },
+    {
+      "path": "spots/08-koyasuto/poi.json",
+      "bytes": 1131,
+      "sha256": "7b9608c03abd2d0c7525f58fabc5ac8f6a901f9ffb82f3ed4c9d1382764f79e5",
+      "role": "spot-metadata"
+    }
+  ]
+}
