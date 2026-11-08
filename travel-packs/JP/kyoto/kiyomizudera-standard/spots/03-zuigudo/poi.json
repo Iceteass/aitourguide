@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "zuigudo",
+  "sequence": 3,
+  "title": "즈이구도",
+  "title_ja": "随求堂",
+  "summary": "대수구보살과 태내 순례",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md",
+    "production_method": "single_scene_ai_generation"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "7833c4976564cb50befad76a59d6d7c072cf86220374832f1ef551fdb2754514",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "REVIEW_REQUIRED",
+  "visual_review": "REVIEW_REQUIRED",
+  "source_ids": [
+    "S03"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "sanjunoto",
+  "sequence": 4,
+  "title": "삼층탑",
+  "title_ja": "三重塔",
+  "summary": "청수사를 상징하는 삼층 불탑",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md",
+    "production_method": "single_scene_ai_generation"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "6a3130cc221ba9d6a6f1f3cd8545e7cc71d4b7c6d85fbe9360d643bd447d8509",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "REVIEW_REQUIRED",
+  "visual_review": "REVIEW_REQUIRED",
+  "source_ids": [
+    "S04"
+  ]
+}

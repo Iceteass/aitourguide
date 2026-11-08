@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "poi_id": "otowa",
+  "sequence": 7,
+  "title": "오토와 폭포",
+  "title_ja": "音羽の瀧",
+  "summary": "청수사의 이름이 시작된 샘물",
+  "narration": "narration.md",
+  "image": {
+    "path": "images/main.jpg",
+    "type": "illustration",
+    "asset_origin": "ai_generated",
+    "render_style": "photorealistic",
+    "usage_status": "REVIEW_REQUIRED",
+    "source_credit": "LICENSES.md",
+    "production_method": "cropped_from_ai_generated_8panel_collage",
+    "source_quality_warning": "SOURCE_TILE_378x417_UPSAMPLED__NOT_NATIVE_HIGH_RESOLUTION"
+  },
+  "audio": {
+    "path": "audio/ko-N1.mp3",
+    "status": "not_generated",
+    "locale": "ko-KR",
+    "bytes": null,
+    "sha256": null
+  },
+  "cues": null,
+  "guide_id": "standard",
+  "variant_id": "standard",
+  "revision": "0.1.0",
+  "script_sha256": "21007869925963bb00619a13a1f8e9d9578fd95665339a26d28d17fc0f258241",
+  "selected_variant_id": "standard",
+  "source_guide_id": "standard",
+  "explicit_fallback": false,
+  "content_review": "REVIEW_REQUIRED",
+  "visual_review": "REVIEW_REQUIRED",
+  "source_ids": [
+    "S07",
+    "S10"
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0.0",
+  "coordinate_system": "relative",
+  "destination_id": "jp-kyoto-kiyomizudera",
+  "background_sha256": "af0317d6c1967d6f8225ac694986e74092acb06b7f8ad9865be244dcb3ad1651",
+  "coordinate_source": "manual_visual_alignment_to_cp2_corrected_ai_background_NOT_geographic",
+  "cp1_spot_order_immutable": true,
+  "points": [
+    {
+      "poi_id": "niomon",
+      "sequence": 1,
+      "number": 1,
+      "label": "인왕문",
+      "x": 0.355,
+      "y": 0.828,
+      "pin_anchor": {
+        "x": 0.355,
+        "y": 0.828
+      },
+      "walk_access_anchor": {
+        "x": 0.46,
+        "y": 0.884
+      },
+      "label_placement": "right",
+      "geo_accuracy": "estimated_on_ai_generated_map_not_geographic",
+      "anchor_status": "REVIEW_REQUIRED_VISUAL"
+    },
+    {
+      "poi_id": "saimon",
+      "sequence": 2,
+      "number": 2,
+      "label": "서문",
+      "x": 0.425,
+      "y": 0.631,
+      "pin_anchor": {
+        "x": 0.425,
+        "y": 0.631
+      },
+      "walk_access_anchor": {
+        "x": 0.421,
+        "y": 0.662
+      },
+      "label_placement": "right",
+      "geo_accuracy": "estimated_on_ai_generated_map_not_geographic",
+      "anchor_status": "REVIEW_REQUIRED_VISUAL"
+    },
+    {
+      "poi_id": "zuigudo",
+      "sequence": 3,
+      "number": 3,
+      "label": "즈이구도",
+      "x": 0.224,
+      "y": 0.505,
+      "pin_anchor": {
+        "x": 0.224,
+        "y": 0.505
+      },
+      "walk_access_anchor": {
+        "x": 0.311,
+        "y": 0.559
+      },
+      "label_placement": "left",
+      "geo_accuracy": "estimated_on_ai_generated_map_not_geographic",
+      "anchor_status": "REVIEW_REQUIRED_VISUAL"
+    },
+    {
+      "poi_id": "sanjunoto",
+      "sequence": 4,
+      "number": 4,
+      "label": "삼층탑",
+      "x": 0.629,
+      "y": 0.476,
+      "pin_anchor": {
+        "x": 0.629,
+        "y": 0.476
+      },
+      "walk_access_anchor": {
+        "x": 0.588,
+        "y": 0.554
+      },
+      "label_placement": "right",
+      "geo_accuracy": "estimated_on_ai_generated_map_not_geographic",
+      "anchor_status": "REVIEW_REQUIRED_VISUAL"
+    },
+    {
+      "poi_id": "hondo",
+      "sequence": 5,
+      "number": 5,
+      "label": "본당·청수 무대",
+      "x": 0.364,
+      "y": 0.226,
+      "pin_anchor": {
+        "x": 0.364,
+        "y": 0.226
+      },
+      "walk_access_anchor": {
+        "x": 0.551,
+        "y": 0.249
+      },
+      "label_placement": "left",
+      "geo_accuracy": "estimated_on_ai_generated_map_not_geographic",
+      "anchor_status": "REVIEW_REQUIRED_VISUAL"
+    },
+    {
+      "poi_id": "okunoin",
+      "sequence": 6,
+      "number": 6,
+      "label": "오쿠노인",
+      "x": 0.806,
+      "y": 0.167,
+      "pin_anchor": {
+        "x": 0.806,
+        "y": 0.167
+      },
+      "walk_access_anchor": {
+        "x": 0.681,
+        "y": 0.206
+      },
+      "label_placement": "left",
+      "geo_accuracy": "estimated_on_ai_generated_map_not_geographic",
+      "anchor_status": "REVIEW_REQUIRED_VISUAL"
+    },
+    {
+      "poi_id": "otowa",
+      "sequence": 7,
+      "number": 7,
+      "label": "오토와 폭포",
+      "x": 0.813,
+      "y": 0.26,
+      "pin_anchor": {
+        "x": 0.813,
+        "y": 0.26
+      },
+      "walk_access_anchor": {
+        "x": 0.821,
+        "y": 0.313
+      },
+      "label_placement": "left",
+      "geo_accuracy": "estimated_on_ai_generated_map_not_geographic",
+      "anchor_status": "REVIEW_REQUIRED_VISUAL"
+    },
+    {
+      "poi_id": "koyasuto",
+      "sequence": 8,
+      "number": 8,
+      "label": "고야스탑",
+      "x": 0.928,
+      "y": 0.465,
+      "pin_anchor": {
+        "x": 0.928,
+        "y": 0.465
+      },
+      "walk_access_anchor": {
+        "x": 0.883,
+        "y": 0.517
+      },
+      "label_placement": "left",
+      "geo_accuracy": "estimated_on_ai_generated_map_not_geographic",
+      "anchor_status": "REVIEW_REQUIRED_VISUAL"
+    }
+  ],
+  "cp2_reference": "CP2_TOPOLOGY_TARGET_REVIEW_ONLY.json and official Kiyomizudera schematic; orientation intentionally schematic",
+  "coordinate_accuracy": "schematic_not_surveyed"
+}
