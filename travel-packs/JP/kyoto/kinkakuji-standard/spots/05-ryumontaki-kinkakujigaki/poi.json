@@ -11,8 +11,11 @@
     "type": "photograph",
     "asset_origin": "wikimedia_commons",
     "usage_status": "REVIEW_REQUIRED",
-    "source_credit": "User-provided derivative; designated source: そらみみ · CC BY-SA 4.0 (verification pending)",
-    "credit_url": "https://commons.wikimedia.org/wiki/File:Ryumonnotaki_Waterfall_and_Carp_Stone_in_Rokuonji_Temple.jpg"
+    "source_credit": "そらみみ · Wikimedia Commons",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Ryumonnotaki_Waterfall_and_Carp_Stone_in_Rokuonji_Temple.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "이용자 제공 사본: 리사이즈·재인코딩 가능. 정확한 변형 이력 및 Commons 원본과 바이트 동일성 미확인."
   },
   "audio": {
     "path": "audio/ko-N1.mp3",
@@ -24,11 +27,11 @@
   "cues": null,
   "guide_id": "standard",
   "variant_id": "standard",
-  "revision": "0.1.0",
-  "script_sha256": "d9bc3e055dcf079b1896b88ce65f4407454435de097a0002b7bec6c9c737625c",
+  "revision": "1.0.0-rc.1",
+  "script_sha256": "5f49412aa9591e6ebefea3f92cebb7c7838fa15368c745bc7c13c601435e7690",
   "selected_variant_id": "standard",
   "source_guide_id": "standard",
   "explicit_fallback": false,
-  "content_review": "CONTENT_APPROVED",
+  "content_review": "REVIEW_REQUIRED",
   "visual_review": "REVIEW_REQUIRED"
 }

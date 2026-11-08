@@ -1,0 +1,37 @@
+APPLY OK; impacted files: 35
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/01-kyokochi/narration.md
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/02-shariden-kinkaku/narration.md
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/03-rikushunomatsu/narration.md
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/04-gingasen-gankasui/narration.md
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/05-ryumontaki-kinkakujigaki/narration.md
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/06-anmintaku-hakujanotsuka/narration.md
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/07-sekkatei/narration.md
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/08-fudodo/narration.md
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/01-niomon/narration.md
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/02-saimon/narration.md
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/03-zuigudo/narration.md
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/04-sanjunoto/narration.md
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/05-hondo/narration.md
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/06-okunoin/narration.md
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/07-otowa/narration.md
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/08-koyasuto/narration.md
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/01-kyokochi/poi.json
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/02-shariden-kinkaku/poi.json
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/03-rikushunomatsu/poi.json
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/04-gingasen-gankasui/poi.json
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/05-ryumontaki-kinkakujigaki/poi.json
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/06-anmintaku-hakujanotsuka/poi.json
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/07-sekkatei/poi.json
+  travel-packs/JP/kyoto/kinkakuji-standard/spots/08-fudodo/poi.json
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/01-niomon/poi.json
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/02-saimon/poi.json
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/03-zuigudo/poi.json
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/04-sanjunoto/poi.json
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/05-hondo/poi.json
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/06-okunoin/poi.json
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/07-otowa/poi.json
+  travel-packs/JP/kyoto/kiyomizudera-standard/spots/08-koyasuto/poi.json
+  travel-packs/JP/kyoto/kinkakuji-standard/pack.json
+  travel-packs/JP/kyoto/kiyomizudera-standard/pack.json
+  data/catalog.json
+APPLIED. No Git commit, push, PR, merge or Pages deployment was performed.

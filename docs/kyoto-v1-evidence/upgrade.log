@@ -1,0 +1,3 @@
+PASS: real v1.3.2 → v1.3.3 worker upgrade; cached pack bytes, legacy cache, old/new photo keys and preferences preserved
+PASS: offline version/title, small-screen layout, version tap/Enter, navigation, 7 map pins, detail image/narration, MP3 default/range
+PASS: fresh install and offline splash version without a travel pack

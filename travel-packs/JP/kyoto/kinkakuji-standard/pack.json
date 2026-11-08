@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "pack_id": "jp-kyoto-kinkakuji-standard",
-  "pack_version": "0.1.0-beta.1",
+  "pack_version": "1.0.0-rc.1",
   "status": "published",
   "locale": "ko-KR",
   "country_code": "JP",
@@ -9,7 +9,7 @@
   "city_id": "kyoto",
   "city_name": "교토",
   "title": "금각사",
-  "description": "교토 금각사 8개 스팟 — 공개 베타, 이미지·공간·권리 검수 미완료",
+  "description": "금각사 8개 스팟 정식판 검수 후보 · 제공 원고 및 사진/AI 이미지 혼합 · 콘텐츠·공간·권리 최종 검수 대기",
   "cover": "cover.jpg",
   "route": {
     "image": "route/route-map.jpg",
@@ -80,8 +80,8 @@
   "files": [
     {
       "path": "LICENSES.md",
-      "bytes": 5390,
-      "sha256": "89c2ad677736aaacc699208fdd9ac232506b9779537f6ee1af7baee2127bb4c9",
+      "bytes": 6218,
+      "sha256": "a6e4d65ea2da2e5f383d795c7bcbe6227ebe8a8bbaf659ea1a05baf883e55482",
       "role": "rights-record"
     },
     {
@@ -116,14 +116,14 @@
     },
     {
       "path": "spots/01-kyokochi/narration.md",
-      "bytes": 864,
-      "sha256": "ec7a3a4d47671765e781e0ac435129a3041ce675410d43567dbb4ea6bff6eaf6",
+      "bytes": 1992,
+      "sha256": "1a4fe2c4e3e818c9999f0c0b8cc97ac21022098ef39c56be3e88e9e28f5a26af",
       "role": "spot-narration"
     },
     {
       "path": "spots/01-kyokochi/poi.json",
-      "bytes": 944,
-      "sha256": "75bd5621775c6504fc406d611db545e7f507d561e8bed91b3b2a35162211ec74",
+      "bytes": 948,
+      "sha256": "2867b7128629e08e536c7d1e0cb983e36f1c1c0ff3ed6fa0990608826cf9c37a",
       "role": "spot-metadata"
     },
     {
@@ -134,14 +134,14 @@
     },
     {
       "path": "spots/02-shariden-kinkaku/narration.md",
-      "bytes": 895,
-      "sha256": "d335a8001446d37ad6a02e8cd20ef839e51d1c5a3f0c8e2cd2bf4b02e8608d80",
+      "bytes": 2242,
+      "sha256": "565397fbe9565963d96101a0d0f0dd5797e16c17b5933a9cdda4c7c8b8ede10a",
       "role": "spot-narration"
     },
     {
       "path": "spots/02-shariden-kinkaku/poi.json",
-      "bytes": 987,
-      "sha256": "a141254fb0f182d6728b98971034b2668526f7c1782a63b405d10cef96a1e12a",
+      "bytes": 991,
+      "sha256": "1b19e210545fb587a178ba4ffc576eba654a5f03ef9ed07bc1dba0f1535d2508",
       "role": "spot-metadata"
     },
     {
@@ -152,14 +152,14 @@
     },
     {
       "path": "spots/03-rikushunomatsu/narration.md",
-      "bytes": 819,
-      "sha256": "dfc2f4f4da9f743e9e8eb8bd9d9948d32bf15e7a45b094f5b5a1f5d7ff8b8930",
+      "bytes": 2012,
+      "sha256": "ee30bc8d1cb153c42824a60177682b0b0da2323592a0ab49f3c09e5ceb90a5d5",
       "role": "spot-narration"
     },
     {
       "path": "spots/03-rikushunomatsu/poi.json",
-      "bytes": 994,
-      "sha256": "64630ca87d0936dc7e1889fada5640381e18abad2f8afda487dfaaa841388dd0",
+      "bytes": 998,
+      "sha256": "bb8905eca4324c80c50a37792ec99cd93596590a07505c379489d0691e818b3e",
       "role": "spot-metadata"
     },
     {
@@ -170,14 +170,14 @@
     },
     {
       "path": "spots/04-gingasen-gankasui/narration.md",
-      "bytes": 784,
-      "sha256": "38376bacc4360f15e3527366759c6b97d823f62f646d222108f13ee5577e4acc",
+      "bytes": 1895,
+      "sha256": "4adf92e2aac9edb7cc522087edcfb4a529d348a2b7a801f9819b4c630682f4ed",
       "role": "spot-narration"
     },
     {
       "path": "spots/04-gingasen-gankasui/poi.json",
-      "bytes": 982,
-      "sha256": "fcd8ceba3f6e299a167ae674e208a21309ee5a2020985912d848a5fbfb69fa50",
+      "bytes": 986,
+      "sha256": "887a9b40fd1b42aaad560717540f5f8d9d165ad12bf2816eb5b45dd52dcab0da",
       "role": "spot-metadata"
     },
     {
@@ -188,14 +188,14 @@
     },
     {
       "path": "spots/05-ryumontaki-kinkakujigaki/narration.md",
-      "bytes": 799,
-      "sha256": "d9bc3e055dcf079b1896b88ce65f4407454435de097a0002b7bec6c9c737625c",
+      "bytes": 2107,
+      "sha256": "5f49412aa9591e6ebefea3f92cebb7c7838fa15368c745bc7c13c601435e7690",
       "role": "spot-narration"
     },
     {
       "path": "spots/05-ryumontaki-kinkakujigaki/poi.json",
-      "bytes": 1184,
-      "sha256": "a6173a8ed398b7285d277c3b8f46c850040d55362a8297f17ec119f7efa7c0e6",
+      "bytes": 1387,
+      "sha256": "479699d64602deb8857367aa9a724564e36111dfd9827cbf48b7c0d94036beae",
       "role": "spot-metadata"
     },
     {
@@ -206,14 +206,14 @@
     },
     {
       "path": "spots/06-anmintaku-hakujanotsuka/narration.md",
-      "bytes": 807,
-      "sha256": "a882dcbe55b2aeeaca8d19594232886d80d84ce0538a4935b1be66e0a8ec4c95",
+      "bytes": 2040,
+      "sha256": "37637816ffedd46158127912ea4bc3be44f758dc80808827f7111a65aebba38d",
       "role": "spot-narration"
     },
     {
       "path": "spots/06-anmintaku-hakujanotsuka/poi.json",
-      "bytes": 975,
-      "sha256": "0c55251d40e5304f0df4d91c914fb3866227c251fb86fc080426d623ecac5524",
+      "bytes": 979,
+      "sha256": "f6d65e8fbafdda8d3525bbf6274bc466f785a4621399939eb7539f3a0e0918b0",
       "role": "spot-metadata"
     },
     {
@@ -224,14 +224,14 @@
     },
     {
       "path": "spots/07-sekkatei/narration.md",
-      "bytes": 859,
-      "sha256": "017d4ab2ffdc94775740a8b800125a0f36438490c01c5b69081d60dac18c1b26",
+      "bytes": 1879,
+      "sha256": "cee3447c7ce7454a79e79f41c52fefeaa83c794a9003708c02aa44285627c168",
       "role": "spot-narration"
     },
     {
       "path": "spots/07-sekkatei/poi.json",
-      "bytes": 944,
-      "sha256": "53af0621f4964a7424f0d1d627b43022be71e7d421fd14eb9976cc7a55845005",
+      "bytes": 948,
+      "sha256": "9ebc32f308d9701dd0085d10d515f39a0859683acb69f54be774c4fc99066552",
       "role": "spot-metadata"
     },
     {
@@ -242,15 +242,16 @@
     },
     {
       "path": "spots/08-fudodo/narration.md",
-      "bytes": 863,
-      "sha256": "413583a0ec4ed277ca4c089dcf3acaec974d857cc6bb5ac63d98c69a20f2f86a",
+      "bytes": 1939,
+      "sha256": "4bd06a9a3374cb5459491bf07c9df168766ce1db171fb203c1faacd96c2a4794",
       "role": "spot-narration"
     },
     {
       "path": "spots/08-fudodo/poi.json",
-      "bytes": 930,
-      "sha256": "8181def6418f98d7004bf421378ffc3215d7e25e63db5fec694b0affc7750920",
+      "bytes": 934,
+      "sha256": "848e750020b0709b082e90979025b8d606f4da0ea4d098fc2afed0e47173d296",
       "role": "spot-metadata"
     }
-  ]
+  ],
+  "content_qa_status": "CONTENT_QA_PENDING"
 }

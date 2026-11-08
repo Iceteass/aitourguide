@@ -16,7 +16,7 @@
     },
     {
       "pack_id": "jp-kyoto-kinkakuji-standard",
-      "pack_version": "0.1.0-beta.1",
+      "pack_version": "1.0.0-rc.1",
       "country_code": "JP",
       "country_name": "일본",
       "city_id": "kyoto",
@@ -28,7 +28,7 @@
     },
     {
       "pack_id": "jp-kyoto-kiyomizudera-standard",
-      "pack_version": "0.1.0-beta.1",
+      "pack_version": "1.0.0-rc.1",
       "country_code": "JP",
       "country_name": "일본",
       "city_id": "kyoto",
@@ -77,7 +77,7 @@
           "guide_id": "default",
           "guide_title": "역사 해설",
           "guide_type": "history",
-          "guide_version": "0.1.0-beta.1",
+          "guide_version": "1.0.0-rc.1",
           "guide_tags": [
             "기본",
             "역사"
@@ -85,7 +85,7 @@
           "status": "published",
           "storage_mode": "legacy-pack",
           "pack_id": "jp-kyoto-kinkakuji-standard",
-          "pack_version": "0.1.0-beta.1",
+          "pack_version": "1.0.0-rc.1",
           "path": "travel-packs/JP/kyoto/kinkakuji-standard/pack.json"
         }
       ]
@@ -102,7 +102,7 @@
           "guide_id": "default",
           "guide_title": "기본 역사 가이드",
           "guide_type": "history",
-          "guide_version": "0.1.0-beta.1",
+          "guide_version": "1.0.0-rc.1",
           "guide_tags": [
             "AI 재구성",
             "검수중"
@@ -110,7 +110,7 @@
           "status": "published",
           "storage_mode": "legacy-pack",
           "pack_id": "jp-kyoto-kiyomizudera-standard",
-          "pack_version": "0.1.0-beta.1",
+          "pack_version": "1.0.0-rc.1",
           "path": "travel-packs/JP/kyoto/kiyomizudera-standard/pack.json"
         }
       ]

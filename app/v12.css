@@ -168,3 +168,5 @@ body.v-map #map-screen .hotspot.v-labelled-pin{width:44px;height:44px;aspect-rat
 .v-map-label-legend summary{cursor:pointer;padding:12px 4px;min-height:44px}
 .v-map-label-legend ol{list-style:none;padding:0;margin:6px 0 0}
 .v-map-label-legend button{display:block;width:100%;min-height:44px;text-align:left;border:0;background:transparent;color:inherit;font:inherit;padding:6px;white-space:normal;overflow-wrap:anywhere}
+/* Downloaded photo attribution must remain readable in the photo tab offline. */
+body.v-detail #detail-screen #tab-photo #photo-credit{display:block;overflow-wrap:anywhere;line-height:1.6;user-select:text}

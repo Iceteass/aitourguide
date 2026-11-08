@@ -11,8 +11,11 @@
     "type": "photograph",
     "asset_origin": "wikimedia_commons",
     "usage_status": "REVIEW_REQUIRED",
-    "source_credit": "User-provided derivative; designated source: Vitalie Ciubotaru · CC BY-SA 3.0 (verification pending)",
-    "credit_url": "https://commons.wikimedia.org/wiki/File:Kiyomizu-dera4.jpg"
+    "source_credit": "Vitalie Ciubotaru · Wikimedia Commons",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Kiyomizu-dera4.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "modifications": "이용자 제공 사본: 리사이즈·재인코딩 가능. 정확한 변형 이력 및 Commons 원본과 바이트 동일성 미확인."
   },
   "audio": {
     "path": "audio/ko-N1.mp3",
@@ -24,8 +27,8 @@
   "cues": null,
   "guide_id": "standard",
   "variant_id": "standard",
-  "revision": "0.1.0",
-  "script_sha256": "afc15108346e3669461efc04c15d789bb4dbc6184e7d107a0f7afd4ba668bbc5",
+  "revision": "1.0.0-rc.1",
+  "script_sha256": "acfd96df3df38809e973528a825e5ec9021b42c2999b450b57bd0cb72b8f12bd",
   "selected_variant_id": "standard",
   "source_guide_id": "standard",
   "explicit_fallback": false,

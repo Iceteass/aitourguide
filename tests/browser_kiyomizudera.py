@@ -37,8 +37,12 @@ def all_spots(page,offline):
   page.locator('#hotspots button').nth(i).locator('.v-pin-number').click();meta=json.loads((ROOT/FOLDER/spot['meta']).read_text());text=(ROOT/FOLDER/spot['dir']/meta['narration']).read_text();expect(page.locator('#title')).to_have_text(meta['title']);assert page.locator('#story').text_content()==text
   page.wait_for_function('url=>document.querySelector("#hero-img").src===url && document.querySelector("#hero-img").naturalWidth>0',arg=base+FOLDER+spot['dir']+'/'+meta['image']['path']);page.evaluate('kyotoAudio.selectDefault(selected)')
   expect(page.locator('#v-duration')).to_have_text('--:--')
-  expect(page.locator('#photo-note')).to_contain_text('AI 재구성')
-  assert 'Wikimedia' not in page.locator('#photo-credit').inner_text()
+  if meta['image']['type']=='illustration':
+   expect(page.locator('#photo-note')).to_contain_text('AI 재구성')
+   assert 'Wikimedia' not in page.locator('#photo-credit').inner_text()
+  else:
+   expect(page.locator('#photo-note')).to_contain_text(meta['title']+' 사진')
+   expect(page.locator('#photo-credit')).to_contain_text(meta['image']['source_credit'])
   expect(page.locator('#narration-mode')).to_have_value('tts');expect(page.locator('#narration-mode')).not_to_be_visible();assert page.evaluate('kyotoAudio.tracks.length===8 && kyotoAudio.tracks.every(x=>x===null)')
   expect(page.locator('#v-minus')).to_have_attribute('aria-label','이전 문장');expect(page.locator('#v-plus')).to_have_attribute('aria-label','다음 문장')
   if i==0 and not offline:page.screenshot(path=str(HERE/'kiyomizudera-detail.png'))
@@ -52,7 +56,7 @@ try:
   c=browser.new_context(service_workers='block');page=c.new_page();arrive(page);results['app_version']=page.evaluate('APP_VERSION');assert page.locator(f'[data-destination-id="{KID}"]').count()==1;c.close();passed('actual catalog includes approved Kiyomizudera and existing destinations')
   s.preview=False;c=browser.new_context(viewport={'width':390,'height':844});c.add_init_script("""window.__ttsCalls=[];window.__ttsErrors=[];const original=speechSynthesis.speak.bind(speechSynthesis);speechSynthesis.speak=u=>{__ttsCalls.push({text:u.text,lang:u.lang});u.addEventListener('error',e=>__ttsErrors.push(e.error));return original(u)}""")
   page=c.new_page();errors=[];requests=[];bad=[];page.on('pageerror',lambda e:errors.append(str(e)));page.on('request',lambda r:requests.append(r.url));page.on('response',lambda r:bad.append({'url':r.url,'status':r.status}) if r.status>=400 else None);arrive(page);passed('Japan→Kyoto→Kiyomizudera via actual catalog')
-  save(page,FID);save(page,GID);others=['travel-v12-jp-kyoto-fushimi-inari@1.2.0','travel-v12-jp-kyoto-kinkakuji-standard@0.1.0-beta.1'];before=page.evaluate(SNAPSHOT,others)
+  save(page,FID);save(page,GID);others=['travel-v12-jp-kyoto-fushimi-inari@1.2.0','travel-v12-jp-kyoto-kinkakuji-standard@'+json.loads((ROOT/'travel-packs/JP/kyoto/kinkakuji-standard/pack.json').read_text())['pack_version']];before=page.evaluate(SNAPSHOT,others)
   open_map(page,FID,7);page.locator('#hotspots button').first.click();page.evaluate('kyotoAudio.selectDefault(selected)');expect(page.locator('#narration-mode')).to_have_value('mp3');page.locator('#toggle').click();page.wait_for_function('!kyotoAudio.player.paused && kyotoAudio.player.currentTime>0');page.locator('#toggle').click();page.evaluate('async()=>{await photoPut(0,new Blob(["keep-fushimi-photo"]));localStorage.setItem("kyoto-speed","1.25")}');page.locator('#v-all-spots').click();page.locator('#v-map-back').click()
   open_map(page,GID,8);assert page.locator('.v-reference-route polyline').count()==5;page.locator('#hotspots button').first.click();page.evaluate('kyotoAudio.selectDefault(selected)');expect(page.locator('#narration-mode')).to_have_value('tts');page.locator('#v-all-spots').click();page.locator('#v-map-back').click();passed('existing Fushimi MP3/map and Kinkakuji8pins/5segments intact in3pack selection')
   card(page,KID);page.screenshot(path=str(HERE/'kiyomizudera-card.png'));open_map(page,KID,8);verify_route(page);page.evaluate('p=>window.__mapExpectedPoints=p',points);layouts=[]

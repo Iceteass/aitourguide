@@ -11,10 +11,13 @@
     "type": "photograph",
     "asset_origin": "wikimedia_commons",
     "usage_status": "REVIEW_REQUIRED",
-    "source_credit": "User-provided derivative; designated source: そらみみ · CC BY-SA 3.0 (verification pending)",
+    "source_credit": "そらみみ · Wikimedia Commons",
     "production_method": "cropped_from_ai_generated_8panel_collage",
     "source_quality_warning": "SOURCE_TILE_378x417_UPSAMPLED__NOT_NATIVE_HIGH_RESOLUTION",
-    "credit_url": "https://commons.wikimedia.org/wiki/File:Koyasu_Tower_of_Kiyomizudera_Temple.jpg"
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Koyasu_Tower_of_Kiyomizudera_Temple.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "modifications": "이용자 제공 사본: 리사이즈·재인코딩 가능. 정확한 변형 이력 및 Commons 원본과 바이트 동일성 미확인."
   },
   "audio": {
     "path": "audio/ko-N1.mp3",
@@ -26,8 +29,8 @@
   "cues": null,
   "guide_id": "standard",
   "variant_id": "standard",
-  "revision": "0.1.0",
-  "script_sha256": "95e269be50b81b59bed114f6ccedcca7ad99aa8f8fc77ee275257ccf10042ebc",
+  "revision": "1.0.0-rc.1",
+  "script_sha256": "a0e0b6a71a8862d933702f9878a2a790d90b1672cad710a3b1e9944f3f723e9a",
   "selected_variant_id": "standard",
   "source_guide_id": "standard",
   "explicit_fallback": false,
