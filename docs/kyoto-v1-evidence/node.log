@@ -1,0 +1,20 @@
+PASS: shared version drives shell updates, offline version asset, cache preservation, failed-install safety
+PASS: image manifest metadata/hashes, deterministic app/country/city selection, disabled/season rules, safe paths and offline coverage
+PASS: explicit guide metadata, legacy adapter, private guide hiding, ID/path/version checks, independent-storage safety gate
+PASS: metadata-based AI/illustration captions, personal image attribution and existing Romon photo preserved
+PASS: five valid reference segments; omissions win; invalid paths fail closed
+PASS: missing MP3 selects TTS, cached MP3 plays, errors fall back, no completion dialog
+PASS: sparse audio indices and empty pack reset
+PASS: MP3 manual scroll, TTS sentence highlights, preserved original text, and end-of-sentence advancement
+PASS: all MP3
+PASS: synthetic eight-spot zero MP3
+PASS: zero MP3
+PASS: partial MP3 / gaps
+PASS: not_generated contradicts files
+PASS: declared MP3 missing
+PASS: MP3 size/hash damaged
+PASS: MP3 SHA damaged at correct size
+PASS: no root duplicates/retired files or root runtime URLs; no hardcoded destination path; catalog-linked pack cover
+PASS: fushimi-inari TTS reset, current script first sentence, stale callback isolation and sentence navigation
+PASS: kinkakuji-standard TTS reset, current script first sentence, stale callback isolation and sentence navigation
+PASS: v1.2.1 syntax, map, compact card, icon-only 5s controls, and no completion dialog

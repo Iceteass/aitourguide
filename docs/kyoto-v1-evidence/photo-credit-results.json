@@ -1,0 +1,26 @@
+[
+  {
+    "destination": "kinkakuji",
+    "spot": 5,
+    "offline_credit": "PASS",
+    "caption": "용문폭포·금각사 울타리 사진 · 사전 저장 시 오프라인 이용 가능"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": 2,
+    "offline_credit": "PASS",
+    "caption": "서문 사진 · 사전 저장 시 오프라인 이용 가능"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": 7,
+    "offline_credit": "PASS",
+    "caption": "오토와 폭포 사진 · 사전 저장 시 오프라인 이용 가능"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": 8,
+    "offline_credit": "PASS",
+    "caption": "고야스탑 사진 · 사전 저장 시 오프라인 이용 가능"
+  }
+]

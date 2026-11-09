@@ -1,0 +1,13 @@
+PASS: actual catalog includes approved Kiyomizudera and existing destinations
+PASS: Japan→Kyoto→Kiyomizudera via actual catalog
+PASS: existing Fushimi MP3/map and Kinkakuji8pins/5segments intact in3pack selection
+PASS: 360/390/430:8visible pins/labels, original normalized positions, zero5collision categories,3reference/4omitted connections
+PASS: online:8 original spots/order, exact narratives/images and first-sentence native TTS dispatch, null8tracks
+PASS: 10 original JPGs decode
+PASS: download caches30exact original files+marker; existing2pack cache bodies unchanged
+PASS: offline:8 original spots/order, exact narratives/images and first-sentence native TTS dispatch, null8tracks
+PASS: service worker reload and offline map/8spots/reference path
+PASS: offline delete removes onlyKiyomizudera and blocks deleted offline entry
+PASS: redownload succeeds without disturbing2existing packs
+PASS: switch back restores existing MP3/default state and personal photo/settings
+PASS: no ungenerated MP3 requests and no JS exceptions

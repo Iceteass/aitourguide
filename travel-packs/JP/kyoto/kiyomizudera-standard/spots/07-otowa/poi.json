@@ -8,13 +8,16 @@
   "narration": "narration.md",
   "image": {
     "path": "images/main.jpg",
-    "type": "illustration",
-    "asset_origin": "ai_generated",
-    "render_style": "photorealistic",
+    "type": "photograph",
+    "asset_origin": "wikimedia_commons",
     "usage_status": "REVIEW_REQUIRED",
-    "source_credit": "LICENSES.md",
+    "source_credit": "そらみみ · Wikimedia Commons",
     "production_method": "cropped_from_ai_generated_8panel_collage",
-    "source_quality_warning": "SOURCE_TILE_378x417_UPSAMPLED__NOT_NATIVE_HIGH_RESOLUTION"
+    "source_quality_warning": "SOURCE_TILE_378x417_UPSAMPLED__NOT_NATIVE_HIGH_RESOLUTION",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Otowa_Waterfall_at_Kiyomizudera_Temple.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "modifications": "이용자 제공 사본: 리사이즈·재인코딩 가능. 정확한 변형 이력 및 Commons 원본과 바이트 동일성 미확인. 오토와 사진은 얼굴 모자이크가 보입니다."
   },
   "audio": {
     "path": "audio/ko-N1.mp3",
@@ -26,8 +29,8 @@
   "cues": null,
   "guide_id": "standard",
   "variant_id": "standard",
-  "revision": "0.1.0",
-  "script_sha256": "21007869925963bb00619a13a1f8e9d9578fd95665339a26d28d17fc0f258241",
+  "revision": "1.0.0",
+  "script_sha256": "f837eb4b5350a1e8b0f45dbdbb4fde52d5ca0a1409e97f54ad8ff64cafa96906",
   "selected_variant_id": "standard",
   "source_guide_id": "standard",
   "explicit_fallback": false,

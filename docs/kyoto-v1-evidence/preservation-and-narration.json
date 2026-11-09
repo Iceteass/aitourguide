@@ -1,0 +1,163 @@
+{
+  "narrations": [
+    {
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/spots/01-kyokochi/narration.md",
+      "old_sha256": "ec7a3a4d47671765e781e0ac435129a3041ce675410d43567dbb4ea6bff6eaf6",
+      "new_sha256": "1a4fe2c4e3e818c9999f0c0b8cc97ac21022098ef39c56be3e88e9e28f5a26af",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/spots/02-shariden-kinkaku/narration.md",
+      "old_sha256": "d335a8001446d37ad6a02e8cd20ef839e51d1c5a3f0c8e2cd2bf4b02e8608d80",
+      "new_sha256": "565397fbe9565963d96101a0d0f0dd5797e16c17b5933a9cdda4c7c8b8ede10a",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/spots/03-rikushunomatsu/narration.md",
+      "old_sha256": "dfc2f4f4da9f743e9e8eb8bd9d9948d32bf15e7a45b094f5b5a1f5d7ff8b8930",
+      "new_sha256": "ee30bc8d1cb153c42824a60177682b0b0da2323592a0ab49f3c09e5ceb90a5d5",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/spots/04-gingasen-gankasui/narration.md",
+      "old_sha256": "38376bacc4360f15e3527366759c6b97d823f62f646d222108f13ee5577e4acc",
+      "new_sha256": "4adf92e2aac9edb7cc522087edcfb4a529d348a2b7a801f9819b4c630682f4ed",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/spots/05-ryumontaki-kinkakujigaki/narration.md",
+      "old_sha256": "d9bc3e055dcf079b1896b88ce65f4407454435de097a0002b7bec6c9c737625c",
+      "new_sha256": "5f49412aa9591e6ebefea3f92cebb7c7838fa15368c745bc7c13c601435e7690",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/spots/06-anmintaku-hakujanotsuka/narration.md",
+      "old_sha256": "a882dcbe55b2aeeaca8d19594232886d80d84ce0538a4935b1be66e0a8ec4c95",
+      "new_sha256": "37637816ffedd46158127912ea4bc3be44f758dc80808827f7111a65aebba38d",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/spots/07-sekkatei/narration.md",
+      "old_sha256": "017d4ab2ffdc94775740a8b800125a0f36438490c01c5b69081d60dac18c1b26",
+      "new_sha256": "cee3447c7ce7454a79e79f41c52fefeaa83c794a9003708c02aa44285627c168",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/spots/08-fudodo/narration.md",
+      "old_sha256": "413583a0ec4ed277ca4c089dcf3acaec974d857cc6bb5ac63d98c69a20f2f86a",
+      "new_sha256": "4bd06a9a3374cb5459491bf07c9df168766ce1db171fb203c1faacd96c2a4794",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/01-niomon/narration.md",
+      "old_sha256": "7fdf25e3f7f37b774a4e8b914ee7e1f163f6309867aef7bdd57fee7c10a932db",
+      "new_sha256": "9e420cced0acaa1575ffe61bb9bcc9baa35cde554cffc5a2bf80af4fa1693aed",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/02-saimon/narration.md",
+      "old_sha256": "afc15108346e3669461efc04c15d789bb4dbc6184e7d107a0f7afd4ba668bbc5",
+      "new_sha256": "acfd96df3df38809e973528a825e5ec9021b42c2999b450b57bd0cb72b8f12bd",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/03-zuigudo/narration.md",
+      "old_sha256": "7833c4976564cb50befad76a59d6d7c072cf86220374832f1ef551fdb2754514",
+      "new_sha256": "69cc8ac0fbb4ecac7c699bb3db21e2805c43c9033d54f902c35dd1ec255a1565",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/04-sanjunoto/narration.md",
+      "old_sha256": "6a3130cc221ba9d6a6f1f3cd8545e7cc71d4b7c6d85fbe9360d643bd447d8509",
+      "new_sha256": "704487c7913ac9cc3850e5a7c7b4d990488d88897b0f8b8df1f3fafd8c622fc7",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/05-hondo/narration.md",
+      "old_sha256": "e929d4f63ece912e4251c283e2a44b9f4713949165f53dd8ee6decd8b57bb077",
+      "new_sha256": "672ae2c29fb82ef80860995ef73974e0b14151c34903b3f1d885e061c426a4b9",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/06-okunoin/narration.md",
+      "old_sha256": "17d78c7cfe3ec561dcee58aaf0bb2491082b831b01f26b4b34afe539b4aab230",
+      "new_sha256": "70684192ceef63e60eee22a551414e4da3e7e7a6c999e302f15c0b8fa7d273c1",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/07-otowa/narration.md",
+      "old_sha256": "21007869925963bb00619a13a1f8e9d9578fd95665339a26d28d17fc0f258241",
+      "new_sha256": "f837eb4b5350a1e8b0f45dbdbb4fde52d5ca0a1409e97f54ad8ff64cafa96906",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/08-koyasuto/narration.md",
+      "old_sha256": "95e269be50b81b59bed114f6ccedcca7ad99aa8f8fc77ee275257ccf10042ebc",
+      "new_sha256": "a0e0b6a71a8862d933702f9878a2a790d90b1672cad710a3b1e9944f3f723e9a",
+      "status": "REVIEW_REQUIRED"
+    }
+  ],
+  "five_images_unchanged": [
+    {
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/spots/03-rikushunomatsu/images/main.jpg",
+      "sha256": "d8f82ef47cdc4d79837a0ad49162413fcec5fe13f138e0b1ad5bc45fead05e9d"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kinkakuji-standard/spots/05-ryumontaki-kinkakujigaki/images/main.jpg",
+      "sha256": "a730777633ed82290df11ef847c81c37bc04f7a3c414319be11f4b905717f049"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/02-saimon/images/main.jpg",
+      "sha256": "09f42a24ff24a538a398bb7fa538188d1e7a89f3ab9f7a43caf3c4af3e6b0cb9"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/07-otowa/images/main.jpg",
+      "sha256": "82b69da3143aa695945037d0690f7c520e864fe4c101e715f76521d6a2de3150"
+    },
+    {
+      "path": "travel-packs/JP/kyoto/kiyomizudera-standard/spots/08-koyasuto/images/main.jpg",
+      "sha256": "fce9bd62b9ef42320748702e41b43f9e01ef5577dd655f96e711320f2067181a"
+    }
+  ],
+  "protected_files_identical": [
+    "travel-packs/JP/kyoto/fushimi-inari/LICENSES.md",
+    "travel-packs/JP/kyoto/fushimi-inari/cover.jpg",
+    "travel-packs/JP/kyoto/fushimi-inari/pack.json",
+    "travel-packs/JP/kyoto/fushimi-inari/route/points.json",
+    "travel-packs/JP/kyoto/fushimi-inari/route/route-map.jpg",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/01-odotorii/audio/ko-N1.mp3",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/01-odotorii/images/main.jpg",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/01-odotorii/narration.md",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/01-odotorii/poi.json",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/02-romon/audio/ko-N1.mp3",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/02-romon/images/main.jpg",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/02-romon/narration.md",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/02-romon/poi.json",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/03-honden/audio/ko-N1.mp3",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/03-honden/images/main.jpg",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/03-honden/narration.md",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/03-honden/poi.json",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/04-senbon-torii/audio/ko-N1.mp3",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/04-senbon-torii/images/main.jpg",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/04-senbon-torii/narration.md",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/04-senbon-torii/poi.json",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/05-okusha/audio/ko-N1.mp3",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/05-okusha/images/main.jpg",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/05-okusha/narration.md",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/05-okusha/poi.json",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/06-omokaruishi/audio/ko-N1.mp3",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/06-omokaruishi/images/main.jpg",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/06-omokaruishi/narration.md",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/06-omokaruishi/poi.json",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/07-return-path/audio/ko-N1.mp3",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/07-return-path/images/main.jpg",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/07-return-path/narration.md",
+    "travel-packs/JP/kyoto/fushimi-inari/spots/07-return-path/poi.json",
+    "travel-packs/JP/kyoto/kinkakuji-standard/route/path.json",
+    "travel-packs/JP/kyoto/kinkakuji-standard/route/points.json",
+    "travel-packs/JP/kyoto/kinkakuji-standard/route/route-map.jpg",
+    "travel-packs/JP/kyoto/kiyomizudera-standard/route/path.json",
+    "travel-packs/JP/kyoto/kiyomizudera-standard/route/points.json",
+    "travel-packs/JP/kyoto/kiyomizudera-standard/route/route-map.jpg"
+  ]
+}

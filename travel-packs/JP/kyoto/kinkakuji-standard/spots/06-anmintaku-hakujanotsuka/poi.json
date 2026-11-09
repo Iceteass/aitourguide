@@ -24,11 +24,11 @@
   "cues": null,
   "guide_id": "standard",
   "variant_id": "standard",
-  "revision": "0.1.0",
-  "script_sha256": "a882dcbe55b2aeeaca8d19594232886d80d84ce0538a4935b1be66e0a8ec4c95",
+  "revision": "1.0.0",
+  "script_sha256": "37637816ffedd46158127912ea4bc3be44f758dc80808827f7111a65aebba38d",
   "selected_variant_id": "standard",
   "source_guide_id": "standard",
   "explicit_fallback": false,
-  "content_review": "CONTENT_APPROVED",
+  "content_review": "REVIEW_REQUIRED",
   "visual_review": "REVIEW_REQUIRED"
 }

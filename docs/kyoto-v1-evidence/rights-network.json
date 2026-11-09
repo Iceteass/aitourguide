@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://commons.wikimedia.org/wiki/File:Ryumonnotaki_Waterfall_and_Carp_Stone_in_Rokuonji_Temple.jpg",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "url": "https://commons.wikimedia.org/wiki/File:Kiyomizu-dera4.jpg",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "url": "https://commons.wikimedia.org/wiki/File:Otowa_Waterfall_at_Kiyomizudera_Temple.jpg",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "url": "https://commons.wikimedia.org/wiki/File:Koyasu_Tower_of_Kiyomizudera_Temple.jpg",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  }
+]

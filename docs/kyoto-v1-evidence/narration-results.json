@@ -1,0 +1,325 @@
+[
+  {
+    "destination": "kinkakuji",
+    "spot": "kyokochi",
+    "offline": false,
+    "sentences": 15,
+    "first": "금각사를 처음 바라볼 때 눈길을 사로잡는 것은 금빛 사리전이지만, 그 건물을 한 폭의 풍경으로 완성하는 것은 앞에 펼쳐진 경호지입니다.",
+    "middle": "보는 위치를 조금만 바꾸어도 금각을 가리는 나뭇가지와 연못에 비친 지붕의 모습이 달라지는 이유입니다.",
+    "last": "정원은 바뀌지 않는 한 장의 그림이 아니라, 빛과 바람이 들어올 때마다 새롭게 완성되는 풍경입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "shariden-kinkaku",
+    "offline": false,
+    "sentences": 20,
+    "first": "눈앞에서 빛나는 건물의 정식 명칭은 사리전 금각입니다.",
+    "middle": "둘째 층과 셋째 층의 금빛은 옻칠한 바탕에 순금박을 입혀 만든 것입니다.",
+    "last": "금각사의 이름은 금빛 때문에 알려졌지만, 그 안의 이야기는 금박보다 훨씬 오래 남습니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "rikushunomatsu",
+    "offline": false,
+    "sentences": 16,
+    "first": "여기서 만나는 육주송, 일본어로 리쿠슈노마쓰는 이름부터 흥미로운 소나무입니다.",
+    "middle": "나무 하나를 수백 년에 걸쳐 가꾸는 것이 정원 문화의 한 부분인 셈입니다.",
+    "last": "금박처럼 눈에 띄는 재료가 없어도, 한 나무를 오래 지켜 온 시간은 그 자체로 중요한 유산입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "gingasen-gankasui",
+    "offline": false,
+    "sentences": 15,
+    "first": "금각 뒤쪽으로 시선을 돌리면 화려한 건물과는 전혀 다른 크기의 유산을 만납니다.",
+    "middle": "땅에서 솟는 물을 조심스럽게 받아 쓰는 생활의 공간입니다.",
+    "last": "두 물터는 규모로는 사리전에 비할 수 없지만, 권력자가 머물던 장소에 남은 일상적 기억이라는 점에서 서로 다른 시대의 삶을 이어 줍니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "ryumontaki-kinkakujigaki",
+    "offline": false,
+    "sentences": 20,
+    "first": "작은 폭포 앞에 서면 이 정원에 숨겨진 한 편의 이야기를 만납니다.",
+    "middle": "폭포 가까이에는 낮은 대나무 울타리와 작은 석교도 있습니다.",
+    "last": "용문폭포가 보여 주는 것은 규모가 아니라 이야기를 풍경으로 만드는 정원의 기술입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "anmintaku-hakujanotsuka",
+    "offline": false,
+    "sentences": 16,
+    "first": "안민택은 금각사 정원 안쪽의 나무들 사이에 자리한 연못입니다.",
+    "middle": "오륜탑은 아래에서 위로 서로 다른 형태의 돌을 쌓아 만드는 불교 석탑 형식입니다.",
+    "last": "잘 보이지 않는 돌탑이 때로는 가장 오래된 이야기를 들려줍니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "sekkatei",
+    "offline": false,
+    "sentences": 14,
+    "first": "석가정은 금각사 경내에 마련된 작은 다실로, 일본어로는 셋카테이라고 읽습니다.",
+    "middle": "석가정은 그런 변화의 한 장면을 보여 주는 건물입니다.",
+    "last": "금각사에는 화려한 무로마치 문화뿐 아니라 차를 즐기던 에도 시대의 미감도 함께 남아 있습니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "fudodo",
+    "offline": false,
+    "sentences": 17,
+    "first": "금각사 관람의 뒤쪽에서 만나는 부동당은 금빛 사리전과 분위기가 사뭇 다릅니다.",
+    "middle": "이 석조 본존은 평소에는 공개하지 않는 비불로 소개됩니다.",
+    "last": "부동당은 금각사의 또 다른 얼굴을 보여 주는 조용한 공간입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "niomon",
+    "offline": false,
+    "sentences": 18,
+    "first": "청수사의 정문인 인왕문은 참배객을 가장 먼저 맞는 큰 문입니다.",
+    "middle": "붉은 칠과 목재의 결, 지붕 아래의 짜임을 보면서 그렇게 이어진 시간을 떠올릴 수 있습니다.",
+    "last": "인왕문이 청수사의 첫인상으로 기억되는 이유입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "saimon",
+    "offline": false,
+    "sentences": 17,
+    "first": "인왕문에서 멀지 않은 곳에 있는 서문은 두 문을 비교하며 볼 때 더 흥미롭습니다.",
+    "middle": "건물이 어느 방향으로 놓였는지가 단순한 조망 이상의 의미를 갖기 때문입니다.",
+    "last": "이 장소의 주인공은 단지 붉게 칠한 건물이 아니라, 저무는 해를 바라보던 사람들의 마음입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "zuigudo",
+    "offline": false,
+    "sentences": 17,
+    "first": "즈이구도는 청수사의 번화한 진입 공간에서 잠시 걸음을 늦추게 만드는 불당입니다.",
+    "middle": "일반적으로 사찰 건축은 처마나 불상처럼 눈에 보이는 부분에 주목하기 쉽습니다.",
+    "last": "즈이구도는 청수사가 절경뿐 아니라 삶의 중요한 순간을 위해 기도하러 오는 사찰임을 보여 줍니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "sanjunoto",
+    "offline": false,
+    "sentences": 16,
+    "first": "청수사의 삼층탑은 경내의 다른 건물을 둘러보다가도 시선이 다시 돌아올 만큼 선명한 붉은 탑입니다.",
+    "middle": "세 층의 처마를 보면 아래에서 위로 갈수록 지붕 면적과 기둥의 비례가 조금씩 달라집니다.",
+    "last": "같은 삼층탑이라도 크기와 용도, 세부 재료가 다르면 전해지는 인상도 달라집니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "hondo",
+    "offline": false,
+    "sentences": 19,
+    "first": "청수사 본당 앞에 펼쳐지는 넓은 마루는 흔히 청수 무대라고 부릅니다.",
+    "middle": "나무를 정교하게 맞물리게 하여 힘을 나누는 결구가 핵심입니다.",
+    "last": "그 세 가지를 함께 기억하면 청수 무대의 인상이 오래 남습니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "okunoin",
+    "offline": false,
+    "sentences": 17,
+    "first": "오쿠노인은 본당과 조금 떨어져 있는 불당으로, 오토와 폭포 바로 위쪽에 자리합니다.",
+    "middle": "오쿠노인의 작은 무대도 가케즈쿠리라는 전통적인 현조 방식과 연결됩니다.",
+    "last": "같은 청수 무대도 어디서 바라보느냐에 따라 전망의 장소가 되거나 목조건축의 교과서처럼 보이는 것입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "otowa",
+    "offline": false,
+    "sentences": 18,
+    "first": "오토와 폭포는 청수사의 이름이 어디에서 시작됐는지 알려 주는 장소입니다.",
+    "middle": "폭포 아래에서는 물이 세 갈래로 나뉘어 떨어지는 모습을 볼 수 있습니다.",
+    "last": "물을 받는 체험은 현장 안내와 위생·운영 조건을 확인한 뒤 참여하면 됩니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "koyasuto",
+    "offline": false,
+    "sentences": 16,
+    "first": "고야스탑은 청수사 경내의 큰 삼층탑과 이름도 크기도 다른 탑입니다.",
+    "middle": "오늘 보이는 모습의 정확한 연대를 한 문장으로 단정하기보다, 무엇을 위해 이 장소가 지켜졌는지를 이해하는 일이 중요합니다.",
+    "last": "아이의 탄생을 간절히 기다리던 사람들에게는 이 조용한 탑이 커다란 의미를 지닌 공간이었을 것입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "kyokochi",
+    "offline": true,
+    "sentences": 15,
+    "first": "금각사를 처음 바라볼 때 눈길을 사로잡는 것은 금빛 사리전이지만, 그 건물을 한 폭의 풍경으로 완성하는 것은 앞에 펼쳐진 경호지입니다.",
+    "middle": "보는 위치를 조금만 바꾸어도 금각을 가리는 나뭇가지와 연못에 비친 지붕의 모습이 달라지는 이유입니다.",
+    "last": "정원은 바뀌지 않는 한 장의 그림이 아니라, 빛과 바람이 들어올 때마다 새롭게 완성되는 풍경입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "shariden-kinkaku",
+    "offline": true,
+    "sentences": 20,
+    "first": "눈앞에서 빛나는 건물의 정식 명칭은 사리전 금각입니다.",
+    "middle": "둘째 층과 셋째 층의 금빛은 옻칠한 바탕에 순금박을 입혀 만든 것입니다.",
+    "last": "금각사의 이름은 금빛 때문에 알려졌지만, 그 안의 이야기는 금박보다 훨씬 오래 남습니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "rikushunomatsu",
+    "offline": true,
+    "sentences": 16,
+    "first": "여기서 만나는 육주송, 일본어로 리쿠슈노마쓰는 이름부터 흥미로운 소나무입니다.",
+    "middle": "나무 하나를 수백 년에 걸쳐 가꾸는 것이 정원 문화의 한 부분인 셈입니다.",
+    "last": "금박처럼 눈에 띄는 재료가 없어도, 한 나무를 오래 지켜 온 시간은 그 자체로 중요한 유산입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "gingasen-gankasui",
+    "offline": true,
+    "sentences": 15,
+    "first": "금각 뒤쪽으로 시선을 돌리면 화려한 건물과는 전혀 다른 크기의 유산을 만납니다.",
+    "middle": "땅에서 솟는 물을 조심스럽게 받아 쓰는 생활의 공간입니다.",
+    "last": "두 물터는 규모로는 사리전에 비할 수 없지만, 권력자가 머물던 장소에 남은 일상적 기억이라는 점에서 서로 다른 시대의 삶을 이어 줍니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "ryumontaki-kinkakujigaki",
+    "offline": true,
+    "sentences": 20,
+    "first": "작은 폭포 앞에 서면 이 정원에 숨겨진 한 편의 이야기를 만납니다.",
+    "middle": "폭포 가까이에는 낮은 대나무 울타리와 작은 석교도 있습니다.",
+    "last": "용문폭포가 보여 주는 것은 규모가 아니라 이야기를 풍경으로 만드는 정원의 기술입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "anmintaku-hakujanotsuka",
+    "offline": true,
+    "sentences": 16,
+    "first": "안민택은 금각사 정원 안쪽의 나무들 사이에 자리한 연못입니다.",
+    "middle": "오륜탑은 아래에서 위로 서로 다른 형태의 돌을 쌓아 만드는 불교 석탑 형식입니다.",
+    "last": "잘 보이지 않는 돌탑이 때로는 가장 오래된 이야기를 들려줍니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "sekkatei",
+    "offline": true,
+    "sentences": 14,
+    "first": "석가정은 금각사 경내에 마련된 작은 다실로, 일본어로는 셋카테이라고 읽습니다.",
+    "middle": "석가정은 그런 변화의 한 장면을 보여 주는 건물입니다.",
+    "last": "금각사에는 화려한 무로마치 문화뿐 아니라 차를 즐기던 에도 시대의 미감도 함께 남아 있습니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kinkakuji",
+    "spot": "fudodo",
+    "offline": true,
+    "sentences": 17,
+    "first": "금각사 관람의 뒤쪽에서 만나는 부동당은 금빛 사리전과 분위기가 사뭇 다릅니다.",
+    "middle": "이 석조 본존은 평소에는 공개하지 않는 비불로 소개됩니다.",
+    "last": "부동당은 금각사의 또 다른 얼굴을 보여 주는 조용한 공간입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "niomon",
+    "offline": true,
+    "sentences": 18,
+    "first": "청수사의 정문인 인왕문은 참배객을 가장 먼저 맞는 큰 문입니다.",
+    "middle": "붉은 칠과 목재의 결, 지붕 아래의 짜임을 보면서 그렇게 이어진 시간을 떠올릴 수 있습니다.",
+    "last": "인왕문이 청수사의 첫인상으로 기억되는 이유입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "saimon",
+    "offline": true,
+    "sentences": 17,
+    "first": "인왕문에서 멀지 않은 곳에 있는 서문은 두 문을 비교하며 볼 때 더 흥미롭습니다.",
+    "middle": "건물이 어느 방향으로 놓였는지가 단순한 조망 이상의 의미를 갖기 때문입니다.",
+    "last": "이 장소의 주인공은 단지 붉게 칠한 건물이 아니라, 저무는 해를 바라보던 사람들의 마음입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "zuigudo",
+    "offline": true,
+    "sentences": 17,
+    "first": "즈이구도는 청수사의 번화한 진입 공간에서 잠시 걸음을 늦추게 만드는 불당입니다.",
+    "middle": "일반적으로 사찰 건축은 처마나 불상처럼 눈에 보이는 부분에 주목하기 쉽습니다.",
+    "last": "즈이구도는 청수사가 절경뿐 아니라 삶의 중요한 순간을 위해 기도하러 오는 사찰임을 보여 줍니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "sanjunoto",
+    "offline": true,
+    "sentences": 16,
+    "first": "청수사의 삼층탑은 경내의 다른 건물을 둘러보다가도 시선이 다시 돌아올 만큼 선명한 붉은 탑입니다.",
+    "middle": "세 층의 처마를 보면 아래에서 위로 갈수록 지붕 면적과 기둥의 비례가 조금씩 달라집니다.",
+    "last": "같은 삼층탑이라도 크기와 용도, 세부 재료가 다르면 전해지는 인상도 달라집니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "hondo",
+    "offline": true,
+    "sentences": 19,
+    "first": "청수사 본당 앞에 펼쳐지는 넓은 마루는 흔히 청수 무대라고 부릅니다.",
+    "middle": "나무를 정교하게 맞물리게 하여 힘을 나누는 결구가 핵심입니다.",
+    "last": "그 세 가지를 함께 기억하면 청수 무대의 인상이 오래 남습니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "okunoin",
+    "offline": true,
+    "sentences": 17,
+    "first": "오쿠노인은 본당과 조금 떨어져 있는 불당으로, 오토와 폭포 바로 위쪽에 자리합니다.",
+    "middle": "오쿠노인의 작은 무대도 가케즈쿠리라는 전통적인 현조 방식과 연결됩니다.",
+    "last": "같은 청수 무대도 어디서 바라보느냐에 따라 전망의 장소가 되거나 목조건축의 교과서처럼 보이는 것입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "otowa",
+    "offline": true,
+    "sentences": 18,
+    "first": "오토와 폭포는 청수사의 이름이 어디에서 시작됐는지 알려 주는 장소입니다.",
+    "middle": "폭포 아래에서는 물이 세 갈래로 나뉘어 떨어지는 모습을 볼 수 있습니다.",
+    "last": "물을 받는 체험은 현장 안내와 위생·운영 조건을 확인한 뒤 참여하면 됩니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "destination": "kiyomizudera",
+    "spot": "koyasuto",
+    "offline": true,
+    "sentences": 16,
+    "first": "고야스탑은 청수사 경내의 큰 삼층탑과 이름도 크기도 다른 탑입니다.",
+    "middle": "오늘 보이는 모습의 정확한 연대를 한 문장으로 단정하기보다, 무엇을 위해 이 장소가 지켜졌는지를 이해하는 일이 중요합니다.",
+    "last": "아이의 탄생을 간절히 기다리던 사람들에게는 이 조용한 탑이 커다란 의미를 지닌 공간이었을 것입니다.",
+    "result": "PASS_CALLBACK_SEQUENCE_NOT_AUDIBLE"
+  },
+  {
+    "fushimi_cached_mp3": "PASS play/pause/±5seconds/speed1.5"
+  }
+]

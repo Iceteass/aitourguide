@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "pack_id": "jp-kyoto-kiyomizudera-standard",
-  "pack_version": "0.1.0-beta.1",
+  "pack_version": "1.0.0",
   "status": "published",
   "content_qa_status": "CONTENT_QA_PENDING",
   "locale": "ko-KR",
@@ -10,7 +10,7 @@
   "city_id": "kyoto",
   "city_name": "교토",
   "title": "청수사",
-  "description": "청수사 공개 베타 · AI 재구성 이미지(07·08 저해상도 보간), 원고·지도·외형·권리 검수 미완료",
+  "description": "청수사 8개 스팟 역사 해설 · 사진과 AI 일러스트 구분 · 공간·외형 고증의 검수 한계는 출처 안내 참조",
   "destination_id": "jp-kyoto-kiyomizudera",
   "destination_tags": [
     "히가시야마구",
@@ -94,8 +94,8 @@
   "files": [
     {
       "path": "LICENSES.md",
-      "bytes": 7589,
-      "sha256": "0a70d99d79e37fc1a08586c346d2d48459e19368b3b0dafba787bfe5f759671c",
+      "bytes": 12407,
+      "sha256": "28c612f26b27f15c33bbda040124f2cfc0a0ef9c313c748845a9ba2a17b8fdde",
       "role": "rights-record"
     },
     {
@@ -130,32 +130,32 @@
     },
     {
       "path": "spots/01-niomon/narration.md",
-      "bytes": 822,
-      "sha256": "7fdf25e3f7f37b774a4e8b914ee7e1f163f6309867aef7bdd57fee7c10a932db",
+      "bytes": 2114,
+      "sha256": "9e420cced0acaa1575ffe61bb9bcc9baa35cde554cffc5a2bf80af4fa1693aed",
       "role": "spot-narration"
     },
     {
       "path": "spots/01-niomon/poi.json",
       "bytes": 962,
-      "sha256": "31db24fac397d59970ee7ccee81c956f50ed1bfb4b30239c0cc60c9059467e3c",
+      "sha256": "d2f0926241210da124890f914d331097b5db5dfe5c53caee7574dc7257d8a7e9",
       "role": "spot-metadata"
     },
     {
       "path": "spots/02-saimon/images/main.jpg",
-      "bytes": 806124,
-      "sha256": "6569c587edcc1c3d5d06841a48a3c87e71f12cf0129862b31530668fb9e24140",
+      "bytes": 391121,
+      "sha256": "09f42a24ff24a538a398bb7fa538188d1e7a89f3ab9f7a43caf3c4af3e6b0cb9",
       "role": "spot-illustration"
     },
     {
       "path": "spots/02-saimon/narration.md",
-      "bytes": 781,
-      "sha256": "afc15108346e3669461efc04c15d789bb4dbc6184e7d107a0f7afd4ba668bbc5",
+      "bytes": 2070,
+      "sha256": "acfd96df3df38809e973528a825e5ec9021b42c2999b450b57bd0cb72b8f12bd",
       "role": "spot-narration"
     },
     {
       "path": "spots/02-saimon/poi.json",
-      "bytes": 966,
-      "sha256": "0ec1b974cd6120935666cd54ccb149259f5477d2ef414e9387bf3e6535d77c62",
+      "bytes": 1300,
+      "sha256": "33af0ab7de3e3f6f4bb4748f759fafc7e5b8a3e5741a7ed7bcd38222da4856ac",
       "role": "spot-metadata"
     },
     {
@@ -166,14 +166,14 @@
     },
     {
       "path": "spots/03-zuigudo/narration.md",
-      "bytes": 836,
-      "sha256": "7833c4976564cb50befad76a59d6d7c072cf86220374832f1ef551fdb2754514",
+      "bytes": 2122,
+      "sha256": "69cc8ac0fbb4ecac7c699bb3db21e2805c43c9033d54f902c35dd1ec255a1565",
       "role": "spot-narration"
     },
     {
       "path": "spots/03-zuigudo/poi.json",
       "bytes": 1017,
-      "sha256": "0d9fe170d9fbbfaf1ee00896093d7b0c57369c8f04f2eac42f52a23709b9e7e8",
+      "sha256": "00f84121b3dc30352cb25c06b44d005246003eb25b2519f96c4a5b59f64779dd",
       "role": "spot-metadata"
     },
     {
@@ -184,14 +184,14 @@
     },
     {
       "path": "spots/04-sanjunoto/narration.md",
-      "bytes": 839,
-      "sha256": "6a3130cc221ba9d6a6f1f3cd8545e7cc71d4b7c6d85fbe9360d643bd447d8509",
+      "bytes": 1996,
+      "sha256": "704487c7913ac9cc3850e5a7c7b4d990488d88897b0f8b8df1f3fafd8c622fc7",
       "role": "spot-narration"
     },
     {
       "path": "spots/04-sanjunoto/poi.json",
       "bytes": 1023,
-      "sha256": "f5bd34049887aa71941450e1b8bcfac22ed78e01e6e8f2fe3d04b6e6cf05765e",
+      "sha256": "8e94e703e40db0f765bba814f7bfcbf39fdd19e0522f8e5bde9824bece17d506",
       "role": "spot-metadata"
     },
     {
@@ -202,14 +202,14 @@
     },
     {
       "path": "spots/05-hondo/narration.md",
-      "bytes": 969,
-      "sha256": "e929d4f63ece912e4251c283e2a44b9f4713949165f53dd8ee6decd8b57bb077",
+      "bytes": 2423,
+      "sha256": "672ae2c29fb82ef80860995ef73974e0b14151c34903b3f1d885e061c426a4b9",
       "role": "spot-narration"
     },
     {
       "path": "spots/05-hondo/poi.json",
       "bytes": 1051,
-      "sha256": "c742cfed6410f7125fda3cb19cdc5eec04518a54c9d6f5a6a7d1924bd02bae51",
+      "sha256": "0da8de89326d874c5ad29f4f622f93829d970a8f0c7188228feae43512b2196e",
       "role": "spot-metadata"
     },
     {
@@ -220,50 +220,50 @@
     },
     {
       "path": "spots/06-okunoin/narration.md",
-      "bytes": 816,
-      "sha256": "17d78c7cfe3ec561dcee58aaf0bb2491082b831b01f26b4b34afe539b4aab230",
+      "bytes": 2119,
+      "sha256": "70684192ceef63e60eee22a551414e4da3e7e7a6c999e302f15c0b8fa7d273c1",
       "role": "spot-narration"
     },
     {
       "path": "spots/06-okunoin/poi.json",
       "bytes": 1022,
-      "sha256": "74094dad6a1b81c92e5d81e34233ce32f17c8e708bc69d383056ea30ff295319",
+      "sha256": "6ad57cba5d7cfcbab3914bb632dac0365a1fca1e6474a2be4f658bb4b6629fd3",
       "role": "spot-metadata"
     },
     {
       "path": "spots/07-otowa/images/main.jpg",
-      "bytes": 334296,
-      "sha256": "b9359337d8490a48ccd0fe357011824a35f6952569df1f81b12d4a94a1b02dfd",
+      "bytes": 586114,
+      "sha256": "82b69da3143aa695945037d0690f7c520e864fe4c101e715f76521d6a2de3150",
       "role": "spot-illustration"
     },
     {
       "path": "spots/07-otowa/narration.md",
-      "bytes": 917,
-      "sha256": "21007869925963bb00619a13a1f8e9d9578fd95665339a26d28d17fc0f258241",
+      "bytes": 2168,
+      "sha256": "f837eb4b5350a1e8b0f45dbdbb4fde52d5ca0a1409e97f54ad8ff64cafa96906",
       "role": "spot-narration"
     },
     {
       "path": "spots/07-otowa/poi.json",
-      "bytes": 1145,
-      "sha256": "b2dd6aaed39e797c599d00aa39ed40b16299b2d1bd6ad9cc3040f91f01953c63",
+      "bytes": 1555,
+      "sha256": "1d383fc184434f35a7552c584f8a888c3c735dcd7f68cdc8ec58741431f1d44b",
       "role": "spot-metadata"
     },
     {
       "path": "spots/08-koyasuto/images/main.jpg",
-      "bytes": 322626,
-      "sha256": "46d7c6194536748715d06d4022a418c1c5fe361bdba3e64a482a0a9338906e90",
+      "bytes": 324753,
+      "sha256": "fce9bd62b9ef42320748702e41b43f9e01ef5577dd655f96e711320f2067181a",
       "role": "spot-illustration"
     },
     {
       "path": "spots/08-koyasuto/narration.md",
-      "bytes": 878,
-      "sha256": "95e269be50b81b59bed114f6ccedcca7ad99aa8f8fc77ee275257ccf10042ebc",
+      "bytes": 2031,
+      "sha256": "a0e0b6a71a8862d933702f9878a2a790d90b1672cad710a3b1e9944f3f723e9a",
       "role": "spot-narration"
     },
     {
       "path": "spots/08-koyasuto/poi.json",
-      "bytes": 1131,
-      "sha256": "7b9608c03abd2d0c7525f58fabc5ac8f6a901f9ffb82f3ed4c9d1382764f79e5",
+      "bytes": 1481,
+      "sha256": "25eabb3d8ace9bea9bd5481c86555be20a7776f7f6d7d9d1856f288859102f98",
       "role": "spot-metadata"
     }
   ]

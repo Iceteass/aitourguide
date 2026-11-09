@@ -1,0 +1,3 @@
+PASS: visible8pins/clicks, five SVG segments/two omissions, mobile/ratio/zoom geometry, toggle, images10/narratives8, TTS API, offline/cacheSHA/delete and Fushimi isolation
+TTS audible NOT_RUN; native errors: ['synthesis-failed', 'synthesis-failed', 'synthesis-failed', 'synthesis-failed', 'synthesis-failed', 'synthesis-failed', 'synthesis-failed', 'synthesis-failed']
+PASS: missing/malformed route files retain visible pins, map and spot selection
