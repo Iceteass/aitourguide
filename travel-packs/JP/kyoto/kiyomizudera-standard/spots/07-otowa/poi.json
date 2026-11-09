@@ -29,7 +29,7 @@
   "cues": null,
   "guide_id": "standard",
   "variant_id": "standard",
-  "revision": "1.0.0-rc.1",
+  "revision": "1.0.0",
   "script_sha256": "f837eb4b5350a1e8b0f45dbdbb4fde52d5ca0a1409e97f54ad8ff64cafa96906",
   "selected_variant_id": "standard",
   "source_guide_id": "standard",

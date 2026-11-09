@@ -16,7 +16,7 @@
     },
     {
       "pack_id": "jp-kyoto-kinkakuji-standard",
-      "pack_version": "1.0.0-rc.1",
+      "pack_version": "1.0.0",
       "country_code": "JP",
       "country_name": "일본",
       "city_id": "kyoto",
@@ -65,7 +65,7 @@
           "guide_id": "default",
           "guide_title": "역사 해설",
           "guide_type": "history",
-          "guide_version": "1.0.0-rc.1",
+          "guide_version": "1.0.0",
           "guide_tags": [
             "기본",
             "역사"
@@ -73,7 +73,7 @@
           "status": "published",
           "storage_mode": "legacy-pack",
           "pack_id": "jp-kyoto-kinkakuji-standard",
-          "pack_version": "1.0.0-rc.1",
+          "pack_version": "1.0.0",
           "path": "travel-packs/JP/kyoto/kinkakuji-standard/pack.json"
         }
       ]

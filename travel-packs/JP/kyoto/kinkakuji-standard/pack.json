@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "pack_id": "jp-kyoto-kinkakuji-standard",
-  "pack_version": "1.0.0-rc.1",
+  "pack_version": "1.0.0",
   "status": "published",
   "locale": "ko-KR",
   "country_code": "JP",
@@ -9,7 +9,7 @@
   "city_id": "kyoto",
   "city_name": "교토",
   "title": "금각사",
-  "description": "금각사 8개 스팟 정식판 검수 후보 · 제공 원고 및 사진/AI 이미지 혼합 · 콘텐츠·공간·권리 최종 검수 대기",
+  "description": "금각사 8개 스팟 역사 해설 · 사진과 AI 일러스트 구분 · 공간·외형 고증의 검수 한계는 출처 안내 참조",
   "cover": "cover.jpg",
   "route": {
     "image": "route/route-map.jpg",
@@ -80,8 +80,8 @@
   "files": [
     {
       "path": "LICENSES.md",
-      "bytes": 6218,
-      "sha256": "a6e4d65ea2da2e5f383d795c7bcbe6227ebe8a8bbaf659ea1a05baf883e55482",
+      "bytes": 7521,
+      "sha256": "7efd8f392ca0946f289efed338ab4c4482ee19e0775c301e23868513d45f5de2",
       "role": "rights-record"
     },
     {
@@ -122,8 +122,8 @@
     },
     {
       "path": "spots/01-kyokochi/poi.json",
-      "bytes": 948,
-      "sha256": "2867b7128629e08e536c7d1e0cb983e36f1c1c0ff3ed6fa0990608826cf9c37a",
+      "bytes": 943,
+      "sha256": "eed6cca52ac41033248d2bb3af1862fb8f22e01b284f83e88ee7963a106f5d14",
       "role": "spot-metadata"
     },
     {
@@ -140,8 +140,8 @@
     },
     {
       "path": "spots/02-shariden-kinkaku/poi.json",
-      "bytes": 991,
-      "sha256": "1b19e210545fb587a178ba4ffc576eba654a5f03ef9ed07bc1dba0f1535d2508",
+      "bytes": 986,
+      "sha256": "4ed28283be841f59d353d99fca1354c4d1c81a4f3180aa3232658b8100264b12",
       "role": "spot-metadata"
     },
     {
@@ -158,8 +158,8 @@
     },
     {
       "path": "spots/03-rikushunomatsu/poi.json",
-      "bytes": 998,
-      "sha256": "bb8905eca4324c80c50a37792ec99cd93596590a07505c379489d0691e818b3e",
+      "bytes": 993,
+      "sha256": "a3fa545ef5cf48a4c8d44eb651114316a5cb1ad057cde6dd292f385edb9f0e8d",
       "role": "spot-metadata"
     },
     {
@@ -176,8 +176,8 @@
     },
     {
       "path": "spots/04-gingasen-gankasui/poi.json",
-      "bytes": 986,
-      "sha256": "887a9b40fd1b42aaad560717540f5f8d9d165ad12bf2816eb5b45dd52dcab0da",
+      "bytes": 981,
+      "sha256": "30c5c7877dd7d08b265ba21e2ca04f2958b1b07d83511be39110c2fd70622a53",
       "role": "spot-metadata"
     },
     {
@@ -194,8 +194,8 @@
     },
     {
       "path": "spots/05-ryumontaki-kinkakujigaki/poi.json",
-      "bytes": 1387,
-      "sha256": "479699d64602deb8857367aa9a724564e36111dfd9827cbf48b7c0d94036beae",
+      "bytes": 1382,
+      "sha256": "f19a9b8e23772d0f7dc356e92b13277b17a7e86c3bf37330d8541743f665834f",
       "role": "spot-metadata"
     },
     {
@@ -212,8 +212,8 @@
     },
     {
       "path": "spots/06-anmintaku-hakujanotsuka/poi.json",
-      "bytes": 979,
-      "sha256": "f6d65e8fbafdda8d3525bbf6274bc466f785a4621399939eb7539f3a0e0918b0",
+      "bytes": 974,
+      "sha256": "b4b1c3089cfca0c33cddf677eaa765c8d5e8e6de3d5aed02349f8f7c6cd97040",
       "role": "spot-metadata"
     },
     {
@@ -230,8 +230,8 @@
     },
     {
       "path": "spots/07-sekkatei/poi.json",
-      "bytes": 948,
-      "sha256": "9ebc32f308d9701dd0085d10d515f39a0859683acb69f54be774c4fc99066552",
+      "bytes": 943,
+      "sha256": "ae2a62156cd789487842ef6631c57b36e88354a08865c932a3e5c14b9e95032c",
       "role": "spot-metadata"
     },
     {
@@ -248,8 +248,8 @@
     },
     {
       "path": "spots/08-fudodo/poi.json",
-      "bytes": 934,
-      "sha256": "848e750020b0709b082e90979025b8d606f4da0ea4d098fc2afed0e47173d296",
+      "bytes": 929,
+      "sha256": "1c9b1619cddf2deba3ebdf17a2c754dd9e7fe5c8c05f764d43024599a8fd08d0",
       "role": "spot-metadata"
     }
   ],

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "pack_id": "jp-kyoto-kiyomizudera-standard",
-  "pack_version": "1.0.0-rc.1",
+  "pack_version": "1.0.0",
   "status": "published",
   "content_qa_status": "CONTENT_QA_PENDING",
   "locale": "ko-KR",
@@ -10,7 +10,7 @@
   "city_id": "kyoto",
   "city_name": "교토",
   "title": "청수사",
-  "description": "청수사 8개 스팟 정식판 검수 후보 · 제공 원고 및 사진/AI 이미지 혼합 · 콘텐츠·공간·권리 최종 검수 대기",
+  "description": "청수사 8개 스팟 역사 해설 · 사진과 AI 일러스트 구분 · 공간·외형 고증의 검수 한계는 출처 안내 참조",
   "destination_id": "jp-kyoto-kiyomizudera",
   "destination_tags": [
     "히가시야마구",
@@ -94,8 +94,8 @@
   "files": [
     {
       "path": "LICENSES.md",
-      "bytes": 11104,
-      "sha256": "14fccaf9b87b475399c3f1c89db78d2914a8f08a0eee0ff84412e6aef6362775",
+      "bytes": 12407,
+      "sha256": "28c612f26b27f15c33bbda040124f2cfc0a0ef9c313c748845a9ba2a17b8fdde",
       "role": "rights-record"
     },
     {
@@ -136,8 +136,8 @@
     },
     {
       "path": "spots/01-niomon/poi.json",
-      "bytes": 967,
-      "sha256": "6fa421f541a0bf1c2fffcfc38116ab75cadbbc74a6ff5d818b7dbe66152d4f3a",
+      "bytes": 962,
+      "sha256": "d2f0926241210da124890f914d331097b5db5dfe5c53caee7574dc7257d8a7e9",
       "role": "spot-metadata"
     },
     {
@@ -154,8 +154,8 @@
     },
     {
       "path": "spots/02-saimon/poi.json",
-      "bytes": 1305,
-      "sha256": "a34f9c1dd6d066e511db0d5934c217f6c2e6257f95b872510426d08e7c10d9a4",
+      "bytes": 1300,
+      "sha256": "33af0ab7de3e3f6f4bb4748f759fafc7e5b8a3e5741a7ed7bcd38222da4856ac",
       "role": "spot-metadata"
     },
     {
@@ -172,8 +172,8 @@
     },
     {
       "path": "spots/03-zuigudo/poi.json",
-      "bytes": 1022,
-      "sha256": "6b6e1339610aa4dd7154535031e82ce9ff28bd2e269dfdd2a1278c663800ac0b",
+      "bytes": 1017,
+      "sha256": "00f84121b3dc30352cb25c06b44d005246003eb25b2519f96c4a5b59f64779dd",
       "role": "spot-metadata"
     },
     {
@@ -190,8 +190,8 @@
     },
     {
       "path": "spots/04-sanjunoto/poi.json",
-      "bytes": 1028,
-      "sha256": "a21f3b3c91ab4e106ca4d567836169fb8e3e6219d52ee266499916c5fe771df6",
+      "bytes": 1023,
+      "sha256": "8e94e703e40db0f765bba814f7bfcbf39fdd19e0522f8e5bde9824bece17d506",
       "role": "spot-metadata"
     },
     {
@@ -208,8 +208,8 @@
     },
     {
       "path": "spots/05-hondo/poi.json",
-      "bytes": 1056,
-      "sha256": "94e5e7c4cd6073a7616d807d49fe62977c59f93dd0a24227898b9ef48711ea43",
+      "bytes": 1051,
+      "sha256": "0da8de89326d874c5ad29f4f622f93829d970a8f0c7188228feae43512b2196e",
       "role": "spot-metadata"
     },
     {
@@ -226,8 +226,8 @@
     },
     {
       "path": "spots/06-okunoin/poi.json",
-      "bytes": 1027,
-      "sha256": "e71167aeceaee1f504560771b5516ea8be0b6e1e05ba1362dad502e9ca842223",
+      "bytes": 1022,
+      "sha256": "6ad57cba5d7cfcbab3914bb632dac0365a1fca1e6474a2be4f658bb4b6629fd3",
       "role": "spot-metadata"
     },
     {
@@ -244,8 +244,8 @@
     },
     {
       "path": "spots/07-otowa/poi.json",
-      "bytes": 1560,
-      "sha256": "ff6ef4270f0c0ce6597c7d20c21ef7bb52c905646f991ac74321d999c7ffc7c5",
+      "bytes": 1555,
+      "sha256": "1d383fc184434f35a7552c584f8a888c3c735dcd7f68cdc8ec58741431f1d44b",
       "role": "spot-metadata"
     },
     {
@@ -262,8 +262,8 @@
     },
     {
       "path": "spots/08-koyasuto/poi.json",
-      "bytes": 1486,
-      "sha256": "042fff3e68a797bebf3009cea977c39b85fc80ecc81a30bebe13a16827cfb76f",
+      "bytes": 1481,
+      "sha256": "25eabb3d8ace9bea9bd5481c86555be20a7776f7f6d7d9d1856f288859102f98",
       "role": "spot-metadata"
     }
   ]
